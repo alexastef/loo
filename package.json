@@ -1,0 +1,38 @@
+{
+  "name": "loo",
+  "version": "1.0.0",
+  "description": "app that helps users find open public restrooms",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run lint",
+    "start": "npm start",
+    "lint": "eslint --quiet",
+    "fix": "eslint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexastef/loo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.0",
+    "express-handlebars": "^4.0.4",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.22.3",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "mocha": "^5.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/alexastef/loo/issues"
+  },
+  "homepage": "https://github.com/alexastef/loo#readme"
+}
