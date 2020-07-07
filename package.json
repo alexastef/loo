@@ -2,7 +2,7 @@
   "name": "loo",
   "version": "1.0.0",
   "description": "app that helps users find open public restrooms",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "npm run lint",
     "start": "npm start",
