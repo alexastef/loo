@@ -1,0 +1,1 @@
+CREATE DATABASE loo_db;
