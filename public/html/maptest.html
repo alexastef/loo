@@ -1,66 +1,15 @@
 <html>
 
 <head>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>-->
+  <script src="../js/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="../css/maps.css" />
 </head>
 
 <body>
-  <script>
-    $(document).ready(() => {
-      // check if Google is available 
-      const timer = setInterval(checkGoogle,100);
-
-      function checkGoogle() {
-        console.log("checking Google");
-        if (google) {
-          clearInterval(timer);
-          initMap();
-        }
-      }
-
-      function initMap () {
-      if (navigator.geolocation) {
-        const infowindow2 = new google.maps.InfoWindow();
-        navigator.geolocation.getCurrentPosition(function (position) {
-          const pos = {
-            lat: position.coords.latitude,
-            lon: position.coords.longitude
-          }
-          const latlon = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-          console.log(pos);
-          //infowindow2.setPosition(pos);
-          //infowindow2.setContent('Location found.');
-          //infowindow2.open(map);
-          //map.setCenter(pos);
-
-          // send location to api route
-          $.ajax({
-            url: `/api/nearby/?lat=${pos.lat}&lon=${pos.lon}`,
-            method: "get",
-          }).then(data => {
-            console.log(data);
-          });
-
-        }, function () {
-          handleLocationError(true, infowindow2);//, map.getCenter());
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infowindow2)//;, map.getCenter());
-      }
-
-    }
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-      //infoWindow.open(map);
-    }
-    });
-
-  </script>
+  <div id="map"></div>
+  <script src="../js/maps.js"></script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOQcy72gJ2-VQ5yICeoTAdMKkTjZ5z_VE"
     type="text/javascript"></script>
