@@ -7,7 +7,7 @@ module.exports = function(app) {
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
 
-    const params = `key=${process.env.MAPS_API_KEY}&location=${lat},${lon}&rankby=distance&type=establishment`
+    const params = `key=${process.env.MAPS_API_KEY}&location=${lat},${lon}&rankby=distance&type=store`
 
     axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?${params}`)
     .then(r => {
