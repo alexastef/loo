@@ -1,0 +1,180 @@
+<html>
+
+<head>
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <title>Place Searches</title>
+    <!--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>-->
+  </head>
+
+<body>
+  <div id="map"></div>
+  <label for="placeQuery">Search: </label><input type="text" id="placeQuery" />
+  <button id="submitButton">Submit</button>
+  <ul id="results"></ul>
+</body>
+
+</html>
+<style>
+  /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+  #map {
+    height: 720;
+    width: 1280;
+  }
+
+  /* Optional: Makes the sample page fill the window. */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+</head>
+
+<body>
+  <script>
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+    document.getElementById("submitButton").addEventListener("click",onPlaceEnter);
+
+    function onPlaceEnter() {
+      const query = document.getElementById("placeQuery").value;
+      console.log(query);
+      document.getElementById("results").innerHTML = "";
+      searchPlaces(query);
+    }
+
+    var map;
+    var service;
+    var infowindow;
+    
+
+    function initMap() {
+      var sandiego = new google.maps.LatLng(32.715, -117.1625);
+      
+      infowindow = new google.maps.InfoWindow();
+
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: sandiego,
+        zoom: 15
+      });
+
+      if (navigator.geolocation) {
+        const infowindow2 = new google.maps.InfoWindow();
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          infowindow2.setPosition(pos);
+          infowindow2.setContent('Location found.');
+          infowindow2.open(map);
+          map.setCenter(pos);
+        }, function () {
+          handleLocationError(true, infowindow2, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infowindow2, map.getCenter());
+      }
+
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+          'Error: The Geolocation service failed.' :
+          'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+
+
+      var request = {
+        location: sandiego,
+        radius: 500,
+        query: "McDonalds"/*,
+        fields: ["name", "geometry"]*/
+      };
+
+      service = new google.maps.places.PlacesService(map);
+
+      service.textSearch(request, function(results,status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+            showResult(results[i]);
+          }
+        }
+      });
+
+      service.findPlaceFromQuery(request, function (results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+            showResult(results[i]);
+          }
+
+          map.setCenter(results[0].geometry.location);
+        }
+      });
+    }
+
+    function searchPlaces(query) {
+      var sandiego = new google.maps.LatLng(32.715, -117.1625);
+      var request = {
+        location: sandiego,
+        radius: 500,
+        query: query/*,
+        fields: ["name", "geometry"]*/
+      };
+      const service = new google.maps.places.PlacesService(map);
+      service.textSearch(request, function (results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+            showResult(results[i]);
+          }
+
+          map.setCenter(results[0].geometry.location);
+        }
+      });
+    }
+
+    function createMarker(place) {
+      const infowWindow2 = new google.maps.InfoWindow();
+      var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+      });
+
+      google.maps.event.addListener(marker, "click", function () {
+        infowWindow2.setContent(place.name);
+        infowWindow2.open(map, this);
+      });
+    }
+
+    function showResult(place) {
+      console.log(place);
+      const placeElement = document.createElement("li");
+      const nameElement = document.createElement("h1");
+      const addressElement = document.createElement("span");
+      const html = place.html_attributions;
+      console.log(html);
+      nameElement.innerText = place.name
+      addressElement.innerText = place.formatted_address;
+      placeElement.append(nameElement,addressElement);
+      document.getElementById("results").append(placeElement);
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOQcy72gJ2-VQ5yICeoTAdMKkTjZ5z_VE&callback=initMap&libraries=places"
+    type="text/javascript"></script>
+</body>
+
+</html>
