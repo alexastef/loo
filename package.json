@@ -2,11 +2,11 @@
   "name": "loo",
   "version": "1.0.0",
   "description": "app that helps users find open public restrooms",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "npm run lint",
-    "start": "node index.js",
-    "watch": "nodemon index.js",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
     "lint": "eslint --quiet",
     "fix": "eslint --fix"
   },
@@ -18,10 +18,14 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "bcryptjs": "2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.0",
     "express-handlebars": "^4.0.4",
+    "express-session": "^1.16.1",
     "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^5.22.3",
     "sequelize-cli": "^6.2.0"
   },
