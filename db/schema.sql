@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS `loo_db`;
 CREATE DATABASE `loo_db`;
 USE `loo_db`;
@@ -42,6 +43,4 @@ CREATE TABLE user
     updatedAt DATETIME NOT NULL, 
     PRIMARY KEY (id)
 );
-
-
 
