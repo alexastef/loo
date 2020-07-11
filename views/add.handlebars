@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-lg">
                             <p class="placeAddress">
-                                {{data from click event}}
+                                <!--{{data from click event}}-->
                             </p>
                         </div> 
                     </div>
@@ -17,21 +17,65 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm">
-                            <!-- check boxes going here -->
-                        </div>
-                        
-                        <div class="col-sm">
-                            <!-- check boxes going here -->
-                        </div>
+                        <form class="looForm">
+                            <!-- Form Row -->
+                            <div class="row">
+                                <!-- Form left column -->
+                                <div class="col-sm">
+                                    <h6>Basics</h6>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="looAvailable">
+                                        <label class="custom-control-label" for="looAvailable">Loo available</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="needsKey">
+                                        <label class="custom-control-label" for="needsKey">Loo needs key</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="gender">
+                                        <label class="custom-control-label" for="gender">Gender neutral loo</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="accessible">
+                                        <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
+                                    </div>
+                                </div>
+
+                                <!-- Form right column --> 
+                                <div class="col-sm">
+                                    <h6>Supplies</h6>
+
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="hasWater">
+                                        <label class="custom-control-label" for="hasWater">Has water</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="hasSoap">
+                                        <label class="custom-control-label" for="hasSoap">Has soap</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="hasPaper">
+                                        <label class="custom-control-label" for="hasPaper">Has toilet paper</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="hasMirror">
+                                        <label class="custom-control-label" for="hasMirror">Has mirror</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="formControlRange">Rate the cleanliness</label>
+                                    <input type="range" class="form-control-range" id="cleanRange">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-lg btn-warning">Add Loo!</button>
+
+                        </form>
                     </div>
-
-
-            <button type="submit" class="btn btn-lg btn-warning">Loo!</button>
-
-            </form>
-        </div>
-    </div>
+                </div>
+            </div>
        </div>
    </div> 
     
