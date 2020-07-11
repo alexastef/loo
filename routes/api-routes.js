@@ -15,23 +15,28 @@ module.exports = function(app) {
       return response.data.result;
     });
     const detailedPlaces = await Promise.all(promises);
-    console.log(detailedPlaces);
-    //console.log("this number of places: " + detailedPlaces.length);
     return detailedPlaces;
   }
-  app.get("/api/nearby/", (req,res) => {
+  app.get("/api/nearby/:source", (req,res) => {
+    const source = req.params.source;
+    console.log("calling from",source);
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
 
     const params = `key=${process.env.MAPS_API_KEY}&location=${lat},${lon}&rankby=distance&type=store`
     axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?${params}`)
     .then(async r => {
-      //console.log(r.data.results);
-      //res.json(r.data.results);
       const places = r.data.results;
       const detailedPlaces = await placeDetails(places);
-      console.log(detailedPlaces);
-      res.json(detailedPlaces);
+
+      if (source === "home") {
+        // NEED TO REMOVE PLACES THAT ARE NOT IN OUR DATABASE
+        res.json(detailedPlaces);
+      }
+      else {
+        res.json(detailedPlaces);
+      }
+      
     });
   });
   app.get("/logout", function(req, res) {
