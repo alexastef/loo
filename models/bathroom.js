@@ -36,23 +36,23 @@ module.exports = function (sequelize, DataTypes) {
 
 const loos = {
     selectAll:(callback)=> {
-      orm.selectAll("location_name", (res)=> {
+      orm.selectAll("bathroom", (res)=> {
         callback(res);
       });
     },
     // Erin- Don't forget:  variables columns and valuess are arrays!
     insertOne:(columns, values, callback)=>{
-      orm.insertOne("burgers", columns, values,(res)=> {
+      orm.insertOne("bathroom", columns, values,(res)=> {
         callback(res);
       });
     },
-    updateOne: (columnData, condition, callback)=> {
-      orm.updateOne("burgers", columnData, condition,(res)=> {
+    createOne: (columnData, condition, callback)=> {
+      orm.updateOne("bathroom", columnData, condition,(res)=> {
         callback(res);
       }
       )}
     };
   
   // Export the db functions for burgers_controller.js
-  module.exports = burgers;
+  module.exports = loos;
   
