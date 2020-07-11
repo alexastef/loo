@@ -1,6 +1,8 @@
 // import express and the Bathroom model (bathroom.js) to use its database functions
 const express = require("express");
 const bathroom = require("../models/bathroom.js");
+const bathroom = require("../models/index.js");
+const bathroom = require("../models/bathroomReview.js");
 const router = express.Router();
 
 
@@ -26,12 +28,29 @@ router.get("/", (req, res) => {
 });
 
 // route for creating a new entry for adding a loo
-router.post("/api/new", (req, res) => {
-    let bathroomName = req.body.location_name;
+router.post("/api/loos", (req, res) => {
 
-    bathroom.createOne(bathroomName, (result) => {
+    bathroom.createOne(["location_name", "street_address", "available"],[req.body.location_name, req.body.street_address, req.body.available], (result) => {
         res.json( { id: result.insertId } );
     });
+});
+
+//UPDATE (CRUD) --> UPDATE via PUT request
+router.put("/api/loos/:id", (req, res) =>
+{
+  const condition = "id = " + req.params.id;
+
+  console.log("condition", condition);
+  console.log("received: " + req.body.available);
+ bathroom.updateOne(
+    {
+      available: req.body.available
+    },
+    condition, 
+    function (result) {
+    res.json({ id: result.updateId});
+  }
+  );
 });
 
 // export routes for server.js to use.
