@@ -18,9 +18,9 @@ module.exports = function(app) {
     res.render("login");
   });
 
-  app.get("/addaloo", function(req,res) {
+  app.get("/search", function(req,res) {
     if (req.user) {
-      res.render("add");
+      res.render("search");
     }
     else {
       res.render("signup");
