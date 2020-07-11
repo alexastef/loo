@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg">
     <!-- will this be a different route if accessed from home nearby page to ADD versus if UPDATED from Detailed View page? So maybe this is dynamic and we code in what we want it to say based on the click that calls this route? -->
-    <h2 class="addNew">Add New Loo</h2>
+    <h2 class="addNew">Add New Loo!</h2>
   </div>
 </div>
 
@@ -11,13 +11,13 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="looName">Name</label>
-                    <input type="text" class="form-control" id="looName">
+                    <input type="text" class="form-control" id="looName" name="location_name">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputAddress">Street Address</label>
-                <input type="text" class="form-control" id="looStreet">
+                <input type="text" class="form-control" id="looStreet" name="street_address">
             </div>
 
             <div class="form-row">
@@ -46,7 +46,7 @@
                 </label>
                 </div>
             </div> --}}
-            <button type="submit" class="btn btn-primary">Add Loo!</button>
+            <button type="submit" class="btn btn-lg btn-warning">Add Loo!</button>
         </form>
     </div>
 </div>
