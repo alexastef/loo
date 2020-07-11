@@ -10,7 +10,7 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("home");
     }
-    res.render("signup");
+    res.render("home");
   });
 
   app.get("/login", function(req, res) {
@@ -19,6 +19,15 @@ module.exports = function(app) {
       res.redirect("home");
     }
     res.render("login");
+  });
+
+  app.get("/addaloo", function(req,res) {
+    if (req.user) {
+      res.render("add");
+    }
+    else {
+      res.render("signup");
+    }
   });
 
   app.get("/members", isAuthenticated, function(req, res) {
