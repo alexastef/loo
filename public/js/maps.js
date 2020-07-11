@@ -1,6 +1,7 @@
 $(document).ready(() => {
   // check if Google is available 
   const timer = setInterval(checkGoogle,100);
+  const source = $("#mapsource").data("source");
 
   function checkGoogle() {
     console.log("checking Google");
@@ -35,7 +36,7 @@ $(document).ready(() => {
 
       // send location to api route
       $.ajax({
-        url: `/api/nearby/?lat=${pos.lat}&lon=${pos.lng}`,
+        url: `/api/nearby/${source}?lat=${pos.lat}&lon=${pos.lng}`,
         method: "get",
       }).then(data => {
         console.log(data);
@@ -62,6 +63,29 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function displayPlaces(places,map) {
   places.forEach((place,index) => {
     createMarker(place,200*index);
+    if (source === "home") {
+      // rows here
+    }
+    else if (source === "search") {
+      
+      // cards here
+      const card = $("<div>").addClass("card");
+      const cardBody = $("<div>").addClass("card-body");
+      const cardTitle = $("<h5>").addClass("card-title").text(place.name);
+
+      let cardImgTop;
+      if (place.photos) {
+        console.log("photos",place.photos);
+        cardImgTop = $("<div>").addClass("card-img-top").attr("src",place.photos[0]).attr("alt",place.name + " image");
+      }
+
+      const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
+      cardBody.append(cardImgTop,cardTitle,cardText);
+      card.append(cardBody);
+
+      $("#placeCards").append(card);
+      console.log("appending card", card);
+    }
   });
 }
 
