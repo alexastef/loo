@@ -10,10 +10,19 @@ header {
 
 body {
   background-color: #1c75bc;
-  color: white;
 }
 
 .nearbyLoos {
   padding: 15px;
   text-align: center;
+}
+
+#signUpCard,
+#loginCard {
+  max-width: 500px;
+  margin: auto;
+}
+
+h4 {
+  color: white;
 }

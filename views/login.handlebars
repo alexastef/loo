@@ -1,29 +1,28 @@
-<div class="row">
-  <div class="col-lg">
-    <h2 class="loginPage">Log In</h2>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-lg">
-    <form>
-      <div class="form-group login">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="userEmail" placeholder="Email" aria-describedby="emailHelp">
-      </div>
-      <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="userPassword" placeholder="Password">
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="rememberUser">
-        <label class="form-check-label" for="remember">Stay Signed In</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-     <br />
-        <p>Or sign up <a href="/">here</a></p>
+  <div class="card" id="loginCard">
+    <div class="card-header">Log In</div>
+
+    <div class="card-body">
+      <form>
+        <div class="form-group loginForm">
+          <label for="inputEmail">Email Address</label>
+          <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="inputPassword">Password</label>
+          <input type="password" class="form-control" id="userPassword" placeholder="Password">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="rememberUser">
+          <label class="form-check-label" for="remember">Stay signed in</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Login!</button>
+      </form>
+      <br />
+          <p>Or sign up <a href="/signup">here</a></p>
+    </div>
   </div>
-</div>
+
+
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/login.js"></script>
