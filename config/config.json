@@ -1,7 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "ByenBye84!",
+
+    "password": "p@ssw0rd1",
+
     "database": "loo_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
