@@ -67,7 +67,6 @@ function displayPlaces(places,map) {
 
 function createMarker(place,delay) {
   setTimeout(() => {
-    console.log("marked");
     const marker = new google.maps.Marker({
       animation: google.maps.Animation.DROP,
       position: place.geometry.location,

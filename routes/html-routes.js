@@ -3,23 +3,22 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 
 module.exports = function(app) {
-  app.get("/",(req,res) => {
-    // res.sendFile(path.join(__dirname,"../public/html/maptest.html"));
-    res.render("home", res);
+  app.get("/mapsplayground",(req,res) => {
+    res.sendFile(path.join(__dirname,"../public/html/maptest.html"));
   });
   app.get("/", function(req, res) {
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("home");
     }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.render("signup");
   });
 
   app.get("/login", function(req, res) {
 
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("home");
     }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.render("login");
   });
 
   app.get("/members", isAuthenticated, function(req, res) {
