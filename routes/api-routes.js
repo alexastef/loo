@@ -49,7 +49,10 @@ module.exports = function(app) {
     }
   });
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
+    res.json({
+      email: req.user.email,
+      id: req.user.id
+    });
   });
   app.post("/api/signup", function(req, res) {
     console.log("starting up signup.")

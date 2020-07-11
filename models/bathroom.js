@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    let Bathroom = sequelize.define("bathroom", {
+    const Bathroom = sequelize.define("bathroom", {
         place_id: DataTypes.INTEGER,
         last_verified: {
             type: DataTypes.DATE,
