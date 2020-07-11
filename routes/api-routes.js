@@ -13,7 +13,7 @@ module.exports = function(app) {
 
     axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?${params}`)
     .then(r => {
-      console.log(r.data.results);
+      //console.log(r.data.results);
       res.json(r.data.results);
     });
 
@@ -36,6 +36,7 @@ module.exports = function(app) {
     res.json(req.user);
   });
   app.post("/api/signup", function(req, res) {
+    console.log("starting up signup.")
     db.User.create({
       email: req.body.email,
       password: req.body.password
