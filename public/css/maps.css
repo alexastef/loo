@@ -2,3 +2,18 @@
   height: 720;
   width: 1280;
 }
+
+header {
+  background-color: white;
+  padding: 5px;
+}
+
+body {
+  background-color: #1c75bc;
+  color: white;
+}
+
+.nearbyLoos {
+  padding: 15px;
+  text-align: center;
+}
