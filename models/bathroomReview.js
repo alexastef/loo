@@ -3,13 +3,13 @@ module.exports = function (sequelize, DataTypes) {
         review_id: DataTypes.INTEGER
     });
 
-    bathroomReview.associate = function (models) {
-        bathroomReview.belongsTo(models.Bathroom, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // bathroomReview.associate = function (models) {
+    //     bathroomReview.belongsTo(models.Bathroom, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
 
     return bathroomReview;
 };
