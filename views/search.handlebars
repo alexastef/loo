@@ -19,13 +19,13 @@
 
 <!-- If user does search, map will populate with that location, this needs to be determined in the JS -->
 
-<div class="row">
+<div id="placeCards" class="row">
     <!--partials will go here as cards in separate columns -->
 </div>
 
 
 <!-- Each card needs to have a click event and id that specifies which address to populate on the add.handlebars--> 
-
+<div id="mapsource" data-source="search"></div>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOQcy72gJ2-VQ5yICeoTAdMKkTjZ5z_VE"
     type="text/javascript">
