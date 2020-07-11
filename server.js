@@ -1,7 +1,7 @@
 //npm packages
 const express = require("express");
 const session = require("express-session");
-const passport = require("./config/passport");
+let passport = require("./config/passport");
 
 // Setting up port and requiring models
 const PORT = process.env.PORT || 8080;
