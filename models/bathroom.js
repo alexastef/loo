@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-  let Bathroom = sequelize.define("bathroom", {
-    place_id: DataTypes.INTEGER,
+  let Bathroom = sequelize.define("Bathroom", {
+    place_id: DataTypes.STRING,
     last_verified: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
@@ -27,7 +27,15 @@ module.exports = function (sequelize, DataTypes) {
     has_paper: DataTypes.BOOLEAN,
     has_mirror: DataTypes.BOOLEAN,
     thumbs_up: DataTypes.INTEGER,
-    thumbs_down: DataTypes.INTEGER
+    thumbs_down: DataTypes.INTEGER,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    }
   });
   return Bathroom;
 };

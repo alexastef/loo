@@ -1,11 +1,12 @@
 #map {
-  height: 720px;
-  width: 1280px;
+  height: 500px;
+  width: 100%;
 }
 
-header {
+.navbar {
   background-color: white;
-  padding: 5px;
+  padding: 3px;
+  margin-bottom: 15px;
 }
 
 body {
@@ -25,4 +26,29 @@ body {
 
 h4 {
   color: white;
+}
+
+.btn-lg {
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.nearbyCard {
+  width: 40%;
+  margin: auto;
+  height: 170px;
+}
+
+.img-thumbnail {
+  float: left;
+  width: 150px;
+  margin-right: 6px;
+  /* height: 140px; */
+}
+
+.clearfix {
+  display: block;
+  content: "";
+  clear: both;
 }
