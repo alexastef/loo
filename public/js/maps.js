@@ -67,35 +67,45 @@ function displayPlaces(places,map) {
       // rows here
     }
     else if (source === "search") {
-      
-      // cards here
+      let cardImgTop;
+
       const card = $("<div>").addClass("card");
       const cardBody = $("<div>").addClass("card-body");
       const cardTitle = $("<h5>").addClass("card-title").text(place.name);
 
-      let cardImgTop;
-      if (place.photos) {
-        console.log("photos",place.photos);
-        cardImgTop = $("<div>").addClass("card-img-top").attr("src",place.photos[0]).attr("alt",place.name + " image");
-      }
-
       const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
-      cardBody.append(cardImgTop,cardTitle,cardText);
+
       card.append(cardBody);
 
       $("#placeCards").append(card);
-      console.log("appending card", card);
+
+      if (place.photos) {
+        const firstPhotoRef = place.photos[0].photo_reference;
+
+        $.ajax({
+          url: `/api/photo/${firstPhotoRef}`,
+          method: "get",
+        }).then(photoData => {
+          cardImgTop = $("<img>").addClass("card-img-top").attr("src",photoData).attr("alt",place.name + " image");
+
+          cardBody.append(cardImgTop,cardTitle,cardText);
+        });
+      }
+      else {
+        cardBody.append(cardTitle,cardText);
+      }
     }
   });
 }
 
 function createMarker(place,delay) {
   setTimeout(() => {
+
     const marker = new google.maps.Marker({
       animation: google.maps.Animation.DROP,
       position: place.geometry.location,
       map: map,
-      title: place.name
+      title: place.name,
     });
   },delay);
   
