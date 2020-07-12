@@ -98,7 +98,7 @@ $(document).ready(() => {
           const cardTitle = $("<h5>").addClass("card-title").text(place.name);
 
           const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
-
+          const cardLink = $("<a>").addClass("btn btn-primary stretched-link").attr("href","/add/"+place.place_id).text("Add Loo Infoo");
           card.append(cardBody);
 
           // const row = $("<div>").addClass("row searchCards");
@@ -116,11 +116,11 @@ $(document).ready(() => {
             }).then(photoData => {
               cardImgTop = $("<img>").addClass("card-img-top img-thumbnail img-fluid clearfix").attr("src", photoData).attr("alt", place.name + " image");
 
-              cardBody.append(cardImgTop, cardTitle, cardText);
+              cardBody.append(cardImgTop, cardTitle, cardText,cardLink);
             });
           }
           else {
-            cardBody.append(cardTitle, cardText);
+            cardBody.append(cardTitle, cardText,cardLink);
           }
         })
       }

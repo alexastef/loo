@@ -6,14 +6,23 @@
 
                     <div class="row">
                         <div class="col-lg">
+                            <img 
+                            id="place_img" 
+                            data-photo-reference="{{place.photos.0.photo_reference}}" 
+                            data-place-name="{{place.name}}"
+                            />
+                        </div>
+                        <div class="col-lg">
                             <p class="placeAddress">
-                                <!--{{data from click event}}-->
+                                <h1>{{place.name}}</h1>
+                                <p>{{place.formatted_address}}</p>
+                                <p>{{place.formatted_phone_number}}</p>
                             </p>
                         </div> 
                     </div>
 
                     <div class="row">
-                        <!-- {{place images partials}} -->
+                        
                     </div>
 
                     <div class="row">
@@ -77,6 +86,7 @@
                 </div>
             </div>
        </div>
-   </div> 
+   </div>
+   <script src="/js/add.js"></script>
     
 

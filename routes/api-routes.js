@@ -64,6 +64,20 @@ module.exports = function (app) {
 
       });
   });
+
+  app.get("/api/oneplace/:place_id", async function (req,res) {
+    const place_id = req.params.place_id;
+
+    const fields = "name,formatted_phone_number,formatted_address,geometry,photo,place_id"
+    const detailedParams = `place_id=${place_id}&fields=${fields}&key=${process.env.MAPS_API_KEY}`;
+    const detailedQuery = `https://maps.googleapis.com/maps/api/place/details/json?${detailedParams}`;
+
+    const response = await axios.get(detailedQuery);
+    const detailedPlace = response.data.result;
+
+    res.json(detailedPlace);
+  });
+
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
