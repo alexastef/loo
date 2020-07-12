@@ -3,6 +3,7 @@ const { default: Axios } = require('axios');
 const axios = require("axios");
 const db = require("../models");
 const passport = require("../config/passport");
+// const bathroom = require('../models/bathroom');
 
 module.exports = function (app) {
   async function placeDetails(places) {
@@ -51,7 +52,11 @@ module.exports = function (app) {
 
         if (source === "home") {
           // NEED TO REMOVE PLACES THAT ARE NOT IN OUR DATABASE
-          res.json(detailedPlaces);
+          // res.json(detailedPlaces);
+          // console.log(db.Bathroom);
+          db.Bathroom.findAll({}).then((dbBathrooms) => {
+            res.json({dbBathrooms, detailedPlaces});
+          });
         }
         else {
           res.json(detailedPlaces);
