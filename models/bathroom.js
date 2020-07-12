@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-  let Bathroom = sequelize.define("bathroom", {
-    place_id: DataTypes.INTEGER,
+  let Bathroom = sequelize.define("Bathroom", {
+    place_id: DataTypes.STRING,
     last_verified: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
