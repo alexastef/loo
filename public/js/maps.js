@@ -65,7 +65,7 @@ $(document).ready(() => {
         console.log("these are the db: ", dbPlaces);
         console.log("these are google returned: ", googlePlaces);
 
-        let showPlaces = 
+        //let showPlaces = 
 
         // rows here -- thinking these should be a separate render card function so we can use it twice render card function
         // console.log(place.name);
