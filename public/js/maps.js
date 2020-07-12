@@ -1,7 +1,9 @@
 $(document).ready(() => {
   // check if Google is available 
-  const timer = setInterval(checkGoogle,100);
+  const timer = setInterval(checkGoogle, 100);
   const source = $("#mapsource").data("source");
+  let markers = [];
+  let currentLocationInfoWindow;
 
   function checkGoogle() {
     console.log("checking Google");
@@ -12,7 +14,8 @@ $(document).ready(() => {
   }
 
   const mapElement = $("#map")[0];
-  function initMap () {
+  function initMap() {
+    currentLocationInfoWindow = new google.maps.InfoWindow()
     // start map
     const sandiego = new google.maps.LatLng(32.715, -117.1625);
     map = new google.maps.Map(mapElement, {
@@ -20,94 +23,126 @@ $(document).ready(() => {
       zoom: 15
     });
 
-  if (navigator.geolocation) {
-    const infowindow2 = new google.maps.InfoWindow();
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      }
-      const latlon = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-      console.log(pos);
-      infowindow2.setPosition(pos);
-      infowindow2.setContent('You are here.');
-      infowindow2.open(map);
-      map.setCenter(pos);
+    if (navigator.geolocation) {
+      const infowindow2 = new google.maps.InfoWindow();
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+        const latlon = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        console.log(pos);
 
-      // send location to api route
-      $.ajax({
-        url: `/api/nearby/${source}?lat=${pos.lat}&lon=${pos.lng}`,
-        method: "get",
-      }).then(data => {
-        console.log(data);
-        displayPlaces(data,map);
+        relocate(pos);
+
+        map.addListener("click",askToRelocate);
+
+      }, function () {
+        handleLocationError(true, infowindow2, map.getCenter());
       });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infowindow2, map.getCenter());
+    }
 
-    }, function () {
-      handleLocationError(true, infowindow2, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infowindow2, map.getCenter());
+  }
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
   }
 
-}
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-    'Error: The Geolocation service failed.' :
-    'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
-}
-
-function displayPlaces(places,map) {
-  places.forEach((place,index) => {
-    createMarker(place,200*index);
-    if (source === "home") {
-      // rows here
-    }
-    else if (source === "search") {
-      let cardImgTop;
-
-      const card = $("<div>").addClass("card");
-      const cardBody = $("<div>").addClass("card-body");
-      const cardTitle = $("<h5>").addClass("card-title").text(place.name);
-
-      const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
-
-      card.append(cardBody);
-
-      $("#placeCards").append(card);
-
-      if (place.photos) {
-        const firstPhotoRef = place.photos[0].photo_reference;
-
-        $.ajax({
-          url: `/api/photo/${firstPhotoRef}`,
-          method: "get",
-        }).then(photoData => {
-          cardImgTop = $("<img>").addClass("card-img-top").attr("src",photoData).attr("alt",place.name + " image");
-
-          cardBody.append(cardImgTop,cardTitle,cardText);
-        });
+  function displayPlaces(places, map) {
+    places.forEach((place, index) => {
+      createMarker(place, 200 * index);
+      if (source === "home") {
+        // rows here
       }
-      else {
-        cardBody.append(cardTitle,cardText);
+      else if (source === "search") {
+        let cardImgTop;
+
+        const card = $("<div>").addClass("card");
+        const cardBody = $("<div>").addClass("card-body");
+        const cardTitle = $("<h5>").addClass("card-title").text(place.name);
+
+        const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
+
+        card.append(cardBody);
+
+        $("#placeCards").append(card);
+
+        if (place.photos) {
+          const firstPhotoRef = place.photos[0].photo_reference;
+
+          $.ajax({
+            url: `/api/photo/${firstPhotoRef}`,
+            method: "get",
+          }).then(photoData => {
+            cardImgTop = $("<img>").addClass("card-img-top").attr("src", photoData).attr("alt", place.name + " image");
+
+            cardBody.append(cardImgTop, cardTitle, cardText);
+          });
+        }
+        else {
+          cardBody.append(cardTitle, cardText);
+        }
       }
-    }
-  });
-}
-
-function createMarker(place,delay) {
-  setTimeout(() => {
-
-    const marker = new google.maps.Marker({
-      animation: google.maps.Animation.DROP,
-      position: place.geometry.location,
-      map: map,
-      title: place.name,
     });
-  },delay);
-  
-}
+  }
+
+  function createMarker(place, delay) {
+    setTimeout(() => {
+
+      const marker = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
+        position: place.geometry.location,
+        map: map,
+        title: place.name,
+      });
+      markers.push(marker);
+    }, delay);
+  }
+
+  function askToRelocate(mapEvent) {
+    const confirmed = confirm("Search for establishments here?");
+
+    if (confirmed) {
+      const pos = {
+        lat: mapEvent.latLng.lat(),
+        lng: mapEvent.latLng.lng()
+      }
+      relocate(pos);
+    }
+  }
+
+  function clearMarkers() {
+    markers.forEach((marker) => marker.setMap(null));
+    markers = [];
+  }
+
+  function relocate(pos) {
+    
+    console.log("relocate was given:",pos);
+
+    // clear the map
+    clearMarkers();
+    // clear the cards (if exists)
+    $("#placeCards").empty();
+
+    currentLocationInfoWindow.setPosition(pos);
+    currentLocationInfoWindow.setContent('You are here.');
+    currentLocationInfoWindow.open(map);
+    map.setCenter(pos);
+
+    // send location to api route
+    $.ajax({
+      url: `/api/nearby/${source}?lat=${pos.lat}&lon=${pos.lng}`,
+      method: "get",
+    }).then(data => {
+      console.log(data);
+      displayPlaces(data, map);
+    });
+  }
 });
