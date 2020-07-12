@@ -27,15 +27,7 @@ module.exports = function (sequelize, DataTypes) {
     has_paper: DataTypes.BOOLEAN,
     has_mirror: DataTypes.BOOLEAN,
     thumbs_up: DataTypes.INTEGER,
-    thumbs_down: DataTypes.INTEGER,
-    createdAt: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    }
+    thumbs_down: DataTypes.INTEGER
   });
   return Bathroom;
 };
