@@ -4,6 +4,7 @@ $(document).ready(() => {
   const source = $("#mapsource").data("source");
   let markers = [];
   let currentLocationInfoWindow;
+  let geolocationInfoWindow;
 
   function checkGoogle() {
     console.log("checking Google");
@@ -23,8 +24,10 @@ $(document).ready(() => {
       zoom: 15
     });
 
+    map.addListener("click",askToRelocate);
+
     if (navigator.geolocation) {
-      const infowindow2 = new google.maps.InfoWindow();
+      geolocationInfoWindow = new google.maps.InfoWindow();
       navigator.geolocation.getCurrentPosition(function (position) {
         const pos = {
           lat: position.coords.latitude,
@@ -35,14 +38,14 @@ $(document).ready(() => {
 
         relocate(pos);
 
-        map.addListener("click",askToRelocate);
+        
 
       }, function () {
-        handleLocationError(true, infowindow2, map.getCenter());
+        handleLocationError(true, geolocationInfoWindow, map.getCenter());
       });
     } else {
       // Browser doesn't support Geolocation
-      handleLocationError(false, infowindow2, map.getCenter());
+      handleLocationError(false, geolocationInfoWindow, map.getCenter());
     }
 
   }
@@ -130,6 +133,7 @@ $(document).ready(() => {
     clearMarkers();
     // clear the cards (if exists)
     $("#placeCards").empty();
+    geolocationInfoWindow.close();
 
     currentLocationInfoWindow.setPosition(pos);
     currentLocationInfoWindow.setContent('You are here.');
