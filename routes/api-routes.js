@@ -78,6 +78,19 @@ module.exports = function (app) {
     res.json(detailedPlace);
   });
 
+  app.get("/api/search/:searchvalue", function (req,res) {
+    const term = req.params.searchvalue;
+
+    const searchParameters = `query=${term}&key=${process.env.MAPS_API_KEY}`;
+    const query = `https://maps.googleapis.com/maps/api/place/textsearch/json?${searchParameters}`;
+
+    axios.get(query).then(async response => {
+      const places = response.data.results;
+      const detailedPlaces = await placeDetails(places);
+      res.json(detailedPlaces);
+    });
+  });
+
 
   app.get("/api/user_data", function (req, res) {
     if (!req.user) {
