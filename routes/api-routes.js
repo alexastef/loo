@@ -120,4 +120,10 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+  app.post("/api/bathroom", function(req, res) {
+    console.log("adding a new loo...");
+    db.Bathroom.create(req.body).then(function(newLoo) {
+      res.json(newLoo);
+    }).then(() => console.log("loo added successfully"));
+  });
 };

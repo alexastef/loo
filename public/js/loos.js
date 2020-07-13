@@ -21,26 +21,20 @@ $(function() {
       );
     });
   
-    $(".addLoo").on("submit", (event)=> {
-      // Make sure to preventDefault on a submit event.
-      event.preventDefault();
+    // $(".addLoo").on("submit", (event)=> {
+    //   // Make sure to preventDefault on a submit event.
+    //   event.preventDefault();
   
-      let newLoo = {
-        location_name: $("#looName").val().trim(),
-        street_address: $("looStreet").val().trim(),
-        availiable: $("[location_name=available]:checked").val()
-      };
+    //   let newLoo = {
+    //     location_name: $("#looName").val().trim(),
+    //     street_address: $("#looStreet").val().trim(),
+    //     availiable: $("[location_name=available]:checked").val()
+    //   };
+
+    //   console.log(newLoo);
   
-      // Send the POST request.
-      $.ajax("/api/bathroom", {
-        type: "POST",
-        data: newLoo
-      }).then(function () {
-          console.log("Added new Bathroom");
-          // Reload the page to get the updated list
-          location.reload();
-        }
-      );
-    });
+    //   // Send the POST request.
+      
+    // });
   });
   
