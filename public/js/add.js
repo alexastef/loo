@@ -25,7 +25,7 @@ $(document).ready(() => {
     let locationPhone = phone[0].innerText;
 
     let verifiedLoo = {
-      place_id: $("h1").attr("id"),
+      place_id: $("form.looForm").data("place-id"),
       location_name: locationName,
       street_address: locationAddress,
       location_phone: locationPhone,
@@ -52,7 +52,7 @@ $(document).ready(() => {
         console.log("Added new Bathroom");
         // Reload the home page to show new loo
         alert("Thanks for adding a loo!");
-        window.location.replace("/home");
+        window.location.replace("/");
       }
     );
   });
