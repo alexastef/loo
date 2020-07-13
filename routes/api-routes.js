@@ -78,10 +78,7 @@ module.exports = function (app) {
     res.json(detailedPlace);
   });
 
-  app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
-  });
+
   app.get("/api/user_data", function (req, res) {
     if (!req.user) {
       res.json({});

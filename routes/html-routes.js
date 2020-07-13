@@ -20,6 +20,15 @@ module.exports = function(app) {
     res.render("login");
   });
 
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.render("logout");
+  });
+
+  app.get("/signup", function (req, res) {
+    res.render("signup");
+  });
+
   app.get("/search", function(req,res) {
     if (req.user) {
       res.render("search");
