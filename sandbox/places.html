@@ -163,12 +163,14 @@
       console.log(place);
       const placeElement = document.createElement("li");
       const nameElement = document.createElement("h1");
-      const addressElement = document.createElement("span");
+      const addressElement = document.createElement("p");
+      const placeID = document.createElement("p");
       const html = place.html_attributions;
       console.log(html);
       nameElement.innerText = place.name
       addressElement.innerText = place.formatted_address;
-      placeElement.append(nameElement,addressElement);
+      placeID.innerText = "Place ID: " + place.place_id;
+      placeElement.append(nameElement,placeID,addressElement);
       document.getElementById("results").append(placeElement);
     }
   </script>
