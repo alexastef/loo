@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-lg">
                             <p class="placeAddress">
-                                <h1 class="locationName" id="{{place.place_id}}">{{place.name}}</h1>
+                                <h1 class="locationName">{{place.name}}</h1>
                                 <p class="streetAddress">{{place.formatted_address}}</p>
                                 <p class="placePhone">{{place.formatted_phone_number}}</p>
                             </p>
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="row">
-                        <form class="looForm">
+                        <form class="looForm" data-place-id="{{place.place_id}}">
                             <!-- Form Row -->
                             <div class="row">
                                 <!-- Form left column -->
