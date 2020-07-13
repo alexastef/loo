@@ -107,4 +107,11 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+  app.post("/api/bathroom", function(req, res) {
+    console.log("adding a new loo...");
+    console.log("this is req body: ", req.body);
+    // db.Bathroom.create(req.body).then(function(newLoo) {
+    //   res.json(newLoo);
+    // });
+  });
 };
