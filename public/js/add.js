@@ -28,15 +28,17 @@ $(document).ready(() => {
       location_name: locationName,
       street_address: locationAddress,
       location_phone: locationPhone,
-      available: $("#looAvailable").val(),
-      needs_key: $("#needsKey").val(),
-      gender_neutral: $("#gender").val(),
-      handicap_accessible: $("#accessible").val(),
-      has_water: $("#hasWater").val(),
-      has_soap: $("#hasSoap").val(),
-      has_paper: $("#hasPaper").val(),
-      has_mirror: $("#hasMirror").val(),
-      clean_rating: $("cleanRange").val()
+      // basics
+      available: $("#looAvailable").is(":checked"),
+      needs_key: $("#needsKey").is(":checked"),
+      gender_neutral: $("#gender").is(":checked"),
+      handicap_accessible: $("#accessible").is(":checked"),
+      // supplies
+      has_water: $("#hasWater").is(":checked"),
+      has_soap: $("#hasSoap").is(":checked"),
+      has_paper: $("#hasPaper").is(":checked"),
+      has_mirror: $("#hasMirror").is(":checked"),
+      clean_rating: $("cleanRange").is(":checked")
     }
 
     // clean rating slider needs separate function to get input value
@@ -47,8 +49,9 @@ $(document).ready(() => {
       data: verifiedLoo
     }).then(function () {
         console.log("Added new Bathroom");
-        // Reload the page to get the updated list
-        location.reload();
+        // Reload the home page to show new loo
+        alert("Thanks for adding a loo!");
+        window.location.replace("/home");
       }
     );
   });

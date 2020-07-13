@@ -21,20 +21,20 @@ $(function() {
       );
     });
   
-    $(".addLoo").on("submit", (event)=> {
-      // Make sure to preventDefault on a submit event.
-      event.preventDefault();
+    // $(".addLoo").on("submit", (event)=> {
+    //   // Make sure to preventDefault on a submit event.
+    //   event.preventDefault();
   
-      let newLoo = {
-        location_name: $("#looName").val().trim(),
-        street_address: $("#looStreet").val().trim(),
-        availiable: $("[location_name=available]:checked").val()
-      };
+    //   let newLoo = {
+    //     location_name: $("#looName").val().trim(),
+    //     street_address: $("#looStreet").val().trim(),
+    //     availiable: $("[location_name=available]:checked").val()
+    //   };
 
-      console.log(newLoo);
+    //   console.log(newLoo);
   
-      // Send the POST request.
+    //   // Send the POST request.
       
-    });
+    // });
   });
   
