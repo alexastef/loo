@@ -25,6 +25,7 @@ $(document).ready(() => {
     let locationPhone = phone[0].innerText;
 
     let verifiedLoo = {
+      place_id: $("h1").attr("id"),
       location_name: locationName,
       street_address: locationAddress,
       location_phone: locationPhone,
@@ -43,7 +44,7 @@ $(document).ready(() => {
 
     // clean rating slider needs separate function to get input value
 
-    //post request passing in verified loo
+    // post request passing in verified loo
     $.ajax("/api/bathroom", {
       type: "POST",
       data: verifiedLoo
