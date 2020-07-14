@@ -27,7 +27,8 @@ module.exports = function (sequelize, DataTypes) {
     has_paper: DataTypes.BOOLEAN,
     has_mirror: DataTypes.BOOLEAN,
     thumbs_up: DataTypes.INTEGER,
-    thumbs_down: DataTypes.INTEGER
+    thumbs_down: DataTypes.INTEGER,
+    clean_rating: DataTypes.INTEGER
   });
   return Bathroom;
 };
