@@ -35,15 +35,20 @@ h4 {
 }
 
 .nearbyCard {
-  width: 40%;
+  width: 100%;
   margin: auto;
-  height: 170px;
+  height: 90%;
+}
+
+.nearbyCard:hover {
+  background-color: bisque;
 }
 
 .img-thumbnail {
   float: left;
   width: 150px;
   margin-right: 6px;
+  max-height: 150px;
   /* height: 140px; */
 }
 
