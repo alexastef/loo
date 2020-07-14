@@ -1,4 +1,6 @@
 const axios = require("axios");
+const db = require("../models");
+
 
 var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -56,10 +58,14 @@ module.exports = function(app) {
       res.render("signup");
     }
   });
-
+ 
   app.get("/details/:place_id", async function(req,res) {
     const place_id = req.params.place_id;
     let detailedPlace;
+
+    const dbPlace = await db.Bathroom.findOne({ where: { place_id: place_id} });
+    // let dbLoo = dbPlace.dataValues
+    let dbLoo = dbPlace.dataValues;
 
     try {
       const response = await axios.get("http://" + req.headers.host + "/api/oneplace/" + place_id);
@@ -69,7 +75,8 @@ module.exports = function(app) {
       console.log(error);
     }
     if (req.user) {
-      res.render("details", { place: detailedPlace });
+      res.render("details", { place: detailedPlace, dbPlace: dbLoo });
+      
     }
     else {
       res.render("signup");
