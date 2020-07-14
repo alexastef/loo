@@ -3,7 +3,8 @@ const { default: Axios } = require('axios');
 const axios = require("axios");
 const db = require("../models");
 const passport = require("../config/passport");
-// const bathroom = require('../models/bathroom');
+const bathroom = require('../models/bathroom');
+const Sequelize = require('sequelize');
 
 module.exports = function (app) {
   async function placeDetails(places) {
@@ -54,9 +55,58 @@ module.exports = function (app) {
           // NEED TO REMOVE PLACES THAT ARE NOT IN OUR DATABASE
           // res.json(detailedPlaces);
           // console.log(db.Bathroom);
-          db.Bathroom.findAll({}).then((dbBathrooms) => {
-            res.json({dbBathrooms, detailedPlaces});
+
+          // db.Bathroom.findAll({}).then((dbBathrooms) => {
+          //   console.log(dbBathrooms);
+          //   //res.json({dbBathrooms, detailedPlaces});
+          // })
+          //console.log(detailedPlaces);
+          
+          const place_ids= detailedPlaces.map(place => place.place_id);
+          console.log(place_ids);
+           db.Bathroom.findAll({
+            where: {
+              place_id: {
+                [Sequelize.Op.in]: place_ids
+              }
+            }
+          }).then((dbBathrooms) => {
+           const bathroomId= dbBathrooms.map(bathroom => bathroom.dataValues);
+            res.json(bathroomId);
+          console.log("test",dbBathrooms[0].dataValues);
           });
+
+
+
+        //   db.Bathroom.findAll({
+        //     where: {
+        //         place_id: place_ids
+        //     }
+        // }).then((dbBathrooms) => {
+        //   console.log("test",dbBathrooms);
+
+        // })
+          // detailedPlaces.forEach(function(place){
+          //   db.Bathroom.findOne({where : {place_id: place.place_id}}).then((dbBathroom) => {
+          //     if(dbBathroom){
+          // //     }
+          // })
+            // res.json({dbBathrooms, detailedPlaces});
+          // })
+
+          // db.Bathroom({ force: true })
+          // .then(() => bathroom.findOne({
+          //   where: {
+          //     place_id: 'ChIJn5Mo5eZx3IARjnA1CrR8P1c'
+          //   }
+          // }))
+          // .then((dbBathrooms) => {
+            // res.json({dbBathrooms, detailedPlaces});
+          // }
+          //   }
+          // }))
+          // 
+          // .catch(error => console.log(error));
         }
         else {
           res.json(detailedPlaces);
