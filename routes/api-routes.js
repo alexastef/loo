@@ -113,14 +113,20 @@ module.exports = function (app) {
       email: req.body.email,
       password: req.body.password
     })
-      .then(function () {
-        console.log("307")
-        res.redirect(307, "/api/login");
-      })
-      .catch(function (err) {
-        console.log("401");
-        res.status(401).json(err);
-      });
+    .then(function () {
+      console.log("307 - redirect on successful signup")
+      res.redirect(307, "/api/login");
+    })
+    .catch(function (err) {
+      if (err.name === 'SequelizeUniqueConstraintError'){
+        const errorMsg = "Email already in use: " + err.fields['users.email'];
+        console.log(errorMsg);
+        res.status(409).json({message: errorMsg});
+        return;
+      }
+      console.log("We could not sign you up");//'SequelizeUniqueConstraintError' ; err.fields.users.email
+      res.status(500).json(err);
+    });
   });
 
   app.post("/api/bathroom", function(req, res) {
