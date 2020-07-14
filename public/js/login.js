@@ -1,8 +1,8 @@
 $(document).ready(function() {
   // Getting references to our form and inputs
-  var loginForm = $("form.login");
-  var emailInput = $("input#inputEmail");
-  var passwordInput = $("input#inputPassword");
+  const loginForm = $("form.login");
+  const emailInput = $("input#inputEmail");
+ const passwordInput = $("input#inputPassword");
 
   // When the form is submitted, we validate there's an email and password entered
   loginForm.on("submit", function(event) {
@@ -29,7 +29,8 @@ $(document).ready(function() {
       password: password
     })
       .then(function() {
-        window.location.replace("/search");
+        const params = new URLSearchParams(window.location.search);
+        window.location.replace("/" + params.get("destination"));
         // If there's an error, log the error
       })
       .catch(function(err) {

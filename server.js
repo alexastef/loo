@@ -2,6 +2,7 @@
 const express = require("express");
 const session = require("express-session");
 let passport = require("./config/passport");
+const flash = require('connect-flash');
 
 // Setting up port and requiring models
 const PORT = process.env.PORT || 8080;
@@ -22,6 +23,7 @@ app.set("view engine", "handlebars");
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 //ROUTES
 require("./routes/api-routes.js")(app);
