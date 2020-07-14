@@ -1,15 +1,16 @@
 $(document).ready(function() {
   // Getting references to our form and inputs
-  var loginForm = $("form.login");
-  var emailInput = $("input#inputEmail");
-  var passwordInput = $("input#inputPassword");
+  const loginForm = $("form.login");
+  const email = $("input#inputEmail");
+ const password = $("input#inputPassword");
 
   // When the form is submitted, we validate there's an email and password entered
   loginForm.on("submit", function(event) {
     event.preventDefault();
+    $("#errorMessage").text();
     var userData = {
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
+      email: email.val().trim(),
+      password: password.val().trim()
     };
 
     if (!userData.email || !userData.password) {
@@ -17,23 +18,27 @@ $(document).ready(function() {
     }
 
     // If we have an email and password we run the loginUser function and clear the form
-    loginUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
+    loginUser(userData);
+    email.val("");
+    password.val("");
   });
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-  function loginUser(email, password) {
-    $.post("/api/login", {
-      email: email,
-      password: password
-    })
-      .then(function() {
+  function loginUser(userData) {
+    $.post("/api/login", userData)
+      .then(function(data, status) {
+        console.log(status);
+        console.log(data);
         window.location.replace("/search");
         // If there's an error, log the error
       })
       .catch(function(err) {
-        console.log(err);
-      });
-  }
+        if(err.status == 401)
+      {
+        console.log(err.responseJSON.message);
+        $("#errorMessage").text(err.responseJSON.message);
+      }
+      console.log(err);
+    });
+}
 });

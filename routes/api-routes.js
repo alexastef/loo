@@ -71,11 +71,42 @@ module.exports = function (app) {
             });
             res.json(clientArrayOfBathrooms);
           });
+
+
+
+        //   db.Bathroom.findAll({
+        //     where: {
+        //         place_id: place_ids
+        //     }
+        // }).then((dbBathrooms) => {
+        //   console.log("test",dbBathrooms);
+
+        // })
+          // detailedPlaces.forEach(function(place){
+          //   db.Bathroom.findOne({where : {place_id: place.place_id}}).then((dbBathroom) => {
+          //     if(dbBathroom){
+          // //     }
+          // })
+            // res.json({dbBathrooms, detailedPlaces});
+          // })
+
+          // db.Bathroom({ force: true })
+          // .then(() => bathroom.findOne({
+          //   where: {
+          //     place_id: 'ChIJn5Mo5eZx3IARjnA1CrR8P1c'
+          //   }
+          // }))
+          // .then((dbBathrooms) => {
+            // res.json({dbBathrooms, detailedPlaces});
+          // }
+          //   }
+          // }))
+          // 
+          // .catch(error => console.log(error));
         }
         else {
           res.json(detailedPlaces);
         }
-
       });
   });
 
@@ -117,9 +148,15 @@ module.exports = function (app) {
     }
   });
 
-  app.post("/api/login", passport.authenticate("local"), function (req, res) {
-    res.json(req.user);
-  });
+ app.post("/api/login", passport.authenticate("local", { successRedirect: '/', failureRedirect:'/login'}),
+function (req, res) {
+   console.log(req.user);
+ res.json(req.user);
+ // res.redirect('/users/' + req.user.email);
+  //});
+ // app.post("/api/login", passport.authenticate("local"), function (req, res) {
+  // res.json(req.user);
+ });
 
   app.post("/api/signup", function (req, res) {
     console.log("starting up signup.")
@@ -139,7 +176,7 @@ module.exports = function (app) {
         return;
       }
       console.log("We could not sign you up");//'SequelizeUniqueConstraintError' ; err.fields.users.email
-      res.status(500).json(err);
+      res.status(401).json(err);
     });
   });
 
