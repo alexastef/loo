@@ -52,18 +52,9 @@ module.exports = function (app) {
         const detailedPlaces = await placeDetails(places);
 
         if (source === "home") {
-          // NEED TO REMOVE PLACES THAT ARE NOT IN OUR DATABASE
-          // res.json(detailedPlaces);
-          // console.log(db.Bathroom);
-
-          // db.Bathroom.findAll({}).then((dbBathrooms) => {
-          //   console.log(dbBathrooms);
-          //   //res.json({dbBathrooms, detailedPlaces});
-          // })
-          //console.log(detailedPlaces);
           
           const place_ids = detailedPlaces.map(place => place.place_id);
-          //console.log(place_ids);
+
           db.Bathroom.findAll({
             where: {
               place_id: {
@@ -78,41 +69,8 @@ module.exports = function (app) {
               const mergedBathroom = { ...dbBathroom, ...matchingGooglePlace };
               clientArrayOfBathrooms.push(mergedBathroom)
             });
-            //console.log("after",bathroomsDataValues);
             res.json(clientArrayOfBathrooms);
           });
-
-
-
-        //   db.Bathroom.findAll({
-        //     where: {
-        //         place_id: place_ids
-        //     }
-        // }).then((dbBathrooms) => {
-        //   console.log("test",dbBathrooms);
-
-        // })
-          // detailedPlaces.forEach(function(place){
-          //   db.Bathroom.findOne({where : {place_id: place.place_id}}).then((dbBathroom) => {
-          //     if(dbBathroom){
-          // //     }
-          // })
-            // res.json({dbBathrooms, detailedPlaces});
-          // })
-
-          // db.Bathroom({ force: true })
-          // .then(() => bathroom.findOne({
-          //   where: {
-          //     place_id: 'ChIJn5Mo5eZx3IARjnA1CrR8P1c'
-          //   }
-          // }))
-          // .then((dbBathrooms) => {
-            // res.json({dbBathrooms, detailedPlaces});
-          // }
-          //   }
-          // }))
-          // 
-          // .catch(error => console.log(error));
         }
         else {
           res.json(detailedPlaces);

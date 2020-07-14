@@ -139,6 +139,7 @@ $(document).ready(() => {
   $("#searchForm").submit(onSearch);
   function onSearch(event) {
     event.preventDefault();
+    $("#searchForm *").attr("disabled",true);
     const searchValue = $("#searchInput").val().trim();
 
     clearEverything();
@@ -148,6 +149,7 @@ $(document).ready(() => {
       method: "get"
     }).then(results => {
       displayCards(results);
+      $("#searchForm *").attr("disabled",false);
     });
   }
 
