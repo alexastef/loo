@@ -33,19 +33,19 @@
                                 <div class="col-sm">
                                     <h6>Basics</h6>
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="looAvailable" data-bind="enable: disable">
+                                        <input type="checkbox" class="custom-control-input" id="looAvailable" checked="{{dbLoo.available}}">
                                         <label class="custom-control-label" for="looAvailable">Loo available</label>
                                     </div>
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="needsKey">
+                                        <input type="checkbox" class="custom-control-input" id="needsKey" checked="{{dbPlace.needs_key}}">
                                         <label class="custom-control-label" for="needsKey">Loo needs key</label>
                                     </div>
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="gender">
+                                        <input type="checkbox" class="custom-control-input" id="gender" checked="{{dbPlace.gender_neutral}}">
                                         <label class="custom-control-label" for="gender">Gender neutral loo</label>
                                     </div>
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="accessible">
+                                        <input type="checkbox" class="custom-control-input" id="accessible" checked="{{dbPlace.handicap_accessible}}">
                                         <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
                                     </div>
                                 </div>
@@ -55,27 +55,27 @@
                                     <h6>Supplies</h6>
 
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="hasWater">
+                                        <input type="checkbox" class="custom-control-input" id="hasWater" checked="{{dbPlace.has_water}}">
                                         <label class="custom-control-label" for="hasWater">Has water</label>
                                     </div>
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="hasSoap">
+                                        <input type="checkbox" class="custom-control-input" id="hasSoap" checked="{{dbPlace.has_water}}">
                                         <label class="custom-control-label" for="hasSoap">Has soap</label>
                                     </div>
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="hasPaper">
+                                        <input type="checkbox" class="custom-control-input" id="hasPaper" checked="{{dbPlace.has_paper}}">
                                         <label class="custom-control-label" for="hasPaper">Has toilet paper</label>
                                     </div>
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="hasMirror">
+                                        <input type="checkbox" class="custom-control-input" id="hasMirror" checked="{{dbPlace.has_mirror}}">
                                         <label class="custom-control-label" for="hasMirror">Has mirror</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group">
-                                    <label for="formControlRange">Rate the cleanliness</label>
-                                    <input type="range" class="form-control-range" id="cleanRange">
+                                <div class="form-group w-50">
+                                    <label for="customRange">How clean is it?</label> <br>
+                                    <span class="dirty">Yuck! </span><input type="range" class="custom-range" min="0" max="10" id="cleanRange"><span class="clean"> Sparkling!</span>
                                 </div>
                             </div>
                             
