@@ -17,7 +17,14 @@ module.exports = function(app) {
   app.get("/login", function(req, res) {
 
     if (req.user) {
-      res.redirect("search");
+      const destination = req.query.destination;
+      console.log("(login) destination is " + destination);
+      if (destination) {
+        res.redirect(destination)
+      }
+      else {
+        res.redirect("/");
+      }
     }
     res.render("login");
   });
@@ -36,7 +43,7 @@ module.exports = function(app) {
       res.render("search");
     }
     else {
-      res.render("login");
+      res.redirect("/login?destination=" + "search");
     }
   });
 
@@ -79,7 +86,7 @@ module.exports = function(app) {
       
     }
     else {
-      res.render("login");
+      res.redirect("/login?destination=" + "details/" + place_id);
     }
   });
 
