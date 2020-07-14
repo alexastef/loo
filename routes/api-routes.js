@@ -105,21 +105,29 @@ module.exports = function (app) {
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
   });
+
   app.post("/api/signup", function (req, res) {
     console.log("starting up signup.")
     db.User.create({
       email: req.body.email,
       password: req.body.password
     })
-      .then(function () {
-        console.log("307")
-        res.redirect(307, "/api/login");
-      })
-      .catch(function (err) {
-        console.log("401");
-        res.status(401).json(err);
-      });
+    .then(function () {
+      console.log("307 - redirect on successful signup")
+      res.redirect(307, "/api/login");
+    })
+    .catch(function (err) {
+      if (err.name === 'SequelizeUniqueConstraintError'){
+        const errorMsg = "Email already in use: " + err.fields['users.email'];
+        console.log(errorMsg);
+        res.status(409).json({message: errorMsg});
+        return;
+      }
+      console.log("We could not sign you up");//'SequelizeUniqueConstraintError' ; err.fields.users.email
+      res.status(500).json(err);
+    });
   });
+
   app.post("/api/bathroom", function(req, res) {
     console.log("adding a new loo...");
     db.Bathroom.create(req.body).then(function(newLoo) {
