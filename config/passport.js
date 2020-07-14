@@ -1,6 +1,5 @@
-const passport = require("passport"),
-LocalStrategy = require("passport-local").Strategy;
-
+const passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
 let db = require("../models");
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
@@ -38,7 +37,7 @@ passport.use(new LocalStrategy(
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user);
 });
 
 passport.deserializeUser(function(obj, cb) {

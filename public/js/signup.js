@@ -27,8 +27,7 @@ $(document).ready(function() {
       .then(function(data, status) {
         console.log(status);
         console.log(data);
-        const params = new URLSearchParams(window.location.search);
-        window.location.replace("/" + params.get("destination"));
+        window.location.replace("/search");
         // If there's an error, log the error
       })
       .catch(function(err) {

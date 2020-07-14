@@ -4,7 +4,6 @@ const db = require("../models");
 
 const path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
-const db = require("../models");
 
 
 module.exports = function(app) {
@@ -18,7 +17,7 @@ module.exports = function(app) {
   app.get("/login", function(req, res) {
 
     if (req.user) {
-      res.redirect("home");
+      res.redirect("search");
     }
     res.render("login");
   });
@@ -37,7 +36,7 @@ module.exports = function(app) {
       res.render("search");
     }
     else {
-      res.render("signup");
+      res.render("login");
     }
   });
 
@@ -56,7 +55,7 @@ module.exports = function(app) {
       res.render("add", { place: detailedPlace });
     }
     else {
-      res.render("signup");
+      res.render("login");
     }
   });
  
@@ -80,7 +79,7 @@ module.exports = function(app) {
       
     }
     else {
-      res.render("signup");
+      res.render("login");
     }
   });
 
@@ -103,11 +102,7 @@ module.exports = function(app) {
       res.render("details", { place: detailedPlace });
     }
     else {
-      res.render("signup");
+      res.render("login");
     }
   });
-
-  app.get("/members", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/members.html"));
-  });
-};
+}
