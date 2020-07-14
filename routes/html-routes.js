@@ -57,6 +57,25 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/details/:place_id", async function(req,res) {
+    const place_id = req.params.place_id;
+    let detailedPlace;
+
+    try {
+      const response = await axios.get("http://" + req.headers.host + "/api/oneplace/" + place_id);
+      detailedPlace = response.data;
+    }
+    catch (error) {
+      console.log(error);
+    }
+    if (req.user) {
+      res.render("details", { place: detailedPlace });
+    }
+    else {
+      res.render("signup");
+    }
+  });
+
   app.get("/members", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });

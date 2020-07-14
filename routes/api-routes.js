@@ -102,6 +102,7 @@ module.exports = function (app) {
       });
     }
   });
+
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
   });
@@ -134,4 +135,9 @@ module.exports = function (app) {
       res.json(newLoo);
     }).then(() => console.log("loo added successfully"));
   });
+
+  // need put request for update
+  // app.put("/api/details", function(req, res) {
+
+  // })
 };
