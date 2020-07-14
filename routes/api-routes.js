@@ -102,9 +102,11 @@ module.exports = function (app) {
       });
     }
   });
+
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
   });
+
   app.post("/api/signup", function (req, res) {
     console.log("starting up signup.")
     db.User.create({
@@ -120,10 +122,16 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
+
   app.post("/api/bathroom", function(req, res) {
     console.log("adding a new loo...");
     db.Bathroom.create(req.body).then(function(newLoo) {
       res.json(newLoo);
     }).then(() => console.log("loo added successfully"));
   });
+
+  // need put request for update
+  // app.put("/api/details", function(req, res) {
+
+  // })
 };

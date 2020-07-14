@@ -64,6 +64,11 @@ $(document).ready(() => {
         let googlePlaces = places.detailedPlaces;
         console.log("these are the db: ", dbPlaces);
         console.log("these are google returned: ", googlePlaces);
+        // remember to comment this out
+        // 
+        //
+        //
+        // displayDBCards(googlePlaces);
       }
       else if (source === "search") {
         displayCards(places);
@@ -182,4 +187,42 @@ $(document).ready(() => {
     });
   }
 
+  // delete before merging
+  // function displayDBCards(places) {
+  //   places.forEach((place, index) => {
+  //   createMarker(place, 200 * index);
+
+  //   let cardImgTop;
+
+  //   const card = $("<div>").addClass("card dbLoo");
+  //   const cardBody = $("<div>").addClass("card-body");
+  //   const cardTitle = $("<h5>").addClass("card-title").text(place.name);
+
+  //   const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
+  //   const cardLink = $("<a>").addClass("btn btn-primary stretched-link").attr("href","/details/"+place.place_id).text("Loo Info");
+  //   card.append(cardBody);
+
+  //   // const row = $("<div>").addClass("row searchCards");
+
+  //   // row.append(card);
+
+  //   $(".looCards").append(card);
+
+  //   if (place.photos) {
+  //     const firstPhotoRef = place.photos[0].photo_reference;
+
+  //     $.ajax({
+  //       url: `/api/photo/${firstPhotoRef}`,
+  //       method: "get",
+  //     }).then(photoData => {
+  //       cardImgTop = $("<img>").addClass("card-img-top img-thumbnail img-fluid clearfix").attr("src", photoData).attr("alt", place.name + " image");
+
+  //       cardBody.append(cardImgTop, cardTitle, cardText,cardLink);
+  //     });
+  //   }
+  //   else {
+  //     cardBody.append(cardTitle, cardText,cardLink);
+  //   }
+  // });
+  // }
 });
