@@ -5,18 +5,21 @@
                     <h5 class="card-title">Loo Details</h5>
 
                     <div class="row">
-                        <div class="col-lg">
+                        <div class="col-lg order-md-12 order-lg-1">
                             <img 
                             id="place_img" 
                             data-photo-reference="{{place.photos.0.photo_reference}}" 
                             data-place-name="{{place.name}}"
                             />
                         </div>
-                        <div class="col-lg">
+                        <div class="col-lg order-md-1 order-lg-12">
                             <p class="placeAddress">
                                 <h1 class="locationName">{{place.name}}</h1>
-                                <p class="streetAddress">{{place.formatted_address}}</p>
-                                <p class="placePhone">{{place.formatted_phone_number}}</p>
+                                <p>
+                                    <span class="streetAddress">{{place.formatted_address}}</span>
+                                    <br>
+                                    <span class="placePhone">{{place.formatted_phone_number}}</span>
+                                </p>
                             </p>
                         </div> 
                     </div>
@@ -26,25 +29,25 @@
                     </div>
 
                     <div class="row">
-                        <form class="looForm" data-place-id="{{place.place_id}}">
+                        <form class="looForm container mt-3" data-place-id="{{place.place_id}}">
                             <!-- Form Row -->
                             <div class="row">
                                 <!-- Form left column -->
-                                <div class="col-sm">
+                                <div class="col-sm form-group">
                                     <h6>Basics</h6>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="looAvailable" checked="{{dbLoo.available}}">
                                         <label class="custom-control-label" for="looAvailable">Loo available</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="needsKey" checked="{{dbPlace.needs_key}}">
                                         <label class="custom-control-label" for="needsKey">Loo needs key</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="gender" checked="{{dbPlace.gender_neutral}}">
                                         <label class="custom-control-label" for="gender">Gender neutral loo</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="accessible" checked="{{dbPlace.handicap_accessible}}">
                                         <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
                                     </div>
@@ -54,32 +57,40 @@
                                 <div class="col-sm">
                                     <h6>Supplies</h6>
 
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="hasWater" checked="{{dbPlace.has_water}}">
                                         <label class="custom-control-label" for="hasWater">Has water</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="hasSoap" checked="{{dbPlace.has_water}}">
                                         <label class="custom-control-label" for="hasSoap">Has soap</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="hasPaper" checked="{{dbPlace.has_paper}}">
                                         <label class="custom-control-label" for="hasPaper">Has toilet paper</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="hasMirror" checked="{{dbPlace.has_mirror}}">
                                         <label class="custom-control-label" for="hasMirror">Has mirror</label>
                                     </div>
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
-                                <div class="form-group w-50">
-                                    <label for="customRange">How clean is it?</label> <br>
-                                    <span class="dirty">Yuck! </span><input type="range" class="custom-range" min="0" max="10" id="cleanRange"><span class="clean"> Sparkling!</span>
+                                <div class="col form-group ">
+                                    <label for="customRange"><h6>How clean is it?</h6></label>
+                                    <div class="input-group d-flex align-items-center">
+                                        <div class="input-group-prepend"><span class="mr-3">Yuck!</span></div>
+                                        <input class="form-control" type="range" class="custom-range" min="0" max="10" id="cleanRange"> 
+                                        <span class="input-group-append"><span class="ml-3">Sparkling!</span></span>
+                                    </div>
                                 </div>
                             </div>
+                            <br>
                             
-                            <button href="/add" type="submit" class="btn btn-lg btn-warning" id="updateLooBtn">Update Loo</button>
+                            <div class="form-group inline">
+                                <label for="updateLooBtn">Have a different experience? </label><button type="submit" class="btn btn-sm btn-warning" id="updateLooBtn">Edit Loo</button>
+                            </div>
 
                         </form>
                     </div>

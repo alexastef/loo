@@ -61,3 +61,7 @@ h4 {
 .detailsPlaceImg {
   max-width: 100%;
 }
+
+#updateLooBtn {
+  margin-left: 5px;
+}
