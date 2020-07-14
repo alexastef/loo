@@ -62,8 +62,10 @@ $(document).ready(() => {
       if (source === "home") {
         let dbPlaces = places.dbBathrooms;
         let googlePlaces = places.detailedPlaces;
-        console.log("these are the db: ", dbPlaces);
-        console.log("these are google returned: ", googlePlaces);
+
+        console.log(places);
+        //console.log("these are the db: ", dbPlaces);
+        //console.log("these are google returned: ", googlePlaces);
         // remember to comment this out
         // 
         //
