@@ -52,28 +52,24 @@ module.exports = function (app) {
         const detailedPlaces = await placeDetails(places);
 
         if (source === "home") {
-          // NEED TO REMOVE PLACES THAT ARE NOT IN OUR DATABASE
-          // res.json(detailedPlaces);
-          // console.log(db.Bathroom);
           
-          // db.Bathroom.findAll({}).then((dbBathrooms) => {
-          //   console.log(dbBathrooms);
-          //   //res.json({dbBathrooms, detailedPlaces});
-          // })
-          //console.log(detailedPlaces);
+          const place_ids = detailedPlaces.map(place => place.place_id);
 
-          const place_ids= detailedPlaces.map(place => place.place_id);
-          console.log(place_ids);
-           db.Bathroom.findAll({
+          db.Bathroom.findAll({
             where: {
               place_id: {
                 [Sequelize.Op.in]: place_ids
               }
             }
           }).then((dbBathrooms) => {
-           const bathroomId= dbBathrooms.map(bathroom => bathroom.dataValues);
-            res.json(bathroomId);
-          console.log("test",dbBathrooms[0].dataValues);
+            const bathroomsDataValues = dbBathrooms.map(bathroom => bathroom.dataValues);
+            let clientArrayOfBathrooms = [];
+            bathroomsDataValues.forEach(dbBathroom => {
+              const matchingGooglePlace = detailedPlaces.find(detailedPlace => detailedPlace.place_id === dbBathroom.place_id);
+              const mergedBathroom = { ...dbBathroom, ...matchingGooglePlace };
+              clientArrayOfBathrooms.push(mergedBathroom)
+            });
+            res.json(clientArrayOfBathrooms);
           });
 
 
@@ -159,6 +155,9 @@ module.exports = function (app) {
     });
     res.redirect('/users/' + req.user.email);
   };
+  //app.post("/api/login", passport.authenticate("local"), function (req, res) {
+  //  res.json(req.user);
+ // });
 
   app.post("/api/signup", function (req, res) {
     console.log("starting up signup.")
@@ -189,7 +188,7 @@ module.exports = function (app) {
     }).then(() => console.log("loo added successfully"));
   });
 
- // need put request for update
+  // need put request for update
   // app.put("/api/details", function(req, res) {
 
   // })

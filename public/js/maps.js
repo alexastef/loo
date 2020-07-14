@@ -62,8 +62,15 @@ $(document).ready(() => {
       if (source === "home") {
         let dbPlaces = places.dbBathrooms;
         let googlePlaces = places.detailedPlaces;
-        console.log("these are the db: ", dbPlaces);
-        console.log("these are google returned: ", googlePlaces);
+
+        console.log(places);
+        //console.log("these are the db: ", dbPlaces);
+        //console.log("these are google returned: ", googlePlaces);
+        // remember to comment this out
+        // 
+        //
+        //
+        displayDBCards(places);
       }
       else if (source === "search") {
         displayCards(places);
@@ -132,6 +139,7 @@ $(document).ready(() => {
   $("#searchForm").submit(onSearch);
   function onSearch(event) {
     event.preventDefault();
+    $("#searchForm *").attr("disabled",true);
     const searchValue = $("#searchInput").val().trim();
 
     clearEverything();
@@ -141,6 +149,7 @@ $(document).ready(() => {
       method: "get"
     }).then(results => {
       displayCards(results);
+      $("#searchForm *").attr("disabled",false);
     });
   }
 
@@ -158,7 +167,7 @@ $(document).ready(() => {
       const cardTitle = $("<h5>").addClass("card-title").text(place.name);
       const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
       
-      const cardLink = $("<a>").addClass("btn btn-primary stretched-link clearfix mt-auto").attr("href","/add/"+place.place_id).text("Add Loo Infoo");
+      const cardLink = $("<a>").addClass("btn btn-primary stretched-link clearfix mt-auto").attr("href","/add/"+place.place_id).text("Add Loo Info");
       card.append(cardBody);
 
       // const row = $("<div>").addClass("row searchCards");
@@ -186,4 +195,41 @@ $(document).ready(() => {
     });
   }
 
+  function displayDBCards(places) {
+    places.forEach((place, index) => {
+    createMarker(place, 200 * index);
+
+    let cardImgTop;
+
+    const card = $("<div>").addClass("card dbLoo");
+    const cardBody = $("<div>").addClass("card-body");
+    const cardTitle = $("<h5>").addClass("card-title").text(place.name);
+
+    const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
+    const cardLink = $("<a>").addClass("btn btn-primary stretched-link").attr("href","/details/"+place.place_id).text("View Loo Info");
+    card.append(cardBody);
+
+    // const row = $("<div>").addClass("row searchCards");
+
+    // row.append(card);
+
+    $(".looCards").append(card);
+
+    if (place.photos) {
+      const firstPhotoRef = place.photos[0].photo_reference;
+
+      $.ajax({
+        url: `/api/photo/${firstPhotoRef}`,
+        method: "get",
+      }).then(photoData => {
+        cardImgTop = $("<img>").addClass("card-img-top img-thumbnail img-fluid clearfix").attr("src", photoData).attr("alt", place.name + " image");
+
+        cardBody.append(cardImgTop, cardTitle, cardText,cardLink);
+      });
+    }
+    else {
+      cardBody.append(cardTitle, cardText,cardLink);
+    }
+  });
+  }
 });
