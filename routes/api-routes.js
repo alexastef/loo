@@ -62,18 +62,24 @@ module.exports = function (app) {
           // })
           //console.log(detailedPlaces);
           
-          const place_ids= detailedPlaces.map(place => place.place_id);
-          console.log(place_ids);
-           db.Bathroom.findAll({
+          const place_ids = detailedPlaces.map(place => place.place_id);
+          //console.log(place_ids);
+          db.Bathroom.findAll({
             where: {
               place_id: {
                 [Sequelize.Op.in]: place_ids
               }
             }
           }).then((dbBathrooms) => {
-           const bathroomId= dbBathrooms.map(bathroom => bathroom.dataValues);
-            res.json(bathroomId);
-          console.log("test",dbBathrooms[0].dataValues);
+            const bathroomsDataValues = dbBathrooms.map(bathroom => bathroom.dataValues);
+            let clientArrayOfBathrooms = [];
+            bathroomsDataValues.forEach(dbBathroom => {
+              const matchingGooglePlace = detailedPlaces.find(detailedPlace => detailedPlace.place_id === dbBathroom.place_id);
+              const mergedBathroom = { ...dbBathroom, ...matchingGooglePlace };
+              clientArrayOfBathrooms.push(mergedBathroom)
+            });
+            //console.log("after",bathroomsDataValues);
+            res.json(clientArrayOfBathrooms);
           });
 
 
