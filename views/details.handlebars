@@ -1,0 +1,96 @@
+<div class="row">
+       <div class="col-lg">
+           <div class="card" id="updateLooCard">
+                <div class="card-body">
+                    <h5 class="card-title">Loo Details</h5>
+
+                    <div class="row">
+                        <div class="col-lg">
+                            <img 
+                            id="place_img" 
+                            data-photo-reference="{{place.photos.0.photo_reference}}" 
+                            data-place-name="{{place.name}}"
+                            />
+                        </div>
+                        <div class="col-lg">
+                            <p class="placeAddress">
+                                <h1 class="locationName">{{place.name}}</h1>
+                                <p class="streetAddress">{{place.formatted_address}}</p>
+                                <p class="placePhone">{{place.formatted_phone_number}}</p>
+                            </p>
+                        </div> 
+                    </div>
+
+                    <div class="row">
+                        
+                    </div>
+
+                    <div class="row">
+                        <form class="looForm" data-place-id="{{place.place_id}}">
+                            <!-- Form Row -->
+                            <div class="row">
+                                <!-- Form left column -->
+                                <div class="col-sm">
+                                    <h6>Basics</h6>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="looAvailable" data-bind="enable: disable">
+                                        <label class="custom-control-label" for="looAvailable">Loo available</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="needsKey">
+                                        <label class="custom-control-label" for="needsKey">Loo needs key</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="gender">
+                                        <label class="custom-control-label" for="gender">Gender neutral loo</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="accessible">
+                                        <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
+                                    </div>
+                                </div>
+
+                                <!-- Form right column --> 
+                                <div class="col-sm">
+                                    <h6>Supplies</h6>
+
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="hasWater">
+                                        <label class="custom-control-label" for="hasWater">Has water</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="hasSoap">
+                                        <label class="custom-control-label" for="hasSoap">Has soap</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="hasPaper">
+                                        <label class="custom-control-label" for="hasPaper">Has toilet paper</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="hasMirror">
+                                        <label class="custom-control-label" for="hasMirror">Has mirror</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="formControlRange">Rate the cleanliness</label>
+                                    <input type="range" class="form-control-range" id="cleanRange">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-lg btn-warning" id="updateLooBtn">Update Loo</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+       </div>
+   </div>
+
+ <!-- don't know if we'll need the bootstrap script -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   <script src="/js/update.js"></script>
+    
