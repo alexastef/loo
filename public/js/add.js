@@ -39,10 +39,8 @@ $(document).ready(() => {
       has_soap: $("#hasSoap").is(":checked"),
       has_paper: $("#hasPaper").is(":checked"),
       has_mirror: $("#hasMirror").is(":checked"),
-      clean_rating: $("cleanRange").val()
+      clean_rating: $("#cleanRange").val()
     }
-
-    // clean rating slider needs separate function to get input value
 
     // post request passing in verified loo
     $.ajax("/api/bathroom", {

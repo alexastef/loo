@@ -35,44 +35,13 @@
                                 <!-- Form left column -->
                                 <div class="col-sm form-group">
                                     <h6>Basics</h6>
-                                    <div class="custom-control custom-switch form-check">
-                                        <input type="checkbox" class="custom-control-input" id="looAvailable" checked="{{dbLoo.available}}">
-                                        <label class="custom-control-label" for="looAvailable">Loo available</label>
-                                    </div>
-                                    <div class="custom-control custom-switch form-check">
-                                        <input type="checkbox" class="custom-control-input" id="needsKey" checked="{{dbPlace.needs_key}}">
-                                        <label class="custom-control-label" for="needsKey">Loo needs key</label>
-                                    </div>
-                                    <div class="custom-control custom-switch form-check">
-                                        <input type="checkbox" class="custom-control-input" id="gender" checked="{{dbPlace.gender_neutral}}">
-                                        <label class="custom-control-label" for="gender">Gender neutral loo</label>
-                                    </div>
-                                    <div class="custom-control custom-switch form-check">
-                                        <input type="checkbox" class="custom-control-input" id="accessible" checked="{{dbPlace.handicap_accessible}}">
-                                        <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
-                                    </div>
+                                    {{> basic-features}}
                                 </div>
 
                                 <!-- Form right column --> 
                                 <div class="col-sm">
                                     <h6>Supplies</h6>
-
-                                    <div class="custom-control custom-switch form-check">
-                                        <input type="checkbox" class="custom-control-input" id="hasWater" checked="{{dbPlace.has_water}}">
-                                        <label class="custom-control-label" for="hasWater">Has water</label>
-                                    </div>
-                                    <div class="custom-control custom-switch form-check">
-                                        <input type="checkbox" class="custom-control-input" id="hasSoap" checked="{{dbPlace.has_water}}">
-                                        <label class="custom-control-label" for="hasSoap">Has soap</label>
-                                    </div>
-                                    <div class="custom-control custom-switch form-check">
-                                        <input type="checkbox" class="custom-control-input" id="hasPaper" checked="{{dbPlace.has_paper}}">
-                                        <label class="custom-control-label" for="hasPaper">Has toilet paper</label>
-                                    </div>
-                                    <div class="custom-control custom-switch form-check">
-                                        <input type="checkbox" class="custom-control-input" id="hasMirror" checked="{{dbPlace.has_mirror}}">
-                                        <label class="custom-control-label" for="hasMirror">Has mirror</label>
-                                    </div>
+                                    {{> supplies}}
                                 </div>
                             </div>
                             <br>
@@ -81,15 +50,19 @@
                                     <label for="customRange"><h6>How clean is it?</h6></label>
                                     <div class="input-group d-flex align-items-center">
                                         <div class="input-group-prepend"><span class="mr-3">Yuck!</span></div>
-                                        <input class="form-control" type="range" class="custom-range" min="0" max="10" id="cleanRange"> 
+                                        <input class="form-control" type="range" class="custom-range" min="0" max="10" value="{{dbPlace.clean_rating}}" id="cleanRange" disabled="true"> 
                                         <span class="input-group-append"><span class="ml-3">Sparkling!</span></span>
                                     </div>
                                 </div>
                             </div>
                             <br>
-                            
-                            <div class="form-group inline">
-                                <label for="updateLooBtn">Have a different experience? </label><button type="submit" class="btn btn-sm btn-warning" id="updateLooBtn">Edit Loo</button>
+                           
+                            <div class="form-group inline editDiv">
+                                <label for="updateLooBtn">Have a different experience? </label><button type="submit" class="btn btn-sm btn-warning" id="editLooBtn">Edit Loo</button>
+                            </div>
+                            <!-- Starts out hidden -->
+                            <div class="form-group inline updateDiv" style="display:none">
+                                <button type="submit" class="btn btn-sm btn-warning" id="updateLooBtn">Update Loo</button>
                             </div>
 
                         </form>
@@ -99,9 +72,5 @@
        </div>
    </div>
 
- <!-- don't know if we'll need the bootstrap script -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-   <script src="/js/update.js"></script>
+<script src="/js/update.js"></script>
     
