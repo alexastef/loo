@@ -38,10 +38,10 @@ module.exports = function (app) {
     const places = response.data.results;
 
     //temporarily remove photos
-    places.forEach((place) => {
-      console.log(place.name);
-      console.log(place.types);
-    });
+    // places.forEach((place) => {
+    //   console.log(place.name);
+    //   console.log(place.types);
+    // });
 
     return places;
   }

@@ -1,6 +1,6 @@
 const axios = require("axios");
 const db = require("../models");
-
+require('dotenv').config();
 
 const path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -11,7 +11,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname,"../public/html/maptest.html"));
   });
   app.get("/", function(req, res) {
-    res.render("home");
+    res.render("home", {Google_Maps_Key: process.env.MAPS_API_KEY});
   });
 
   app.get("/login", function(req, res) {
@@ -20,7 +20,7 @@ module.exports = function(app) {
       const destination = req.query.destination;
       console.log("(login) destination is " + destination);
       if (destination) {
-        res.redirect(destination)
+        res.render(destination, {Google_Maps_Key: process.env.MAPS_API_KEY})
       }
       else {
         res.redirect("/");
@@ -40,7 +40,7 @@ module.exports = function(app) {
 
   app.get("/search", function(req,res) {
     if (req.user) {
-      res.render("search");
+      res.render("search", {Google_Maps_Key: process.env.MAPS_API_KEY});
     }
     else {
       res.redirect("/login?destination=" + "search");
