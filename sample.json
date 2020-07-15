@@ -1,0 +1,1003 @@
+{
+  "html_attributions": [],
+  "next_page_token": "CqQCHAEAAMGfZawKWXC1elbFb8YY19klv3E4scq-S2WjWVyq58ahxN8f3k7rL6Kgb-w-98WA48tA0TlgZ2_mokPkI1REI_D9uwQlyn4PEOOSQqnjW6TERFofR7i-cnHbHWkT30raIlJu-WEM105Z9FdpYVI_N7bH_1f9ms_rMJlSiBm8zGHMc6IBtVjjBc-gaTGz9CMCjKCFdZXOJkIDzLMrpNAExCQmIGfQwWKAUJ3hP2ZpTSRqSMLFk2zy-g7tQny8NpfrlGiRQN4Q_HfSzT5jI8uwX9_lPQ8TrbgWfND9PpuWBgS_NohlayN6ZJn0NcaZSA35aImrHK2swi-DGkofSJl7mxgEBYYggXvHki0dZyfEknnXbpkA-Vojgk4JWXlmm_V8ZhIQtxntg3XSx9hDQYqg2djwIRoUHS96QioSYoOASQl2sYuOH31h0Ek",
+  "results": [
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7692566,
+              "lng": -117.0544452
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.77059998029149,
+                 "lng": -117.0530959697085
+              },
+              "southwest": {
+                 "lat": 32.76790201970849,
+                 "lng": -117.0557939302915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+        "id": "4ad1b3282a378e62346ff26c7bee1a5282a8bf2e",
+        "name": "Redbox",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 1270,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/110060413102247584789\">Redbox</a>"
+              ],
+              "photo_reference": "CmRaAAAAInGbZamBS2gbpRwRjCYr08JmeQfnoIRmNaAD2dJcXcBAmHXRRVTP7ENX5AEEO-LhLlvSgM5V0KBupbPSGgsGCxseh83NG5JxvOHHzGyyXoRbD6vi-tZyfbedkTJ349-8EhD-8g6vEMddZ6uwO9SJ3r-mGhTfA8UkTusb7TJyKATgLHe6Vdn6zA",
+              "width": 1276
+           }
+        ],
+        "place_id": "ChIJadDIO5NW2YARbOqaVGFOjBY",
+        "plus_code": {
+           "compound_code": "QW9W+P6 San Diego, CA, USA",
+           "global_code": "8544QW9W+P6"
+        },
+        "price_level": 1,
+        "rating": 4.3,
+        "reference": "ChIJadDIO5NW2YARbOqaVGFOjBY",
+        "scope": "GOOGLE",
+        "types": [
+           "movie_rental",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 3,
+        "vicinity": "6670 Montezuma Road, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7692781,
+              "lng": -117.0542952
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7706034802915,
+                 "lng": -117.0529554197085
+              },
+              "southwest": {
+                 "lat": 32.7679055197085,
+                 "lng": -117.0556533802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+        "id": "72d0e845427ca14c7104fd27d5ceba1657880a00",
+        "name": "Starbucks",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 4032,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/111053118692610244978\">Rob Johnson</a>"
+              ],
+              "photo_reference": "CmRaAAAAYGTViy9cMYTk3SfRrXSIYq1i6mk9Gyx1UmA7ucP4dtVemWIP0wwQ7JsNtSjnNzh6pJt1vK4KOPwT3gseRce0OOQCVsi09HOpAIyOepJptm_gBVueuTqe26o6vL137-FuEhA3S1g9cAnh5aHzJ98X1PQ9GhRJbuAOkC5id-84SNIVPEFxrv7Jgw",
+              "width": 3024
+           }
+        ],
+        "place_id": "ChIJNRoJFe1W2YAR_gciqyL9wag",
+        "plus_code": {
+           "compound_code": "QW9W+P7 San Diego, CA, USA",
+           "global_code": "8544QW9W+P7"
+        },
+        "price_level": 2,
+        "rating": 3.6,
+        "reference": "ChIJNRoJFe1W2YAR_gciqyL9wag",
+        "scope": "GOOGLE",
+        "types": [
+           "cafe",
+           "food",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 39,
+        "vicinity": "6670 Montezuma Road, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7695215,
+              "lng": -117.0542753
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.77072123029149,
+                 "lng": -117.0529454697085
+              },
+              "southwest": {
+                 "lat": 32.7680232697085,
+                 "lng": -117.0556434302915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+        "id": "4d2ef5ac432d2422a61bcbd335e5a0503c5d9090",
+        "name": "ecoATM",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 356,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/117406384514118111658\">ecoATM</a>"
+              ],
+              "photo_reference": "CmRaAAAAJwWPnZf9IRTfFZBy5pI5k0VZUqrMB6OnZOj756LzgtCzs7wu7OwKLr3ycPcnEVU6a-mi7J2cH7ykekzGnDVqdplif4Xj6d8MWUSk2APNpz3uJToys5dnwq_5riuyGVqfEhCIDFWJG-zzvPdw_1ak4V6wGhQRoXm8NAOZd_3S-otn-JYrAY5AlQ",
+              "width": 480
+           }
+        ],
+        "place_id": "ChIJNRoJFe1W2YARsCNoIFqyhJw",
+        "plus_code": {
+           "compound_code": "QW9W+R7 San Diego, CA, USA",
+           "global_code": "8544QW9W+R7"
+        },
+        "rating": 4,
+        "reference": "ChIJNRoJFe1W2YARsCNoIFqyhJw",
+        "scope": "GOOGLE",
+        "types": [
+           "atm",
+           "finance",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 1,
+        "vicinity": "6670 Montezuma Road, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.76956,
+              "lng": -117.054214
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7707385302915,
+                 "lng": -117.0529179697085
+              },
+              "southwest": {
+                 "lat": 32.7680405697085,
+                 "lng": -117.0556159302915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "6753e1478089dde3c3c01df7557b75815ec2dc85",
+        "name": "Ralphs",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 540,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/105209216763716270120\">Ralphs</a>"
+              ],
+              "photo_reference": "CmRaAAAAYD-spTX60NgkCZwlCzbYcw1l-olxWJiHEwEDSR9m7Cp_2leOaj1CEPMAHKuAC-_mx5vdL-9cO09xHiv93KakkVogmD7IZGSqapLbuCxVanwvH0mMQREXp3DSn4r0wk0pEhCTWictQpPZIRqkPhCjpJGuGhSU6RTRRotMjglTQdVrJ3ItLyOyfw",
+              "width": 960
+           }
+        ],
+        "place_id": "ChIJO988Fu1W2YAR9Cp_p1doh48",
+        "plus_code": {
+           "compound_code": "QW9W+R8 San Diego, CA, USA",
+           "global_code": "8544QW9W+R8"
+        },
+        "price_level": 2,
+        "rating": 4.3,
+        "reference": "ChIJO988Fu1W2YAR9Cp_p1doh48",
+        "scope": "GOOGLE",
+        "types": [
+           "grocery_or_supermarket",
+           "food",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 582,
+        "vicinity": "6670 Montezuma Road, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7684203,
+              "lng": -117.0550045
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7697692802915,
+                 "lng": -117.0536555197085
+              },
+              "southwest": {
+                 "lat": 32.7670713197085,
+                 "lng": -117.0563534802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "228d576f9b4524e9e1d8b5a3369e8fca7f3683e0",
+        "name": "Metro by T-Mobile",
+        "photos": [
+           {
+              "height": 2340,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/106417971523694447835\">Dee Money</a>"
+              ],
+              "photo_reference": "CmRaAAAA5zcaiqM5cDGVeSu24whz6KnpGLhSuyTiB0E1EHAm_0HROEbbyIQgpsoF_-2-C1_qQ7PWHqV6hmP4eVqdC81z7KuGiw4qVzg9w6D2VOwEmidCYqf0EEZGKe5zZBNF9UXnEhBspPqFDmZBLrR-2W1z_wrgGhRW1UcQLL4ZpYAT4Jvt2Qv_1GCYoA",
+              "width": 4160
+           }
+        ],
+        "place_id": "ChIJd8uytO1W2YARgxcpZMn6mLU",
+        "plus_code": {
+           "compound_code": "QW9V+9X San Diego, CA, USA",
+           "global_code": "8544QW9V+9X"
+        },
+        "price_level": 1,
+        "rating": 4.9,
+        "reference": "ChIJd8uytO1W2YARgxcpZMn6mLU",
+        "scope": "GOOGLE",
+        "types": [
+           "electronics_store",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 70,
+        "vicinity": "6686 El Cajon Boulevard Ste E, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7679912,
+              "lng": -117.0556178
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7692594802915,
+                 "lng": -117.0542118197085
+              },
+              "southwest": {
+                 "lat": 32.7665615197085,
+                 "lng": -117.0569097802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "89718e42396c7788bce5e06c5c6061dd93a172b5",
+        "name": "VH Motor Sport",
+        "opening_hours": {
+           "open_now": false
+        },
+        "place_id": "ChIJPyK1Y2pX2YARVifaKNwkd5Q",
+        "plus_code": {
+           "compound_code": "QW9V+5Q San Diego, CA, USA",
+           "global_code": "8544QW9V+5Q"
+        },
+        "reference": "ChIJPyK1Y2pX2YARVifaKNwkd5Q",
+        "scope": "GOOGLE",
+        "types": [
+           "car_repair",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "vicinity": "6620 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7678944,
+              "lng": -117.0556236
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.76924338029149,
+                 "lng": -117.0542746197085
+              },
+              "southwest": {
+                 "lat": 32.76654541970849,
+                 "lng": -117.0569725802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+        "id": "ca5cc9b4c68a431089f9e5abde1b65d34959e06d",
+        "name": "Sensible Car Rental",
+        "opening_hours": {
+           "open_now": false
+        },
+        "photos": [
+           {
+              "height": 2340,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/117501521115670194884\">Shalom Shimon</a>"
+              ],
+              "photo_reference": "CmRaAAAA5xcpNpDt8dlAHEHAOwuHx7W9M3nzNKkvQcpnc-P3HEbBowFxRYNyTdKwdktrg_mK09-0xG-Ml6KITpfbfPEGcEZilW8d05ysJkwKC1i5ul5UoG6rX7TujAddjA5Lg-_hEhDJ3gUKB5Ih_WVa5zwrKw7LGhS8eFRdInzSZnk9XBzuqs0aix41Zw",
+              "width": 4160
+           }
+        ],
+        "place_id": "ChIJT-GA1OxW2YARmZd645bU27I",
+        "plus_code": {
+           "compound_code": "QW9V+5Q San Diego, CA, USA",
+           "global_code": "8544QW9V+5Q"
+        },
+        "rating": 4.1,
+        "reference": "ChIJT-GA1OxW2YARmZd645bU27I",
+        "scope": "GOOGLE",
+        "types": [
+           "car_rental",
+           "car_dealer",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 50,
+        "vicinity": "6610 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7677493,
+              "lng": -117.0549374
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.76909828029149,
+                 "lng": -117.0535884197085
+              },
+              "southwest": {
+                 "lat": 32.7664003197085,
+                 "lng": -117.0562863802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "e3aafb99f4234a0a08be47a17d29f87301de7645",
+        "name": "Payless Smoke Shop #2",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 1000,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/113853108183409839287\">Payless Smoke Shop #2</a>"
+              ],
+              "photo_reference": "CmRaAAAAHBia-qRYJN5GAiQrjJomxLtnRvf13HXP0DbP2WotD63o61d906mzYCmfTe_xrmMDpNl_7nj3RhE--RHeo3tiBvDrPg0NNYeWApUhVg8kAXzMialP_rHSkUeBFRIj9bq-EhADXZf8sTcjHnxf3VQ5aWufGhT0m6CuJQf4vSx6cqFuTgQHoqeOxA",
+              "width": 1500
+           }
+        ],
+        "place_id": "ChIJYZPnxOxW2YARargV3fx5aWQ",
+        "plus_code": {
+           "compound_code": "QW9W+32 San Diego, CA, USA",
+           "global_code": "8544QW9W+32"
+        },
+        "rating": 4.3,
+        "reference": "ChIJYZPnxOxW2YARargV3fx5aWQ",
+        "scope": "GOOGLE",
+        "types": [
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 8,
+        "vicinity": "6663 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7689466,
+              "lng": -117.0533135
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7702958802915,
+                 "lng": -117.0518477197085
+              },
+              "southwest": {
+                 "lat": 32.7675979197085,
+                 "lng": -117.0545456802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "cbd2e4c71ebbeadab2870b55279ca58819ca515d",
+        "name": "Pep Boys Auto Parts & Service",
+        "opening_hours": {
+           "open_now": false
+        },
+        "photos": [
+           {
+              "height": 3726,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/101823471627008962830\">Samuel Hanna</a>"
+              ],
+              "photo_reference": "CmRaAAAA7upIS-aSysM--ebDZDVD8pBQS-79ii1tFIVHRsQVOThWA6lWtvo5-lhForNjIIkoEYJideMNjyABflW0LlZK7Wan7R8TJWi72IFzl9-uYtURung4bywU0Sb1onZfKMJ0EhBw8IFoKpcfOVKnBsgx1Dh4GhSikhqmo4FgOkjUwriiRpMxKNIV1w",
+              "width": 4968
+           }
+        ],
+        "place_id": "ChIJezsxAe1W2YARBHb-jqHv9zw",
+        "plus_code": {
+           "compound_code": "QW9W+HM San Diego, CA, USA",
+           "global_code": "8544QW9W+HM"
+        },
+        "rating": 3.7,
+        "reference": "ChIJezsxAe1W2YARBHb-jqHv9zw",
+        "scope": "GOOGLE",
+        "types": [
+           "car_repair",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 207,
+        "vicinity": "6714 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.768337,
+              "lng": -117.053409
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7696921802915,
+                 "lng": -117.0521181197085
+              },
+              "southwest": {
+                 "lat": 32.7669942197085,
+                 "lng": -117.0548160802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+        "id": "9ca66f33d1c85ff632aa29642c8e499bd8d535ba",
+        "name": "Starbucks",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 3024,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/109317451834288056757\">Janina Perez</a>"
+              ],
+              "photo_reference": "CmRaAAAAGGGHzuWyTj5fiMoOTljGEY-jZOSQhmQsYm1oLo_MhnWB53m_iqVKYiJUrg85KPkSM3zfmX-he7sOgE4TZG1Z5QlO8NhEGT-0WXAH1R4utb5wbeGHJOEl58SMOcQicaM_EhBLSzz6IROxm3eEvLwW5VBpGhStIkchVhUId0tmOF1ecrTGVpqkHA",
+              "width": 4032
+           }
+        ],
+        "place_id": "ChIJO4wP_OxW2YARb4z3rwstrSE",
+        "plus_code": {
+           "compound_code": "QW9W+8J San Diego, CA, USA",
+           "global_code": "8544QW9W+8J"
+        },
+        "price_level": 2,
+        "rating": 4.2,
+        "reference": "ChIJO4wP_OxW2YARb4z3rwstrSE",
+        "scope": "GOOGLE",
+        "types": [
+           "cafe",
+           "food",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 418,
+        "vicinity": "6701 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7676426,
+              "lng": -117.0563225
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7689585802915,
+                 "lng": -117.0550524697085
+              },
+              "southwest": {
+                 "lat": 32.7662606197085,
+                 "lng": -117.0577504302915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "febea38a24ded8bd582918f19ab37cccc1eee054",
+        "name": "So Amazing Tattoo and Airbrush",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 809,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/106396097810230650517\">So Amazing Tattoo and Airbrush</a>"
+              ],
+              "photo_reference": "CmRaAAAA3DOZ3j60fliXk3xwyjDis6znBv1hQD6RvoiOm-8rWS5dpwk-ikqpAIlWfoC-xXKvu8SFcaJszHQJ6rmCnbB1eDwyw_X5DW6AFpKRdjXIQw-jpBuFqvDmDwQYlrp-LCP3EhDBb7gEjPk1hbOGTAv4lIvvGhRIHgC2OX4ABcRxxlJ3FbPBOKJUPQ",
+              "width": 1440
+           }
+        ],
+        "place_id": "ChIJhRzqQnhX2YARZ03kMCJ9UW8",
+        "plus_code": {
+           "compound_code": "QW9V+3F San Diego, CA, USA",
+           "global_code": "8544QW9V+3F"
+        },
+        "rating": 5,
+        "reference": "ChIJhRzqQnhX2YARZ03kMCJ9UW8",
+        "scope": "GOOGLE",
+        "types": [
+           "point_of_interest",
+           "clothing_store",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 15,
+        "vicinity": "6602 El Cajon Boulevard Suite G & C, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.76763839999999,
+              "lng": -117.0563373
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.76895708029149,
+                 "lng": -117.0550596197085
+              },
+              "southwest": {
+                 "lat": 32.76625911970849,
+                 "lng": -117.0577575802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+        "id": "9670a895913463f97ef6657b7848bc9cd4f8e5e5",
+        "name": "Coast Energy Solution",
+        "opening_hours": {
+           "open_now": false
+        },
+        "photos": [
+           {
+              "height": 778,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/104250821202695182022\">Coast Energy Solution</a>"
+              ],
+              "photo_reference": "CmRaAAAA0fINyX6QlEdBqJ676Rsqd1vuz93oau3b1YZuJhnaWp5WGncpi4vDMHDcYMpCg4AxiOrk4xypgGk_75RjQnS5mKc51nVfTumE-SHtKw0EENCsCNC8VQHwdPBs5lHtPZ-NEhD0Su1pQodqZGo1cAAmCsPPGhTf50-_r3AHgqJIMWOAVDNseKoAhQ",
+              "width": 1600
+           }
+        ],
+        "place_id": "ChIJYdw_KZNW2YARIA3YNSYsgDs",
+        "plus_code": {
+           "compound_code": "QW9V+3F San Diego, CA, USA",
+           "global_code": "8544QW9V+3F"
+        },
+        "rating": 4.2,
+        "reference": "ChIJYdw_KZNW2YARIA3YNSYsgDs",
+        "scope": "GOOGLE",
+        "types": [
+           "roofing_contractor",
+           "home_goods_store",
+           "general_contractor",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 5,
+        "vicinity": "6602 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.76761610000001,
+              "lng": -117.0563534
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7689397802915,
+                 "lng": -117.0550639697085
+              },
+              "southwest": {
+                 "lat": 32.7662418197085,
+                 "lng": -117.0577619302915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "c940cbaab4c5df45f0a9f5f7ca7ba881e52c82d7",
+        "name": "Thresh Plumbing Co. San Diego",
+        "opening_hours": {
+           "open_now": true
+        },
+        "place_id": "ChIJzV0n9QNX2YARRBjP0rYL-9w",
+        "plus_code": {
+           "compound_code": "QW9V+2F San Diego, CA, USA",
+           "global_code": "8544QW9V+2F"
+        },
+        "rating": 5,
+        "reference": "ChIJzV0n9QNX2YARRBjP0rYL-9w",
+        "scope": "GOOGLE",
+        "types": [
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 11,
+        "vicinity": "6602 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.76761610000001,
+              "lng": -117.0563534
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7689397802915,
+                 "lng": -117.0550639697085
+              },
+              "southwest": {
+                 "lat": 32.7662418197085,
+                 "lng": -117.0577619302915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "30cbcd3cbee689f21e4d7830f5d74c978e600ef1",
+        "name": "Beautiful Dame Skincare",
+        "opening_hours": {
+           "open_now": false
+        },
+        "place_id": "ChIJr8w2niZX2YAR9dIUfbAB0q0",
+        "plus_code": {
+           "compound_code": "QW9V+2F San Diego, CA, USA",
+           "global_code": "8544QW9V+2F"
+        },
+        "reference": "ChIJr8w2niZX2YAR9dIUfbAB0q0",
+        "scope": "GOOGLE",
+        "types": [
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "vicinity": "6602 El Cajon Boulevard Ste A107, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7689762,
+              "lng": -117.0526894
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7702420302915,
+                 "lng": -117.0513425697085
+              },
+              "southwest": {
+                 "lat": 32.7675440697085,
+                 "lng": -117.0540405302915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+        "id": "1a2e744cb801a05d1ec48153e2bb508b660470e5",
+        "name": "Cafe Europe",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 3024,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/102987042009848791156\">Mercedez Hymes</a>"
+              ],
+              "photo_reference": "CmRaAAAA_H-tvG4z6Nv0tXWR0yu8AFQzBg0XKROQBvYBa07YH8GiVhyVYg9obDtbQ6QxroPP9v4lucxd19kbYfBXbV5D85WE6SCGNxbskKX0HPZl-1n6UKw3Y0LswgvzS2u85aYEEhDW4kstBEk3okujXK30pODgGhTv3u8JblUyb7MLHOiLZBwJxCjKlA",
+              "width": 4032
+           }
+        ],
+        "place_id": "ChIJd8uytO1W2YARRU3xaYcKuXs",
+        "plus_code": {
+           "compound_code": "QW9W+HW San Diego, CA, USA",
+           "global_code": "8544QW9W+HW"
+        },
+        "rating": 4.7,
+        "reference": "ChIJd8uytO1W2YARRU3xaYcKuXs",
+        "scope": "GOOGLE",
+        "types": [
+           "cafe",
+           "food",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 69,
+        "vicinity": "6784 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7675413,
+              "lng": -117.0566752
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7689503802915,
+                 "lng": -117.0553553197085
+              },
+              "southwest": {
+                 "lat": 32.7662524197085,
+                 "lng": -117.0580532802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "4aa988c9f70de9dd13fc45cddc0f300ba6c2cfdd",
+        "name": "Unicars",
+        "opening_hours": {
+           "open_now": false
+        },
+        "photos": [
+           {
+              "height": 3456,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/111980382666210888295\">Unicars</a>"
+              ],
+              "photo_reference": "CmRaAAAALGeBs1uhNxDdfqTTqgW3M9s0p3LpfWld8hRWbZ1y4GDPzqJD8AZ0N4vGw2kT5MfAFWr40z4BnmWBNPTGlFhbf13uOF8FpsWkjb83fGUrI-35GEwE723Zaij9C5eNk5NmEhCH-Q58L0-mMukVM2rc50jWGhQchdES7PUwutEOA3QtotqreklmGA",
+              "width": 4608
+           }
+        ],
+        "place_id": "ChIJ__-TJpNW2YARj8iNe8b61Z4",
+        "plus_code": {
+           "compound_code": "QW9V+28 San Diego, CA, USA",
+           "global_code": "8544QW9V+28"
+        },
+        "rating": 4.4,
+        "reference": "ChIJ__-TJpNW2YARj8iNe8b61Z4",
+        "scope": "GOOGLE",
+        "types": [
+           "car_dealer",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 10,
+        "vicinity": "6590 El Cajon Boulevard #6580, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7674055,
+              "lng": -117.0572154
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7687935802915,
+                 "lng": -117.0558853197085
+              },
+              "southwest": {
+                 "lat": 32.7660956197085,
+                 "lng": -117.0585832802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "cd6fdcb69c10a3462c2bd9aa16e81c16393855ef",
+        "name": "Victor's Tire Shop #3",
+        "opening_hours": {
+           "open_now": false
+        },
+        "photos": [
+           {
+              "height": 1080,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/105356222141201453502\">Victor&#39;s Tire Shop #3</a>"
+              ],
+              "photo_reference": "CmRaAAAActvlRI86xqPPXnaCEmv5mDfWB9BfeC2mzLEvhAWpAMqkj2UwfkaNjLc3yZOSkSrZtN3I02VaM6uvJ6h1R0SNzaQJClVZ3BEYYJT8PrUsd6mHqN5ESaZznOzRf16AYlTyEhBdqwuohAWSbJ1OfCpTSnHLGhT_cZDSKfR7rsmOWoDm1hUwf5vGfw",
+              "width": 1440
+           }
+        ],
+        "place_id": "ChIJv6-QmAdX2YAR-4fJzByqfbY",
+        "plus_code": {
+           "compound_code": "QW8V+X4 San Diego, CA, USA",
+           "global_code": "8544QW8V+X4"
+        },
+        "rating": 4.6,
+        "reference": "ChIJv6-QmAdX2YAR-4fJzByqfbY",
+        "scope": "GOOGLE",
+        "types": [
+           "car_repair",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 5,
+        "vicinity": "6554 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7668135,
+              "lng": -117.0567592
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7683001802915,
+                 "lng": -117.0554742197085
+              },
+              "southwest": {
+                 "lat": 32.7656022197085,
+                 "lng": -117.0581721802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "8b8fb842cb983ddd66529bd0e9fff3a8c947f881",
+        "name": "7-Eleven",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 2988,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/109523134043263009787\">Joseph Jacobs</a>"
+              ],
+              "photo_reference": "CmRaAAAA0WEAaL-RyJofVtU_6owGKdPS3NEGODb8YiF8bQZmmOrFeuyo__wXDVB8tbrvh5qxw0EFDjWo2OjyI_23QLsnfXU7bbxtxuPH1z907gXT24gXew14U9VdNVihpWWIEQtBEhASPFmRziyGdZ-fCGsm0zkWGhRGo85ZkMiuw7QNXNaX-hIOml9Rxg",
+              "width": 5312
+           }
+        ],
+        "place_id": "ChIJadDIO5NW2YAR4MgYJWpGa5A",
+        "plus_code": {
+           "compound_code": "QW8V+P7 San Diego, CA, USA",
+           "global_code": "8544QW8V+P7"
+        },
+        "price_level": 1,
+        "rating": 3.5,
+        "reference": "ChIJadDIO5NW2YAR4MgYJWpGa5A",
+        "scope": "GOOGLE",
+        "types": [
+           "convenience_store",
+           "gas_station",
+           "food",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 16,
+        "vicinity": "6571 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.7668244,
+              "lng": -117.0568379
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.7682951302915,
+                 "lng": -117.0555455197085
+              },
+              "southwest": {
+                 "lat": 32.7655971697085,
+                 "lng": -117.0582434802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+        "id": "e1059a1b5f885b449aeeee0af2a0bf0df407b2ee",
+        "name": "Redbox",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 1270,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/116947169103960945427\">Redbox</a>"
+              ],
+              "photo_reference": "CmRaAAAAPUPJbJQ_xsOctpvOzelGo6sGnAJzsy4_c0LIIsfXATbtJhyOv9WPPJLKg5RZJRCfA6IAJoqd4NmBa4v_kfkTejeLKCkc9e8o_4V0GaQV3SK8O-62ANf-0F6vvOCNFCKLEhDdUmmpncLARD7-5CsX-GWwGhRMnHcNUVLSE4cA6eDiBilb8dGF1g",
+              "width": 1276
+           }
+        ],
+        "place_id": "ChIJM_vJO5NW2YARUO2Q7UlpOac",
+        "plus_code": {
+           "compound_code": "QW8V+P7 San Diego, CA, USA",
+           "global_code": "8544QW8V+P7"
+        },
+        "price_level": 1,
+        "rating": 4,
+        "reference": "ChIJM_vJO5NW2YARUO2Q7UlpOac",
+        "scope": "GOOGLE",
+        "types": [
+           "movie_rental",
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 2,
+        "vicinity": "6571 El Cajon Boulevard, San Diego"
+     },
+     {
+        "business_status": "OPERATIONAL",
+        "geometry": {
+           "location": {
+              "lat": 32.76674219999999,
+              "lng": -117.0574376
+           },
+           "viewport": {
+              "northeast": {
+                 "lat": 32.76816743029149,
+                 "lng": -117.0561198197085
+              },
+              "southwest": {
+                 "lat": 32.76546946970849,
+                 "lng": -117.0588177802915
+              }
+           }
+        },
+        "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+        "id": "f13ab4ba0af86fbc9576506e61aceb5f3bb573e5",
+        "name": "Bladez Smoke Shop",
+        "opening_hours": {
+           "open_now": true
+        },
+        "photos": [
+           {
+              "height": 1000,
+              "html_attributions": [
+                 "<a href=\"https://maps.google.com/maps/contrib/100179973524948186681\">Bladez Smoke Shop</a>"
+              ],
+              "photo_reference": "CmRaAAAAj8-7ce_MAkc_pgwadfbQJHmLynbnbV_j_39fzy1oco_WYv3kld78LzWGTdVw8sYvoAkrrrPNkCIy_RvNd0rELE9Upv85fygUDxItNQUwPXlEtr4uOc2l_YV_0vcCKz_aEhAJSxv_AL9Ya5ZPjyc7jVF-GhTeHnhK2zVBb3Hbiubcn79vlj3Phw",
+              "width": 1000
+           }
+        ],
+        "place_id": "ChIJD4lAFpNW2YARKcchIJ_ppWA",
+        "plus_code": {
+           "compound_code": "QW8V+M2 San Diego, CA, USA",
+           "global_code": "8544QW8V+M2"
+        },
+        "rating": 4.1,
+        "reference": "ChIJD4lAFpNW2YARKcchIJ_ppWA",
+        "scope": "GOOGLE",
+        "types": [
+           "point_of_interest",
+           "store",
+           "establishment"
+        ],
+        "user_ratings_total": 16,
+        "vicinity": "6563 El Cajon Boulevard, San Diego"
+     }
+  ],
+  "status": "OK"
+}

@@ -39,6 +39,26 @@ module.exports = function (app) {
     }
   });
 
+  async function getPlaces(lat,lon) {
+    const places = [];
+    let nextPageToken = "";
+    const params = `key=${process.env.MAPS_API_KEY}&location=${lat},${lon}&rankby=distance&type=store`
+    const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?${params}`;
+    for (let i = 0; i < 5; i++) {
+      const nextPageTokenParam = nextPageToken !== "" ? `&pagetoken=${nextPageToken}` : "";
+      console.log("calling", `${query}${nextPageTokenParam}`);
+      const response = await axios.get(`${query}${nextPageTokenParam}`);
+      //console.log(response);
+      console.log("data.next_page_token", response.data.next_page_token);
+      nextPageToken = response.data.next_page_token;
+      //console.log("nextPageToken",nextPageToken);
+      places.push(...response.data.results);
+      //console.log("number of places: " + response.data.results.length);
+    }
+    console.log("total number of places: " + places.length);
+    return places;
+  }
+
   app.get("/api/nearby/:source", (req, res) => {
     const source = req.params.source;
     console.log("calling from", source); 
@@ -49,12 +69,15 @@ module.exports = function (app) {
     axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?${params}`)
       .then(async r => {
         const places = r.data.results;
-        const detailedPlaces = await placeDetails(places);
+        // console.log(r.data.results);
+        //places = await getPlaces(lat,lon);
 
+        //const detailedPlaces = await placeDetails(places);
+        //console.log("number of detailed places",detailedPlaces.length);
         if (source === "home") {
           
-          const place_ids = detailedPlaces.map(place => place.place_id);
-
+          const place_ids = places.map(place => place.place_id);
+          console.log("place_ids", place_ids);
           db.Bathroom.findAll({
             where: {
               place_id: {
@@ -62,13 +85,15 @@ module.exports = function (app) {
               }
             }
           }).then((dbBathrooms) => {
+            console.log("dbBathrooms", dbBathrooms);
             const bathroomsDataValues = dbBathrooms.map(bathroom => bathroom.dataValues);
             let clientArrayOfBathrooms = [];
             bathroomsDataValues.forEach(dbBathroom => {
-              const matchingGooglePlace = detailedPlaces.find(detailedPlace => detailedPlace.place_id === dbBathroom.place_id);
+              const matchingGooglePlace = places.find(place => place.place_id === dbBathroom.place_id);
               const mergedBathroom = { ...dbBathroom, ...matchingGooglePlace };
               clientArrayOfBathrooms.push(mergedBathroom)
             });
+            console.log("client",clientArrayOfBathrooms);
             res.json(clientArrayOfBathrooms);
           });
 
