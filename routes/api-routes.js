@@ -181,8 +181,25 @@ function (req, res) {
     }).then(() => console.log("loo added successfully"));
   });
 
-  // need put request for update
-  // app.put("/api/details", function(req, res) {
+  app.put("/api/details", function(req, res) {
+    console.log("updating loo...");
 
-  // })
+    db.Bathroom.update({ 
+      available: req.body.available,
+      needs_key: req.body.needs_key,
+      gender_neutral: req.body.gender_neutral,
+      handicap_accessible: req.body.handicap_accessible,
+      has_water: req.body.has_water,
+      has_soap: req.body.has_soap,
+      has_paper: req.body.has_paper,
+      has_mirror: req.body.has_mirror,
+      clean_rating: req.body.clean_rating
+    }, {
+      where: {
+        place_id: req.body.place_id
+      }
+    }).then(() => {
+      res.send("loo updated successfully");
+    });
+  });
 };
