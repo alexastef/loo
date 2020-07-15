@@ -22,6 +22,30 @@ module.exports = function (app) {
     return detailedPlaces;
   }
 
+  async function textSearch(term,type,lat,lng) {
+
+    const fields = `fields=name,formatted_address,formatted_phone_number,geometry`;
+    const location = `location=${lat},${lng}`;
+    const radius = `radius=1000`
+    const typeOrQuery = term === "" ? `type=${type}` : `query=${term}`
+    const params = `${fields}&${location}&${radius}&${typeOrQuery}`
+    const searchParameters = `&key=${process.env.MAPS_API_KEY}&${params}`;
+    const query = `https://maps.googleapis.com/maps/api/place/textsearch/json?${searchParameters}`;
+
+    console.log(query);
+
+    const response = await axios.get(query);
+    const places = response.data.results;
+
+    //temporarily remove photos
+    places.forEach((place) => {
+      console.log(place.name);
+      console.log(place.types);
+    });
+
+    return places;
+  }
+
   app.get("/api/photo/:photo", async (req,res) => {
 
     const photoReference = req.params.photo;
@@ -39,81 +63,54 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/api/nearby/:source", (req, res) => {
+  app.get("/api/nearby/:source", async (req, res) => {
     const source = req.params.source;
     console.log("calling from", source); 
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
 
-    const params = `key=${process.env.MAPS_API_KEY}&location=${lat},${lon}&rankby=distance&type=store`
-    axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?${params}`)
-      .then(async r => {
-        const places = r.data.results;
-        const detailedPlaces = await placeDetails(places);
+    const stores = await textSearch("","store",lat,lon);
+    const restaurants = await textSearch("","restaurant",lat,lon);
+    
+    //const places = [...stores,...restaurants];
+    // weave them together so we're not only seeing stores at the top and restaurants at the bottom
+    let places = [];
+    for (let i = 0; i < 20; i++) {
+      places.push(stores[i]);
+      places.push(restaurants[i]);
+    }
 
-        if (source === "home") {
-          
-          const place_ids = detailedPlaces.map(place => place.place_id);
+    if (source === "home") {
+      
+      const place_ids = places.map(place => place.place_id);
 
-          db.Bathroom.findAll({
-            where: {
-              place_id: {
-                [Sequelize.Op.in]: place_ids
-              }
-            }
-          }).then((dbBathrooms) => {
-            const bathroomsDataValues = dbBathrooms.map(bathroom => bathroom.dataValues);
-            let clientArrayOfBathrooms = [];
-            bathroomsDataValues.forEach(dbBathroom => {
-              const matchingGooglePlace = detailedPlaces.find(detailedPlace => detailedPlace.place_id === dbBathroom.place_id);
-              const mergedBathroom = { ...dbBathroom, ...matchingGooglePlace };
-              clientArrayOfBathrooms.push(mergedBathroom)
-            });
-            res.json(clientArrayOfBathrooms);
-          });
-
-
-
-        //   db.Bathroom.findAll({
-        //     where: {
-        //         place_id: place_ids
-        //     }
-        // }).then((dbBathrooms) => {
-        //   console.log("test",dbBathrooms);
-
-        // })
-          // detailedPlaces.forEach(function(place){
-          //   db.Bathroom.findOne({where : {place_id: place.place_id}}).then((dbBathroom) => {
-          //     if(dbBathroom){
-          // //     }
-          // })
-            // res.json({dbBathrooms, detailedPlaces});
-          // })
-
-          // db.Bathroom({ force: true })
-          // .then(() => bathroom.findOne({
-          //   where: {
-          //     place_id: 'ChIJn5Mo5eZx3IARjnA1CrR8P1c'
-          //   }
-          // }))
-          // .then((dbBathrooms) => {
-            // res.json({dbBathrooms, detailedPlaces});
-          // }
-          //   }
-          // }))
-          // 
-          // .catch(error => console.log(error));
+      db.Bathroom.findAll({
+        where: {
+          place_id: {
+            [Sequelize.Op.in]: place_ids
+          }
         }
-        else {
-          res.json(detailedPlaces);
-        }
+      }).then((dbBathrooms) => {
+        const bathroomsDataValues = dbBathrooms.map(bathroom => bathroom.dataValues);
+        let clientArrayOfBathrooms = [];
+        bathroomsDataValues.forEach(dbBathroom => {
+          const matchingGooglePlace = places.find(detailedPlace => detailedPlace.place_id === dbBathroom.place_id);
+          const mergedBathroom = { ...dbBathroom, ...matchingGooglePlace };
+          clientArrayOfBathrooms.push(mergedBathroom)
+        });
+        res.json(clientArrayOfBathrooms);
       });
+    }
+    else {
+      res.json(places);
+    }
+
   });
 
   app.get("/api/oneplace/:place_id", async function (req,res) {
     const place_id = req.params.place_id;
 
-    const fields = "name,formatted_phone_number,formatted_address,geometry,photo,place_id"
+    const fields = "name,formatted_phone_number,formatted_address,geometry,photos,place_id"
     const detailedParams = `place_id=${place_id}&fields=${fields}&key=${process.env.MAPS_API_KEY}`;
     const detailedQuery = `https://maps.googleapis.com/maps/api/place/details/json?${detailedParams}`;
 
@@ -123,17 +120,14 @@ module.exports = function (app) {
     res.json(detailedPlace);
   });
 
-  app.get("/api/search/:searchvalue", function (req,res) {
+  app.get("/api/search/:searchvalue", async function (req,res) {
     const term = req.params.searchvalue;
+    const lat = parseFloat(req.query.lat);
+    const lon = parseFloat(req.query.lon);
 
-    const searchParameters = `query=${term}&key=${process.env.MAPS_API_KEY}`;
-    const query = `https://maps.googleapis.com/maps/api/place/textsearch/json?${searchParameters}`;
-
-    axios.get(query).then(async response => {
-      const places = response.data.results;
-      const detailedPlaces = await placeDetails(places);
-      res.json(detailedPlaces);
-    });
+    const results = await textSearch(term,"",lat,lon);
+    console.log("results.length", results.length);
+    res.json(results)
   });
 
 

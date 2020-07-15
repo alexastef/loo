@@ -5,6 +5,7 @@ $(document).ready(() => {
   let markers = [];
   let currentLocationInfoWindow;
   let geolocationInfoWindow;
+  let pos;
 
   function checkGoogle() {
     console.log("checking Google");
@@ -29,7 +30,7 @@ $(document).ready(() => {
     if (navigator.geolocation) {
       geolocationInfoWindow = new google.maps.InfoWindow();
       navigator.geolocation.getCurrentPosition(function (position) {
-        const pos = {
+        pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         }
@@ -94,7 +95,7 @@ $(document).ready(() => {
     const confirmed = confirm("Search for establishments here?");
 
     if (confirmed) {
-      const pos = {
+      pos = {
         lat: mapEvent.latLng.lat(),
         lng: mapEvent.latLng.lng()
       }
@@ -145,7 +146,7 @@ $(document).ready(() => {
     clearEverything();
 
     $.ajax({
-      url: "/api/search/"+searchValue,
+      url: `/api/search/${searchValue}?lat=${pos.lat}&lon=${pos.lng}`,
       method: "get"
     }).then(results => {
       displayCards(results);
@@ -165,7 +166,7 @@ $(document).ready(() => {
       const cardBody = $("<div>").addClass("card-body d-flex flex-column");
       
       const cardTitle = $("<h5>").addClass("card-title").text(place.name);
-      const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
+      const cardText = $("<div>").addClass("card-text").text(place.formatted_address);
       
       const cardLink = $("<a>").addClass("btn btn-primary stretched-link clearfix mt-auto").attr("href","/add/"+place.place_id).text("Add Loo Info");
       card.append(cardBody);
@@ -205,7 +206,7 @@ $(document).ready(() => {
     const cardBody = $("<div>").addClass("card-body");
     const cardTitle = $("<h5>").addClass("card-title").text(place.name);
 
-    const cardText = $("<div>").addClass("card-text").html(place.formatted_address + "<br />" + place.formatted_phone_number);
+    const cardText = $("<div>").addClass("card-text").text(place.formatted_address);
     const cardLink = $("<a>").addClass("btn btn-primary stretched-link").attr("href","/details/"+place.place_id).text("View Loo Info");
     card.append(cardBody);
 
