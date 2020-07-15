@@ -9,9 +9,9 @@ $(document).ready(() => {
         // range is enabled
         $("#cleanRange").removeAttr("disabled");
 
-        // edit button becomes the update button
-        $("#editLooBtn").text("Update Loo");
-        $("#editLooBtn").attr("id", "updateLooBtn");
+        // hide edit div and show update div
+        $(".editDiv").attr("style", "display: none");
+        $(".updateDiv").attr("style", "display: inline-block");
 
         // prevent from resetting
         event.preventDefault();
@@ -47,11 +47,18 @@ $(document).ready(() => {
         has_soap: $("#hasSoap").is(":checked"),
         has_paper: $("#hasPaper").is(":checked"),
         has_mirror: $("#hasMirror").is(":checked"),
-        clean_rating: $("cleanRange").val()
+        clean_rating: $("#cleanRange").val()
       }
 
-      // new ajax call to make a put request
-
+      // put request passing in loo to be updated
+      $.ajax("/api/details", {
+        type: "PUT",
+        data: updatedLoo
+      }).then(() => {
+        // reload home page
+        console.log("Loo updated");
+        window.location.replace("/");
+      });
     });
 });
 

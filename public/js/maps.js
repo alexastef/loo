@@ -62,7 +62,8 @@ $(document).ready(() => {
       if (source === "home") {
         // let dbPlaces = places.dbBathrooms;
         // let googlePlaces = places.detailedPlaces;
-        // console.log(places);
+
+        console.log(places);
 
         displayDBCards(places);
       }
