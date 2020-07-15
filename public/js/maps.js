@@ -60,16 +60,10 @@ $(document).ready(() => {
   function displayPlaces(places, map) {
       // createMarker(place, 200 * index);
       if (source === "home") {
-        let dbPlaces = places.dbBathrooms;
-        let googlePlaces = places.detailedPlaces;
+        // let dbPlaces = places.dbBathrooms;
+        // let googlePlaces = places.detailedPlaces;
+        // console.log(places);
 
-        console.log(places);
-        //console.log("these are the db: ", dbPlaces);
-        //console.log("these are google returned: ", googlePlaces);
-        // remember to comment this out
-        // 
-        //
-        //
         displayDBCards(places);
       }
       else if (source === "search") {
