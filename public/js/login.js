@@ -29,7 +29,15 @@ $(document).ready(function() {
       .then(function(data, status) {
         console.log(status);
         console.log(data);
-        window.location.replace("/search");
+        const params = new URLSearchParams(window.location.search);
+        const destination = params.get("destination");
+        if (destination) {
+          window.location.replace("/" + destination);
+        }
+        else {
+          window.location.replace("/");
+        }
+        
         // If there's an error, log the error
       })
       .catch(function(err) {
@@ -40,5 +48,7 @@ $(document).ready(function() {
       }
       console.log(err);
     });
-}
+  }
+
+  $("#signupLink").attr("href",`/signup${window.location.search}`);
 });
