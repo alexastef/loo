@@ -5,18 +5,22 @@
                     <h5 class="card-title">Loo Details</h5>
 
                     <div class="row">
-                        <div class="col-lg">
+                        <div class="col-lg order-md-12 order-lg-1">
                             <img 
                             id="place_img" 
                             data-photo-reference="{{place.photos.0.photo_reference}}" 
                             data-place-name="{{place.name}}"
+                            class="detailsPlaceImg"
                             />
                         </div>
-                        <div class="col-lg">
+                        <div class="col-lg order-md-1 order-lg-12">
                             <p class="placeAddress">
                                 <h1 class="locationName">{{place.name}}</h1>
-                                <p class="streetAddress">{{place.formatted_address}}</p>
-                                <p class="placePhone">{{place.formatted_phone_number}}</p>
+                                <p>
+                                    <span class="streetAddress">{{place.formatted_address}}</span>
+                                    <br>
+                                    <span class="placePhone">{{place.formatted_phone_number}}</span>
+                                </p>
                             </p>
                         </div> 
                     </div>
@@ -26,56 +30,61 @@
                     </div>
 
                     <div class="row">
-                        <form class="looForm" data-place-id="{{place.place_id}}">
+                        <form class="looForm container mt-3" data-place-id="{{place.place_id}}">
                             <!-- Form Row -->
                             <div class="row">
                                 <!-- Form left column -->
-                                <div class="col-sm">
+                                <div class="col-sm form-group">
                                     <h6>Basics</h6>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="looAvailable">
                                         <label class="custom-control-label" for="looAvailable">Loo available</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="needsKey">
                                         <label class="custom-control-label" for="needsKey">Loo needs key</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="gender">
                                         <label class="custom-control-label" for="gender">Gender neutral loo</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="accessible">
                                         <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
                                     </div>
                                 </div>
 
                                 <!-- Form right column --> 
-                                <div class="col-sm">
+                                <div class="col-sm form-group">
                                     <h6>Supplies</h6>
 
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="hasWater">
                                         <label class="custom-control-label" for="hasWater">Has water</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="hasSoap">
                                         <label class="custom-control-label" for="hasSoap">Has soap</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="hasPaper">
                                         <label class="custom-control-label" for="hasPaper">Has toilet paper</label>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch form-check">
                                         <input type="checkbox" class="custom-control-input" id="hasMirror">
                                         <label class="custom-control-label" for="hasMirror">Has mirror</label>
                                     </div>
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
-                                <div class="form-group">
-                                    <label for="customRange">How clean is it?</label>
-                                   Yuck! <input type="range" class="custom-range" min="0" max="10" id="cleanRange"> Sparkling!
+                                <div class="col form-group ">
+                                    <label for="customRange"><h6>How clean is it?</h6></label>
+                                    <div class="input-group d-flex align-items-center">
+                                        <div class="input-group-prepend"><span class="mr-3">Yuck!</span></div>
+                                        <input class="form-control" type="range" class="custom-range" min="0" max="10" id="cleanRange"> 
+                                        <span class="input-group-append"><span class="ml-3">Sparkling!</span></span>
+                                    </div>
                                 </div>
                             </div>
                             

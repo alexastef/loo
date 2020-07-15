@@ -58,3 +58,11 @@ h4 {
   content: "";
   clear: both;
 }
+
+.detailsPlaceImg {
+  max-width: 100%;
+}
+
+#updateLooBtn {
+  margin-left: 5px;
+}
