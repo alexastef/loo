@@ -1,4 +1,5 @@
 $(document).ready(() => {
+  
 
   // when edit button is clicked
     $("#editLooBtn").on("click", (event) => {

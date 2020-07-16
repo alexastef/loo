@@ -27,6 +27,7 @@ body {
   font-weight: 400;
   font-style: normal;
   font-size: 36px;
+  margin-bottom: 10px;
 }
 
 #signUpCard,
@@ -103,6 +104,16 @@ h4 {
   font-size: 24px;
   color: #026670;
   color: var(--accent);
+}
+
+.dbLoo {
+  white-space: nowrap;
+}
+
+.features {
+  color: #55BCC9;
+  margin: 7px;
+  margin-top: 20px;
 }
 
 .card {
