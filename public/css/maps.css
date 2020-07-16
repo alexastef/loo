@@ -4,14 +4,20 @@
 }
 
 .navbar {
-  background-color: white;
+  background-color: var(--white);
   padding: 3px;
   margin-bottom: 15px;
   background-image: url("../img/tile.jpeg") repeat center center scroll;
 }
 
 body {
-  background-color: #026670;
+  --accent: #026670;
+  --white: #EDEAE5;
+  --highlight: #FEF9C7;
+  --altaccent: #9FEDD7;
+  --althighlight: #FCE181;
+  --black: #1a1a1a;
+  background-color: var(--accent);
 }
 
 .nearbyLoos {
@@ -28,6 +34,7 @@ body {
 #loginCard {
   max-width: 500px;
   margin: auto;
+  background-color: var(--white);
 }
 
 h4 {
@@ -44,17 +51,15 @@ h4 {
   width: 100%;
   margin: auto;
   height: 90%;
-  background-color: #EDEAE5;
-
+  background-color: var(--white);
 }
 
-.navbar {
-  background-color: #EDEAE5;
-
+.dbLoo:hover {
+  background-color: var(--highlight);
 }
 
 .nearbyCard:hover {
-  background-color: bisque;
+  background-color: var(--highlight);
 }
 
 .img-thumbnail {
@@ -75,6 +80,18 @@ h4 {
   max-width: 100%;
 }
 
+.alt-btn {
+  background-color: var(--althighlight) !important;
+  border-color: var(--althighlight) !important;
+  color: var(--black) !important;
+}
+
+.alt-btn:hover, .alt-btn:checked {
+  background-color: var(--highlight) !important;
+  border-color: var(--highlight) !important;
+  color: var(--black) !important;
+}
+
 #updateLooBtn,
 #editLooBtn {
   margin-left: 5px;
@@ -86,6 +103,7 @@ h4 {
   font-style: normal;
   font-size: 24px;
   color: #026670;
+  color: var(--accent);
 }
 
 .dbLoo {
@@ -98,4 +116,40 @@ h4 {
   margin-top: 20px;
 }
 
+.card {
+  background-color: var(--white);
+}
 
+.dbLoo:hover .nearbyCard:hover {
+  background-color: var(--highlight) !important;
+}
+
+.btn {
+  background-color: var(--accent);
+  color: var(--white)
+}
+
+.btn:hover {
+  background-color: var(--white);
+  color: var(--accent)
+}
+
+.btn-light {
+  background-color: var(--accent);
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.custom-switch .custom-control-input:disabled:checked~.custom-control-label::before {
+  background-color: var(--altaccent);
+  border-color: var(--altaccent);
+}
+
+.form-control {
+  border: none;
+}
