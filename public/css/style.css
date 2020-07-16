@@ -1,6 +1,48 @@
-#bano {
-    image-orientation: center;
-    }
-#logoutcard.bye{
+.bano {
+    display: block;
+    margin-left: 25%;
+    width: 50%;
+}
+
+#tile{
+    background-image: url(../img/tile1.jpeg);
+    background-repeat: repeat;
+    background-size: contain;
+}
+
+.bye {
+    font-family: pacifico, sans-serif;
+    margin-right: 10px;
+    color: #026670;
+}
+.final{
+    text-align: right;
+    font-family: pacifico, sans-serif;
+    color: #026670;
+}
+.hi{
+  text-align: center;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 40px;
+  color: #026670;
+  font-family: pacifico, sans-serif;
+}
+#aboutCard {
+    background-color: #EDEAE5;
+    margin-bottom:10px;
+}
+.notey{
+    font-family: pacifico, sans-serif;
+    color: #026670;
+    font-weight: 300;
+    font-size: 22px;
     text-align: center;
+}
+#logOutCard{
+    background-color: #EDEAE5;
+}
+#texty, #pad{
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
 }
