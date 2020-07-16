@@ -129,6 +129,7 @@ $(document).ready(() => {
     clearMarkers();
     // clear the cards (if exists)
     $("#placeCards").empty();
+    $(".looCards").empty();
     geolocationInfoWindow.close();
   }
 
