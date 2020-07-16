@@ -143,14 +143,14 @@ module.exports = function (app) {
   });
 
  app.post("/api/login", passport.authenticate("local", { successRedirect: '/', failureRedirect:'/login'}),
-function (req, res) {
-   console.log(req.user);
- res.json(req.user);
- // res.redirect('/users/' + req.user.email);
-  //});
- // app.post("/api/login", passport.authenticate("local"), function (req, res) {
-  // res.json(req.user);
- });
+ function (req, res) {
+    console.log(req.user);
+  res.json(req.user);
+  // res.redirect('/users/' + req.user.email);
+   //});
+  // app.post("/api/login", passport.authenticate("local"), function (req, res) {
+   // res.json(req.user);
+  });
 
   app.post("/api/signup", function (req, res) {
     console.log("starting up signup.")
