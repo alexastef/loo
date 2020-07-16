@@ -7,7 +7,6 @@
   background-color: var(--white);
   padding: 3px;
   margin-bottom: 15px;
-  background-image: url("../img/tile.jpeg") repeat center center scroll;
 }
 
 body {
