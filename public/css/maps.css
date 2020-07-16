@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: #1c75bc;
+  background-color: #026670;
 }
 
 .nearbyLoos {
@@ -43,6 +43,13 @@ h4 {
   width: 100%;
   margin: auto;
   height: 90%;
+  background-color: #EDEAE5;
+
+}
+
+.navbar {
+  background-color: #EDEAE5;
+
 }
 
 .nearbyCard:hover {
@@ -77,5 +84,7 @@ h4 {
   font-weight: 400;
   font-style: normal;
   font-size: 24px;
-  color: #1c75bc;
+  color: #026670;
 }
+
+
