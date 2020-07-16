@@ -198,7 +198,7 @@ $(document).ready(() => {
 
     let cardImgTop;
 
-    const card = $("<div>").addClass("card dbLoo");
+    const card = $("<div>").addClass("card dbLoo mb-3");
     const cardBody = $("<div>").addClass("card-body");
     const cardTitle = $("<h5>").addClass("card-title").text(place.name);
 
