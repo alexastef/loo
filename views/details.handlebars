@@ -21,6 +21,9 @@
                                     <span class="placePhone">{{place.formatted_phone_number}}</span>
                                 </p>
                             </p>
+                            <p class="verified">
+                                Last verified: {{dbPlace.updatedAt}}
+                            </p>
                         </div> 
                     </div>
 
@@ -64,11 +67,10 @@
                             <div class="form-group inline updateDiv" style="display:none">
                                 <button type="submit" class="btn btn-sm btn-warning" id="updateLooBtn">Update Loo</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
-            </div>
+            </div>  
        </div>
    </div>
 

@@ -167,10 +167,6 @@ $(document).ready(() => {
       const cardLink = $("<a>").addClass("btn btn-primary stretched-link clearfix mt-auto").attr("href","/add/"+place.place_id).text("Add Loo Info");
       card.append(cardBody);
 
-      // const row = $("<div>").addClass("row searchCards");
-
-      // row.append(card);
-
       $("#placeCards").append(cardContainer);
 
       if (place.photos) {
@@ -203,12 +199,35 @@ $(document).ready(() => {
     const cardTitle = $("<h5>").addClass("card-title").text(place.name);
 
     const cardText = $("<div>").addClass("card-text").text(place.formatted_address);
+    const cardIcons = $("<div>").addClass("features-icons");
     const cardLink = $("<a>").addClass("btn btn-primary stretched-link").attr("href","/details/"+place.place_id).text("View Loo Info");
+    
+    if (place.available) {
+      cardIcons.append("<i class='fas fa-toilet fa-lg features'>  </i>");
+    } else {
+      cardIcons.append("<i class='fas fa-ban fa-lg features'>  </i>");
+    }
+    if (place.needs_key) {
+      cardIcons.append("<i class='fas fa-key fa-lg features'>  </i>");
+    }
+    if (place.gender_neutral) {
+      cardIcons.append("<i class='fas fa-transgender-alt fa-lg features'>  </i>");
+    }
+    if (place.handicap_accessible) {
+      cardIcons.append("<i class='fab fa-accessible-icon fa-lg features'>  </i>");
+    }
+    if (place.has_water) {
+      cardIcons.append("<i class='fas fa-sink fa-lg features'>  </i>");
+    }
+    if (place.has_soap) {
+      cardIcons.append("<i class='fas fa-pump-soap fa-lg features'>  </i>");
+    }
+    if (place.has_paper) {
+      cardIcons.append("<i class='fas fa-toilet-paper fa-lg features'>  </i>");
+    }
+
+    cardText.append(cardIcons);
     card.append(cardBody);
-
-    // const row = $("<div>").addClass("row searchCards");
-
-    // row.append(card);
 
     $(".looCards").append(card);
 
