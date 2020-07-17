@@ -53,6 +53,14 @@ module.exports = function (app) {
     const photoParams = `key=${process.env.MAPS_API_KEY}&photoreference=${photoReference}&maxheight=300`
     const photoQuery = `https://maps.googleapis.com/maps/api/place/photo?${photoParams}`;
 
+    if (process.env.DEBUG_MODE === "true") {
+      console.log("debug photo fetch");
+      setTimeout(() => {
+        res.sendFile(path.join(__dirname,"../public/mockdata/mockPhoto.json"));
+      },2000);
+      return;
+    }
+
     let photo;
     try {
       photo = await axios.get(photoQuery);
@@ -133,6 +141,14 @@ module.exports = function (app) {
     const fields = "name,formatted_phone_number,formatted_address,geometry,photos,place_id"
     const detailedParams = `place_id=${place_id}&fields=${fields}&key=${process.env.MAPS_API_KEY}`;
     const detailedQuery = `https://maps.googleapis.com/maps/api/place/details/json?${detailedParams}`;
+
+    if (process.env.DEBUG_MODE === "true") {
+      console.log("debug details fetch");
+      setTimeout(() => {
+        res.sendFile(path.join(__dirname,"../public/mockdata/mockDetails.json"));
+      },2000);
+      return;
+    }
 
     const response = await axios.get(detailedQuery);
     const detailedPlace = response.data.result;
