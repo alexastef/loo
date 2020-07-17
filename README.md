@@ -30,7 +30,11 @@ The app is currently deployed on Heroku so you can check out [Skip To The Loo](h
 
 Skip to the Loo live on [Heroku!](https://skip-to-the-loo.herokuapp.com/)
 
-[Demo & Screenshots Here]
+### Logging In, Adding Loo, Logging Out
+![Adding Loo](./public/img/login_add-loo_logout.gif)
+
+### Updating Loo Info
+![Updating Loo Info](./public/img/update-loo.gif)
 
 ## Prerequisites
 
