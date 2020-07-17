@@ -1,4 +1,21 @@
-<!-- Row 1 (map and locations all one row with sub-rows) -->
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="/">
+      <img src="/img/loo_logo_teal.png" alt="Loo" style="width:75px">
+    </a>
+      <a class="navbar-brand" href="/logout">
+        Logout
+      </a>
+       {{!-- <a class="navbar-brand" href="/">
+        Home
+      </a> --}}
+    </div>
+  </div>
+</nav>
+
+        <div class="container">
+            <!-- Row 1 (map and locations all one row with sub-rows) -->
 <div class="row">
     <div class="col-lg">
         <h4 class="nearbyLoos">Loos Near You</h4>
@@ -24,7 +41,7 @@
             <!-- Dynamically generated map -->
             <div id="map" class="d-inline-flex p-2">{{map}}</div>
             <div class="row">
-                <a href="/search" class="btn btn-warning btn-lg active" role="button" aria-pressed="true"><i class="fas fa-plus"></i>New Loo</a>
+                <a href="/search" class="btn btn-warning btn-lg active" role="button" aria-pressed="true" id="addNew"><i class="fas fa-plus"></i> New Loo</a>
             </div>
             <div id="mapsource" data-source="home"></div>
         </div>
