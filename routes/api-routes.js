@@ -145,6 +145,14 @@ module.exports = function (app) {
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
 
+    if (process.env.DEBUG_MODE === "true") {
+      console.log("debug mode searching");
+      setTimeout(() => {
+        res.sendFile(path.join(__dirname,"../public/mockdata/mockGoogle.json"));
+      },2000);
+      return;
+    }
+
     const results = await textSearch(term,"",lat,lon);
     console.log("results.length", results.length);
     res.json(results)
