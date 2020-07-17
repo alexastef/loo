@@ -5,6 +5,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const bathroom = require('../models/bathroom');
 const Sequelize = require('sequelize');
+const path = require("path");
 
 module.exports = function (app) {
   async function placeDetails(places) {
@@ -69,6 +70,24 @@ module.exports = function (app) {
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
 
+    if (process.env.DEBUG_MODE === "true") {
+      console.log("debug mode get");
+      if (source === "home") {
+        console.log("source home");
+        setTimeout(() => {
+          res.sendFile(path.join(__dirname,"../public/mockdata/mockdb.json"));
+        },2000);
+        return;
+      }
+      else {
+        console.log("source search");
+        setTimeout(() => {
+          res.sendFile(path.join(__dirname,"../public/mockdata/mockGoogle.json"));
+        },2000);
+        return;
+      }
+    }
+    console.log("not mock");
     const stores = await textSearch("","store",lat,lon);
     const restaurants = await textSearch("","restaurant",lat,lon);
     
@@ -98,6 +117,7 @@ module.exports = function (app) {
           const mergedBathroom = { ...dbBathroom, ...matchingGooglePlace };
           clientArrayOfBathrooms.push(mergedBathroom)
         });
+        console.log(clientArrayOfBathrooms);
         res.json(clientArrayOfBathrooms);
       });
     }
