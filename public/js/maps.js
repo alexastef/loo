@@ -7,6 +7,8 @@ $(document).ready(() => {
   let geolocationInfoWindow;
   let pos;
 
+  $('.toast').toast();
+
   function checkGoogle() {
     console.log("checking Google");
     if (google) {
@@ -104,6 +106,7 @@ $(document).ready(() => {
   }
 
   function relocate(pos) {
+    $('.toast').toast('show')
     
     console.log("relocate was given:",pos);
 
@@ -120,6 +123,7 @@ $(document).ready(() => {
       method: "get",
     }).then(data => {
       console.log(data);
+      $('.toast').toast('hide')
       displayPlaces(data, map);
     });
   }
