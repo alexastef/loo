@@ -199,13 +199,17 @@ $(document).ready(() => {
     let cardImgTop;
 
     const card = $("<div>").addClass("card dbLoo mb-3");
-    const cardBody = $("<div>").addClass("card-body");
-    const cardTitle = $("<h5>").addClass("card-title").text(place.name);
+    const cardBody = $("<div>").addClass("card-body d-flex flex-column");
 
-    const cardText = $("<div>").addClass("card-text").text(place.formatted_address);
-    const cardIcons = $("<div>").addClass("features-icons");
-    const cardLink = $("<a>").addClass("btn btn-primary stretched-link").attr("href","/details/"+place.place_id).text("View Loo Info");
-    
+    const cardTitle = $("<h5>").addClass("card-title text-wrap home-title").text(place.name);
+    const cardText = $("<div>").addClass("card-text text-wrap home-text").text(place.formatted_address);
+    const cardIcons = $("<div>").addClass("features-icons d-flex flex-row pb-2 justify-content-center");
+    const cardLink = $("<a>").addClass("btn btn-primary stretched-link clearfix mt-auto").attr("href","/details/"+place.place_id).text("View Loo Info");
+
+    card.append(cardBody);
+    $(".looCards").append(card);
+
+
     if (place.available) {
       cardIcons.append("<i class='fas fa-toilet fa-lg features'>  </i>");
     } else {
@@ -230,11 +234,6 @@ $(document).ready(() => {
       cardIcons.append("<i class='fas fa-toilet-paper fa-lg features'>  </i>");
     }
 
-    cardText.append(cardIcons);
-    card.append(cardBody);
-
-    $(".looCards").append(card);
-
     if (place.photos) {
       const firstPhotoRef = place.photos[0].photo_reference;
 
@@ -242,9 +241,14 @@ $(document).ready(() => {
         url: `/api/photo/${firstPhotoRef}`,
         method: "get",
       }).then(photoData => {
-        cardImgTop = $("<img>").addClass("card-img-top img-thumbnail img-fluid clearfix").attr("src", photoData).attr("alt", place.name + " image");
 
-        cardBody.append(cardImgTop, cardTitle, cardText,cardLink);
+          cardImgTop = $("<img>").addClass("card-img-top img-thumbnail img-fluid clearfix homeImg").attr("src", photoData).attr("alt", place.name + " image");
+
+          const cardTitleAndText = $("<div>").addClass("address").append(cardTitle,cardText);
+          const infoRow = $("<div>").addClass("row");
+
+          infoRow.append(cardImgTop, cardTitleAndText);
+          cardBody.append(infoRow, cardIcons, cardLink);
       });
     }
     else {
