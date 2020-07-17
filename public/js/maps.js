@@ -238,13 +238,12 @@ $(document).ready(() => {
         method: "get",
       }).then(photoData => {
 
-          cardImgTop = $("<img>").addClass("card-img-top img-fluid clearfix homeImg").attr("src", photoData).attr("alt", place.name + " image");
+          cardImgTop = $("<img>").addClass("card-img-top img-thumbnail img-fluid clearfix homeImg").attr("src", photoData).attr("alt", place.name + " image");
 
           const cardTitleAndText = $("<div>").addClass("address").append(cardTitle,cardText);
           const infoRow = $("<div>").addClass("row");
-          const imgCol = $("<div>").addClass("col-sm-4 text-center").append(cardImgTop);
-          const infoCol = $("<div>").addClass("col-sm-8").append(cardTitleAndText);
-          infoRow.append(imgCol, infoCol);
+
+          infoRow.append(cardImgTop, cardTitleAndText);
           cardBody.append(infoRow, cardIcons, cardLink);
       });
     }
