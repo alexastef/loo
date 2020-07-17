@@ -159,11 +159,6 @@ h4 {
   /* color: white; */
 }
 
-.features-icons {
-  width: 100%;
-  margin: auto;
-}
-
 .home-text,
 .home-title {
   max-width: 100%;
@@ -177,14 +172,15 @@ h4 {
     margin: 0 auto;
     width: 50%
   }
-  .col-md-4 {
-    align-items: center;
-    justify-content: center;
-  }
   .home-title,
-  .home-text {
+  .home-text,
+  .features-icons {
     width: 100%;
     text-align: center;
+  }
+  .address {
+    margin: 0 auto;
+  }
   } 
 }
 
