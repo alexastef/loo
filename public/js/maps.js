@@ -196,6 +196,7 @@ $(document).ready(() => {
 
     const card = $("<div>").addClass("card dbLoo mb-3");
     const cardBody = $("<div>").addClass("card-body d-flex flex-column");
+
     const cardTitle = $("<h5>").addClass("card-title text-wrap home-title").text(place.name);
     const cardText = $("<div>").addClass("card-text text-wrap home-text").text(place.formatted_address);
     const cardIcons = $("<div>").addClass("features-icons d-flex flex-row pb-2 justify-content-center");
@@ -237,17 +238,14 @@ $(document).ready(() => {
         method: "get",
       }).then(photoData => {
 
-          cardImgTop = $("<img>").addClass("card-img-top img-thumbnail img-fluid clearfix homeImg").attr("src", photoData).attr("alt", place.name + " image");
+          cardImgTop = $("<img>").addClass("card-img-top img-fluid clearfix homeImg").attr("src", photoData).attr("alt", place.name + " image");
 
           const cardTitleAndText = $("<div>").addClass("address").append(cardTitle,cardText);
-          // const infoRow = $("<div>").addClass("d-flex flex-row pb-2");
           const infoRow = $("<div>").addClass("row");
-          const imgCol = $("<div>").addClass("col-sm flex-column").append(cardImgTop);
-          const infoCol = $("<div>").addClass("col-sm flex-column").append(cardTitleAndText);
+          const imgCol = $("<div>").addClass("col-sm-4 text-center").append(cardImgTop);
+          const infoCol = $("<div>").addClass("col-sm-8").append(cardTitleAndText);
           infoRow.append(imgCol, infoCol);
-          // const cardImgTitleandText = $("<div>").append(cardImgTop,breakClass, cardTitleAndText).addClass("d-flex flex-row pb-2");
           cardBody.append(infoRow, cardIcons, cardLink);
-
       });
     }
     else {
