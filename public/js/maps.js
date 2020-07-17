@@ -140,6 +140,7 @@ $(document).ready(() => {
   $("#searchForm").submit(onSearch);
   function onSearch(event) {
     event.preventDefault();
+    $('.toast').toast('show')
     $("#searchForm *").attr("disabled",true);
     const searchValue = $("#searchInput").val().trim();
 
@@ -149,6 +150,7 @@ $(document).ready(() => {
       url: `/api/search/${searchValue}?lat=${pos.lat}&lon=${pos.lng}`,
       method: "get"
     }).then(results => {
+      $('.toast').toast('hide')
       displayCards(results);
       $("#searchForm *").attr("disabled",false);
     });
