@@ -3,3 +3,4 @@ package-lock.json
 .env
 config/config.json
 public/mockdata/
+.eslintrc.json
