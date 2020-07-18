@@ -1,38 +1,38 @@
-    <div class="custom-control custom-switch form-check">
-        {{#if dbPlace.available}}
-            <input type="checkbox" class="custom-control-input" id="looAvailable" checked="true" disabled="true">
-            <label class="custom-control-label" for="looAvailable">Loo available</label>
-        {{else}}
-            <input type="checkbox" class="custom-control-input" id="looAvailable" disabled="true">
-            <label class="custom-control-label" for="looAvailable">Loo available</label>
-        {{/if}}
-    </div>
+<div class="custom-control custom-switch form-check">
+    {{#if dbPlace.available}}
+    <input type="checkbox" class="custom-control-input" id="looAvailable" checked="true" disabled="true">
+    <label class="custom-control-label" for="looAvailable">Loo available</label>
+    {{else}}
+    <input type="checkbox" class="custom-control-input" id="looAvailable" disabled="true">
+    <label class="custom-control-label" for="looAvailable">Loo available</label>
+    {{/if}}
+</div>
 
-    <div class="custom-control custom-switch form-check">
-        {{#if dbPlace.needs_key}}
-            <input type="checkbox" class="custom-control-input" id="needsKey" checked="true" disabled="true">
-            <label class="custom-control-label" for="needsKey">Loo needs key</label>
-        {{else}}
-            <input type="checkbox" class="custom-control-input" id="needsKey">
-            <label class="custom-control-label" for="needsKey">Loo needs key</label>
-        {{/if}}
-    </div>
+<div class="custom-control custom-switch form-check">
+    {{#if dbPlace.needs_key}}
+    <input type="checkbox" class="custom-control-input" id="needsKey" checked="true" disabled="true">
+    <label class="custom-control-label" for="needsKey">Loo needs key</label>
+    {{else}}
+    <input type="checkbox" class="custom-control-input" id="needsKey">
+    <label class="custom-control-label" for="needsKey">Loo needs key</label>
+    {{/if}}
+</div>
 
-    <div class="custom-control custom-switch form-check">
-        {{#if dbPlace.gender_neutral}}
-            <input type="checkbox" class="custom-control-input" id="gender" checked="true" disabled="true">
-            <label class="custom-control-label" for="gender">Gender neutral loo</label>
-        {{else}}
-            <input type="checkbox" class="custom-control-input" id="gender disabled="true"">
-            <label class="custom-control-label" for="gender">Gender neutral loo</label>
-        {{/if}}
-    </div>
-    <div class="custom-control custom-switch form-check">
-        {{#if dbPlace.handicap_accessible}}
-            <input type="checkbox" class="custom-control-input" id="accessible" checked="true" disabled="true">
-            <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
-        {{else}}
-            <input type="checkbox" class="custom-control-input" id="accessible" disabled="true">
-            <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
-        {{/if}}
-    </div>
+<div class="custom-control custom-switch form-check">
+    {{#if dbPlace.gender_neutral}}
+    <input type="checkbox" class="custom-control-input" id="gender" checked="true" disabled="true">
+    <label class="custom-control-label" for="gender">Gender neutral loo</label>
+    {{else}}
+    <input type="checkbox" class="custom-control-input" id="gender disabled=" true"">
+    <label class="custom-control-label" for="gender">Gender neutral loo</label>
+    {{/if}}
+</div>
+<div class="custom-control custom-switch form-check">
+    {{#if dbPlace.handicap_accessible}}
+    <input type="checkbox" class="custom-control-input" id="accessible" checked="true" disabled="true">
+    <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
+    {{else}}
+    <input type="checkbox" class="custom-control-input" id="accessible" disabled="true">
+    <label class="custom-control-label" for="accessible">ADA-compliant or accessible</label>
+    {{/if}}
+</div>
