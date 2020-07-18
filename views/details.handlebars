@@ -1,51 +1,45 @@
- <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    <a class="navbar-brand" href="/">
-      <img src="/img/loo_logo_teal.png" alt="Loo" style="width:75px">
-    </a>
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-       {{!-- <a class="navbar-brand" href="/">
-        Home
-      </a> --}}
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                <img src="/img/loo_logo_teal.png" alt="Loo" style="width:75px">
+            </a>
+            <a class="navbar-brand" href="/logout">
+                Logout
+            </a>
+        </div>
     </div>
-  </div>
 </nav>
 
-        <div class="container">
-            <div class="row">
-       <div class="col-lg">
-           <div class="card" id="updateLooCard">
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <div class="card" id="updateLooCard">
                 <div class="card-body">
                     <h5 class="card-title">Loo Details</h5>
 
                     <div class="row">
                         <div class="col-lg order-md-12 order-lg-1">
-                            <img 
-                            id="place_img" 
-                            data-photo-reference="{{place.photos.0.photo_reference}}" 
-                            data-place-name="{{place.name}}"
-                            />
+                            <img id="place_img" data-photo-reference="{{place.photos.0.photo_reference}}"
+                                data-place-name="{{place.name}}" />
                         </div>
                         <div class="col-lg order-md-1 order-lg-12">
                             <p class="placeAddress">
-                                <h1 class="locationName">{{place.name}}</h1>
-                                <p>
-                                    <span class="streetAddress">{{place.formatted_address}}</span>
-                                    <br>
-                                    <span class="placePhone">{{place.formatted_phone_number}}</span>
-                                </p>
+                            <h1 class="locationName">{{place.name}}</h1>
+                            <p>
+                                <span class="streetAddress">{{place.formatted_address}}</span>
+                                <br>
+                                <span class="placePhone">{{place.formatted_phone_number}}</span>
+                            </p>
                             </p>
                             <p class="verified">
                                 Last verified: {{dbPlace.updatedAt}}
                             </p>
-                        </div> 
+                        </div>
                     </div>
 
                     <div class="row">
-                        
+
                     </div>
 
                     <div class="row">
@@ -58,7 +52,7 @@
                                     {{> basic-features}}
                                 </div>
 
-                                <!-- Form right column --> 
+                                <!-- Form right column -->
                                 <div class="col-sm">
                                     <h6>Supplies</h6>
                                     {{> supplies}}
@@ -67,29 +61,33 @@
                             <br>
                             <div class="row">
                                 <div class="col form-group ">
-                                    <label for="customRange"><h6>How clean is it?</h6></label>
+                                    <label for="customRange">
+                                        <h6>How clean is it?</h6>
+                                    </label>
                                     <div class="input-group d-flex align-items-center">
                                         <div class="input-group-prepend"><span class="mr-3">Yuck!</span></div>
-                                        <input class="form-control" type="range" class="custom-range" min="0" max="10" value="{{dbPlace.clean_rating}}" id="cleanRange" disabled="true"> 
+                                        <input class="form-control" type="range" class="custom-range" min="0" max="10"
+                                            value="{{dbPlace.clean_rating}}" id="cleanRange" disabled="true">
                                         <span class="input-group-append"><span class="ml-3">Sparkling!</span></span>
                                     </div>
                                 </div>
                             </div>
                             <br>
-                           
+
                             <div class="form-group inline editDiv">
-                                <label for="updateLooBtn">Have a different experience? </label><button type="submit" class="btn btn-sm btn-warning alt-btn" id="editLooBtn">Edit Loo</button>
+                                <label for="updateLooBtn">Have a different experience? </label><button type="submit"
+                                    class="btn btn-sm btn-warning alt-btn" id="editLooBtn">Edit Loo</button>
                             </div>
                             <!-- Starts out hidden -->
                             <div class="form-group inline updateDiv" style="display:none">
-                                <button type="submit" class="btn btn-sm btn-warning alt-btn" id="updateLooBtn">Update Loo</button>
+                                <button type="submit" class="btn btn-sm btn-warning alt-btn" id="updateLooBtn">Update
+                                    Loo</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>  
-       </div>
-   </div>
+            </div>
+        </div>
+    </div>
 
-<script src="/js/update.js"></script>
-    
+    <script src="/js/update.js"></script>

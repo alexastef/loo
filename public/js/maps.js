@@ -61,10 +61,8 @@ $(document).ready(() => {
   }
 
   function displayPlaces(places, map) {
-      // createMarker(place, 200 * index);
+    
       if (source === "home") {
-        // let dbPlaces = places.dbBathrooms;
-        // let googlePlaces = places.detailedPlaces;
 
         console.log(places);
 
@@ -205,8 +203,9 @@ $(document).ready(() => {
 
     const cardTitle = $("<h5>").addClass("card-title text-wrap home-title").text(place.name);
     const cardText = $("<div>").addClass("card-text text-wrap home-text").text(place.formatted_address);
-    const cardIcons = $("<div>").addClass("features-icons d-flex flex-row pb-2 justify-content-center");
-    const cardLink = $("<a>").addClass("btn btn-primary stretched-link clearfix mt-auto").attr("href","/details/"+place.place_id).text("View Loo Info");
+    const cardIcons = $("<div>").addClass("features-icons");
+
+    const cardLink = $("<a>").addClass("btn btn-primary stretched-link clearfix mt-2").attr("href","/details/"+place.place_id).text("View Loo Info");
 
     card.append(cardBody);
     $(".looCards").append(card);
@@ -246,11 +245,12 @@ $(document).ready(() => {
 
           cardImgTop = $("<img>").addClass("card-img-top img-thumbnail img-fluid clearfix homeImg").attr("src", photoData).attr("alt", place.name + " image");
 
-          const cardTitleAndText = $("<div>").addClass("address").append(cardTitle,cardText);
+          const cardTitleAndText = $("<div>").addClass("address").append(cardTitle,cardText, cardIcons);
           const infoRow = $("<div>").addClass("row");
 
           infoRow.append(cardImgTop, cardTitleAndText);
-          cardBody.append(infoRow, cardIcons, cardLink);
+          cardBody.append(infoRow, cardLink);
+
       });
     }
     else {
