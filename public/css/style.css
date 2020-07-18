@@ -29,7 +29,6 @@
   font-family: pacifico, sans-serif;
 }
 #aboutCard {
-<<<<<<< HEAD
     background-color: #EDEAE5;
     margin-bottom:10px;
 }
@@ -47,23 +46,3 @@
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
 }
-=======
-  background-color: #edeae5;
-  margin-bottom: 10px;
-}
-.notey {
-  font-family: pacifico, sans-serif;
-  color: #026670;
-  font-weight: 300;
-  font-size: 22px;
-  text-align: center;
-}
-#logOutCard {
-  background-color: #edeae5;
-}
-#texty,
-#pad {
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-}
->>>>>>> b36fb785f4a9baaf1b9fbe7ae28d4f45a6466d48

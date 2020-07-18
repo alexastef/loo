@@ -46,8 +46,6 @@ module.exports = function (app) {
     const photoParams = `key=${process.env.MAPS_API_KEY}&photoreference=${photoReference}&maxheight=300`;
     const photoQuery = `https://maps.googleapis.com/maps/api/place/photo?${photoParams}`;
 
-<<<<<<< HEAD
-=======
     if (process.env.DEBUG_MODE === "true") {
       console.log("debug photo fetch");
       setTimeout(() => {
@@ -56,7 +54,6 @@ module.exports = function (app) {
       return;
     }
 
->>>>>>> b36fb785f4a9baaf1b9fbe7ae28d4f45a6466d48
     let photo;
     try {
       photo = await axios.get(photoQuery);
@@ -144,8 +141,6 @@ module.exports = function (app) {
     const detailedParams = `place_id=${place_id}&fields=${fields}&key=${process.env.MAPS_API_KEY}`;
     const detailedQuery = `https://maps.googleapis.com/maps/api/place/details/json?${detailedParams}`;
 
-<<<<<<< HEAD
-=======
     if (process.env.DEBUG_MODE === "true") {
       console.log("debug details fetch");
 
@@ -155,7 +150,6 @@ module.exports = function (app) {
       return;
     }
 
->>>>>>> b36fb785f4a9baaf1b9fbe7ae28d4f45a6466d48
     const response = await axios.get(detailedQuery);
     const detailedPlace = response.data.result;
 
@@ -167,9 +161,7 @@ module.exports = function (app) {
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
 
-<<<<<<< HEAD
     const results = await textSearch(term,"",lat,lon);
-=======
     if (process.env.DEBUG_MODE === "true") {
       console.log("debug mode searching");
 
@@ -180,7 +172,6 @@ module.exports = function (app) {
     }
 
     const results = await textSearch(term, "", lat, lon);
->>>>>>> b36fb785f4a9baaf1b9fbe7ae28d4f45a6466d48
     console.log("results.length", results.length);
     res.json(results);
   });
@@ -197,17 +188,6 @@ module.exports = function (app) {
     }
   });
 
-<<<<<<< HEAD
- app.post("/api/login", passport.authenticate("local", { successRedirect: '/', failureRedirect:'/login'}),
- function (req, res) {
-    console.log(req.user);
-  res.json(req.user);
-   // res.redirect('/users/' + req.user.email);
-   //});
-  // app.post("/api/login", passport.authenticate("local"), function (req, res) {
-   // res.json(req.user);
-  });
-=======
   app.post(
     "/api/login",
     passport.authenticate("local", {
@@ -219,7 +199,6 @@ module.exports = function (app) {
       res.json(req.user);
     }
   );
->>>>>>> b36fb785f4a9baaf1b9fbe7ae28d4f45a6466d48
 
   app.post("/api/signup", function (req, res) {
     console.log("starting up signup.");
@@ -227,25 +206,6 @@ module.exports = function (app) {
       email: req.body.email,
       password: req.body.password,
     })
-<<<<<<< HEAD
-    .then(function () {
-      console.log("307 - redirect on successful signup")
-      res.redirect(307, "/api/login");
-    })
-    .catch(function (err) {
-      if (err.name === 'SequelizeUniqueConstraintError'){
-        const errorMsg = "Email already in use: " + err.fields['users.email'];
-        console.log(errorMsg);
-        res.status(409).json({message: errorMsg});
-        //return;
-      }
-      //if (err.name === 'SequelizeValidationError'){
-        //const erMsg = "We could not sign you up, not a valid email:" + err.fields['users.email'];
-       // console.log(erMsg);
-      //res.status(401).json({messgae:erMsg});
-      return;
-     // }
-=======
       .then(function () {
         console.log("307 - redirect on successful signup");
         res.redirect(307, "/api/login");
@@ -259,7 +219,6 @@ module.exports = function (app) {
         }
         console.log("We could not sign you up"); //'SequelizeUniqueConstraintError' ; err.fields.users.email
         res.status(401).json(err);
->>>>>>> b36fb785f4a9baaf1b9fbe7ae28d4f45a6466d48
       });
   });
 

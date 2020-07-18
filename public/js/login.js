@@ -38,23 +38,6 @@ $(document).ready(function () {
 
         if (destination) {
           window.location.replace("/" + destination);
-<<<<<<< HEAD
-        }
-        else {
-          window.location.replace("/")
-        // If there's an error, log the error
-      .catch(function(req, res) {
-        if (!req.user){
-        console.log(res.status);
-        $("#errorMessage").text("We don't have that login, please sign-up!");
-      }
-      });
-  $("#signupLink").attr("href",`/signup${window.location.search}`);
-    }
-  });
-}
-});
-=======
         } else {
           window.location.replace("/");
         }
@@ -73,4 +56,3 @@ $(document).ready(function () {
   $("#signupLink").attr("href", `/signup${window.location.search}`);
   
 });
->>>>>>> b36fb785f4a9baaf1b9fbe7ae28d4f45a6466d48
