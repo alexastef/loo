@@ -53,14 +53,6 @@ module.exports = function (app) {
     const photoParams = `key=${process.env.MAPS_API_KEY}&photoreference=${photoReference}&maxheight=300`
     const photoQuery = `https://maps.googleapis.com/maps/api/place/photo?${photoParams}`;
 
-    if (process.env.DEBUG_MODE === "true") {
-      console.log("debug photo fetch");
-      setTimeout(() => {
-        res.sendFile(path.join(__dirname,"../public/mockdata/mockPhoto.json"));
-      },2000);
-      return;
-    }
-
     let photo;
     try {
       photo = await axios.get(photoQuery);
@@ -142,14 +134,6 @@ module.exports = function (app) {
     const detailedParams = `place_id=${place_id}&fields=${fields}&key=${process.env.MAPS_API_KEY}`;
     const detailedQuery = `https://maps.googleapis.com/maps/api/place/details/json?${detailedParams}`;
 
-    if (process.env.DEBUG_MODE === "true") {
-      console.log("debug details fetch");
-      setTimeout(() => {
-        res.sendFile(path.join(__dirname,"../public/mockdata/mockDetails.json"));
-      },2000);
-      return;
-    }
-
     const response = await axios.get(detailedQuery);
     const detailedPlace = response.data.result;
 
@@ -160,14 +144,6 @@ module.exports = function (app) {
     const term = req.params.searchvalue;
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
-
-    if (process.env.DEBUG_MODE === "true") {
-      console.log("debug mode searching");
-      setTimeout(() => {
-        res.sendFile(path.join(__dirname,"../public/mockdata/mockGoogle.json"));
-      },2000);
-      return;
-    }
 
     const results = await textSearch(term,"",lat,lon);
     console.log("results.length", results.length);
@@ -190,7 +166,7 @@ module.exports = function (app) {
  function (req, res) {
     console.log(req.user);
   res.json(req.user);
-  // res.redirect('/users/' + req.user.email);
+   // res.redirect('/users/' + req.user.email);
    //});
   // app.post("/api/login", passport.authenticate("local"), function (req, res) {
    // res.json(req.user);
@@ -211,11 +187,15 @@ module.exports = function (app) {
         const errorMsg = "Email already in use: " + err.fields['users.email'];
         console.log(errorMsg);
         res.status(409).json({message: errorMsg});
-        return;
+        //return;
       }
-      console.log("We could not sign you up");//'SequelizeUniqueConstraintError' ; err.fields.users.email
-      res.status(401).json(err);
-    });
+      //if (err.name === 'SequelizeValidationError'){
+        //const erMsg = "We could not sign you up, not a valid email:" + err.fields['users.email'];
+       // console.log(erMsg);
+      //res.status(401).json({messgae:erMsg});
+      return;
+     // }
+      });
   });
 
   app.post("/api/bathroom", function(req, res) {

@@ -35,20 +35,16 @@ $(document).ready(function() {
           window.location.replace("/" + destination);
         }
         else {
-          window.location.replace("/");
-        }
-        
+          window.location.replace("/")
         // If there's an error, log the error
-      })
-      .catch(function(err) {
-        if(err.status == 401)
-      {
-        console.log(err.responseJSON.message);
-        $("#errorMessage").text(err.responseJSON.message);
+      .catch(function(req, res) {
+        if (!req.user){
+        console.log(res.status);
+        $("#errorMessage").text("We don't have that login, please sign-up!");
       }
-      console.log(err);
-    });
-  }
-
+      });
   $("#signupLink").attr("href",`/signup${window.location.search}`);
+    }
+  });
+}
 });
