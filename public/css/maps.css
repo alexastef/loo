@@ -164,6 +164,11 @@ h4 {
   max-width: 100%;
 }
 
+.smallHeader {
+  color: white;
+  text-align: center;
+}
+
 @media screen and (max-width: 600px) {
   .homeImg {
     align-items: center;
@@ -180,11 +185,5 @@ h4 {
   }
   .address {
     margin: 0 auto;
-  }
   } 
-}
-
-.smallHeader {
-  color: white;
-  text-align: center;
 }
