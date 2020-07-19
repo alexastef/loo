@@ -104,6 +104,7 @@ $(document).ready(() => {
   }
 
   function relocate(pos) {
+    console.log("relocating");
     $('.toast').toast('show')
     
     console.log("relocate was given:",pos);
@@ -143,6 +144,16 @@ $(document).ready(() => {
     const searchValue = $("#searchInput").val().trim();
 
     clearEverything();
+
+    if (!pos) {
+      alert("Please click a location on the map first");
+      setTimeout(() => {
+        $('.toast').toast('hide');
+      }, 1000);
+      $('.toast').toast('hide');
+      $("#searchForm *").attr("disabled",false);
+      return;
+    }
 
     $.ajax({
       url: `/api/search/${searchValue}?lat=${pos.lat}&lon=${pos.lng}`,
