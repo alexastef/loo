@@ -9,6 +9,15 @@ $(document).ready(() => {
 
   $('.toast').toast();
 
+  function showToast(text) {
+    $('#toastText').text(text);
+    $('.toast').toast('show');
+  }
+
+  function hideToast() {
+    $('.toast').toast('hide');
+  }
+
   function checkGoogle() {
     console.log("checking Google");
     if (google) {
@@ -31,7 +40,11 @@ $(document).ready(() => {
 
     if (navigator.geolocation) {
       geolocationInfoWindow = new google.maps.InfoWindow();
+      showToast("Geolocating...");
       navigator.geolocation.getCurrentPosition(function (position) {
+        setTimeout(() => {
+          hideToast();
+        }, 1000);
         pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
@@ -44,12 +57,22 @@ $(document).ready(() => {
         
 
       }, function () {
+        setTimeout(() => {
+          hideToast();
+        }, 1000);
+        
+        console.log("fetching geolocation failed");
         handleLocationError(true, geolocationInfoWindow, map.getCenter());
       });
     } else {
       // Browser doesn't support Geolocation
+      setTimeout(() => {
+        hideToast();
+      }, 1000);
+      console.log("browser doesn't support geolocation");
       handleLocationError(false, geolocationInfoWindow, map.getCenter());
     }
+    
 
   }
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -104,7 +127,12 @@ $(document).ready(() => {
   }
 
   function relocate(pos) {
-    $('.toast').toast('show')
+    if (source === 'home') {
+      showToast('Loading loos...');
+    }
+    else {
+      showToast('Loading places...');
+    }
     
     console.log("relocate was given:",pos);
 
@@ -121,7 +149,7 @@ $(document).ready(() => {
       method: "get",
     }).then(data => {
       console.log(data);
-      $('.toast').toast('hide')
+      hideToast();
       displayPlaces(data, map);
     });
   }
@@ -138,9 +166,10 @@ $(document).ready(() => {
   $("#searchForm").submit(onSearch);
   function onSearch(event) {
     event.preventDefault();
-    $('.toast').toast('show')
+
     $("#searchForm *").attr("disabled",true);
     const searchValue = $("#searchInput").val().trim();
+    showToast(`Searching for ${searchValue}`);
 
     clearEverything();
 
@@ -148,7 +177,7 @@ $(document).ready(() => {
       url: `/api/search/${searchValue}?lat=${pos.lat}&lon=${pos.lng}`,
       method: "get"
     }).then(results => {
-      $('.toast').toast('hide')
+      hideToast();
       displayCards(results);
       $("#searchForm *").attr("disabled",false);
     });
