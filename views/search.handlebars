@@ -1,53 +1,50 @@
- <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-    <a class="navbar-brand" href="/">
-      <img src="/img/loo_logo_teal.png" alt="Loo" style="width:75px">
-    </a>
+      <a class="navbar-brand" href="/">
+        <img src="/img/loo_logo_teal.png" alt="Loo" style="width:75px">
+      </a>
       <a class="navbar-brand" href="/logout">
         Logout
       </a>
-       {{!-- <a class="navbar-brand" href="/">
-        Home
-      </a> --}}
     </div>
   </div>
 </nav>
 
-        <div class="container">
-            <div class="row">
+<div class="container">
+  <div class="row">
     <div class="col-sm">
-        <!-- This file needs a search bar -->
-        <form id="searchForm" class="member-name">
-            <div class="input-group mb-3">
-                <input id="searchInput" type="text" class="form-control" placeholder="Lookin for new loo?" aria-label="Lookin for a new loo?" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button type="submit" href="/details" class="btn btn-outline-secondary btn-light" type="button" id="searchBtn"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form>
+      <!-- This file needs a search bar -->
+      <form id="searchForm" class="member-name">
+        <div class="input-group mb-3">
+          <input id="searchInput" type="text" class="form-control" placeholder="Lookin for new loo?"
+            aria-label="Lookin for a new loo?" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button type="submit" href="/details" class="btn btn-outline-secondary btn-light" type="button"
+              id="searchBtn"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 
-<!-- If user does not search, map with nearby populates -->
-<div class="row">
+  <!-- If user does not search, map with nearby populates -->
+  <div class="row">
     <div class="col-sm">
-        <h6><small class="smallHeader">Click a spot on the map to find other places</small></h6>
-        <div class="searchMap" id="map">{{map}}</div>
+      <h6><small class="smallHeader">Click a spot on the map to find other places</small></h6>
+      <div class="searchMap" id="map">{{map}}</div>
     </div>
-</div>
+  </div>
 
-<!-- If user does search, map will populate with that location, this needs to be determined in the JS -->
+  <!-- If user does search, map will populate with that location, this needs to be determined in the JS -->
 
-<div id="placeCards" class="row">
+  <div id="placeCards" class="row">
     <!--partials will go here as cards in separate columns -->
-</div>
+  </div>
 
 
-<!-- Each card needs to have a click event and id that specifies which address to populate on the add.handlebars--> 
-<div id="mapsource" data-source="search"></div>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key={{Google_Maps_Key}}"
-    type="text/javascript">
-</script>
-<script src="/js/maps.js"></script>
+  <!-- Each card needs to have a click event and id that specifies which address to populate on the add.handlebars-->
+  <div id="mapsource" data-source="search"></div>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key={{Google_Maps_Key}}" type="text/javascript">
+  </script>
+  <script src="/js/maps.js"></script>

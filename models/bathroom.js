@@ -6,21 +6,21 @@ module.exports = function (sequelize, DataTypes) {
     },
     last_verified: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.NOW,
     },
     location_name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     street_address: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     available: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       validate: {
-        len: [1]
-      }
+        len: [1],
+      },
     },
     needs_key: DataTypes.BOOLEAN,
     gender_neutral: DataTypes.BOOLEAN,
@@ -31,8 +31,8 @@ module.exports = function (sequelize, DataTypes) {
     has_mirror: DataTypes.BOOLEAN,
     thumbs_up: DataTypes.INTEGER,
     thumbs_down: DataTypes.INTEGER,
-    clean_rating: DataTypes.INTEGER
+    clean_rating: DataTypes.INTEGER,
   });
-  
+
   return Bathroom;
 };

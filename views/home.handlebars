@@ -1,55 +1,55 @@
- <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-    <a class="navbar-brand" href="/">
-      <img src="/img/loo_logo_teal.png" alt="Loo" style="width:75px">
-    </a>
+      <a class="navbar-brand" href="/">
+        <img src="/img/loo_logo_teal.png" alt="Loo" style="width:75px">
+      </a>
       <a class="navbar-brand" href="/logout">
         Logout
       </a>
-       {{!-- <a class="navbar-brand" href="/">
-        Home
-      </a> --}}
     </div>
   </div>
 </nav>
 
-        <div class="container">
-            <!-- Row 1 (map and locations all one row with sub-rows) -->
-<div class="row">
+<div class="container">
+  <!-- Row 1 (map and locations all one row with sub-rows) -->
+  <div class="row">
     <div class="col-lg">
-        <h4 class="nearbyLoos">Loos Near You</h4>
+      <h4 class="nearbyLoos">Verified Loos Near You</h4>
     </div>
-</div>
-<div class="container-fluid">
+  </div>
+  <div class="container-fluid">
     <div class="row">
-        <!-- Col 1 - Map -->
-        <div class="col-lg">
-                     <!-- Sub Row - About Card -->
-            <div class="card" id="aboutCard">
-                <div class="card-header" id="pad">
-                    <h1 class="hi">Skip &nbsp; to &nbsp; the &nbsp; Loo!</h1>
-                </div>
-                <div class="card-body" id="texty">
-                    <p>Our App answers <i>the</i> COVID question:
-                        Where do I "go"… when I’m “on-the-go”?</p>
-                      <p class="notey">Are you just lookin' for a Loo?!</p>
-                        <p> Click on the map to see “Loos near you”. &nbsp; Please click to “Add New Loo” too! <p>You can Search, Find, or even Update the information of a bathroom.  
-                 We rely on “Lookie-Loos” like you to help us maintain our water closet collection. Plus, you can help alert others to SKIP-a-loo or two!</p>
-                </div>
-            </div>
-            <!-- Dynamically generated map -->
-            <h6><small class="smallHeader">Click a spot on the map to find other loos</small></h6>
-            <div id="map" class="d-inline-flex p-2">{{map}}</div>
-            <div class="row">
-                <a href="/search" class="btn btn-warning btn-lg active" role="button" aria-pressed="true" id="addNew"><i class="fas fa-plus"></i> New Loo</a>
-            </div>
-            <div id="mapsource" data-source="home"></div>
+      <!-- Col 1 - Map -->
+      <div class="col-lg">
+        <!-- Sub Row - About Card -->
+        <div class="card" id="aboutCard">
+          <div class="card-header" id="pad">
+            <h1 class="hi">Skip &nbsp; to &nbsp; the &nbsp; Loo!</h1>
+          </div>
+          <div class="card-body" id="texty">
+            <p>Our App answers <i>the</i> COVID question:
+              Where do I "go"… when I’m “on-the-go”?</p>
+            <p class="notey">Are you just lookin' for a Loo?!</p>
+            <p> Click on the map to see available “Loos near you”. &nbsp; Please click the yellow button to “Add New Loo” too!
+            <p>You can Search, Find, or even Update the information of a bathroom.
+              We rely on “Lookie-Loos” like you to help us maintain our water closet collection. Plus, you can help
+              alert others to SKIP-a-loo or two! Thank you.</p>
+          </div>
         </div>
-        <!-- Col 2 - Locations -->
-        <div class="col-lg">
-            <div class="looCards"></div>
+        <!-- Dynamically generated map -->
+        <h6><small class="smallHeader">Click a spot on the map to find other loos</small></h6>
+        <div id="map" class="d-inline-flex p-2">{{map}}</div>
+        <div class="row">
+          <a href="/search" class="btn btn-warning btn-lg active" role="button" aria-pressed="true" id="addNew"><i
+              class="fas fa-plus"></i> New Loo</a>
         </div>
+        <div id="mapsource" data-source="home"></div>
+      </div>
+      <!-- Col 2 - Locations -->
+      <div class="col-lg">
+        <div class="looCards"></div>
+      </div>
     </div>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key={{Google_Maps_Key}}" type="text/javascript">

@@ -2,19 +2,19 @@ $(document).ready(() => {
   function loadPlacePhoto() {
     const photoReference = $("#place_img").data("photo-reference");
     const placeName = $("#place_img").data("place-name");
-    console.log("photoReference",photoReference);
+    console.log("photoReference", photoReference);
     $.ajax({
       url: `/api/photo/${photoReference}`,
       method: "get",
-    }).then(photoSrc => {
-      $("#place_img").attr("src",photoSrc).attr("alt",`${placeName} Photo`)
+    }).then((photoSrc) => {
+      $("#place_img").attr("src", photoSrc).attr("alt", `${placeName} Photo`);
     });
   }
   loadPlacePhoto();
 
   $("#addLooBtn").on("click", (event) => {
     event.preventDefault();
-    
+
     let name = $("h1");
     let locationName = name[0].innerText;
 
@@ -39,19 +39,18 @@ $(document).ready(() => {
       has_soap: $("#hasSoap").is(":checked"),
       has_paper: $("#hasPaper").is(":checked"),
       has_mirror: $("#hasMirror").is(":checked"),
-      clean_rating: $("#cleanRange").val()
-    }
+      clean_rating: $("#cleanRange").val(),
+    };
 
     // post request passing in verified loo
     $.ajax("/api/bathroom", {
       type: "POST",
-      data: verifiedLoo
+      data: verifiedLoo,
     }).then(function () {
-        console.log("Added new Bathroom");
-        // Reload the home page to show new loo
-        alert("Thanks for adding a loo!");
-        window.location.replace("/");
-      }
-    );
+      console.log("Added new Bathroom");
+      // Reload the home page to show new loo
+      alert("Thanks for adding a loo!");
+      window.location.replace("/");
+    });
   });
 });
