@@ -27,9 +27,10 @@ module.exports = function (app) {
   async function textSearch(term, type, lat, lng) {
     const fields = `fields=name,formatted_address,formatted_phone_number,geometry`;
     const location = `location=${lat},${lng}`;
-    const radius = `radius=1000`;
+    // const radius = `radius=1000`;
+    const rankby = `rankby=distance`;
     const typeOrQuery = term === "" ? `type=${type}` : `query=${term}`;
-    const params = `${fields}&${location}&${radius}&${typeOrQuery}`;
+    const params = `${fields}&${location}&${rankby}&${typeOrQuery}`;
     const searchParameters = `&key=${process.env.MAPS_API_KEY}&${params}`;
     const query = `https://maps.googleapis.com/maps/api/place/textsearch/json?${searchParameters}`;
 
@@ -92,16 +93,17 @@ module.exports = function (app) {
     }
 
     console.log("not mock");
-    const stores = await textSearch("", "store", lat, lon);
-    const restaurants = await textSearch("", "restaurant", lat, lon);
+    // const stores = await textSearch("", "store", lat, lon);
+    // const restaurants = await textSearch("", "restaurant", lat, lon);
+    const places = await textSearch("", "establishment",lat,lon);
 
     //const places = [...stores,...restaurants];
     // weave them together so we're not only seeing stores at the top and restaurants at the bottom
-    let places = [];
-    for (let i = 0; i < 20; i++) {
-      places.push(stores[i]);
-      places.push(restaurants[i]);
-    }
+    // let places = [];
+    // for (let i = 0; i < 20; i++) {
+    //   places.push(stores[i]);
+    //   places.push(restaurants[i]);
+    // }
 
     if (source === "home") {
       const place_ids = places.map((place) => place.place_id);
