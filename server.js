@@ -5,7 +5,7 @@ const passport = require('./config/passport');
 const compression = require('compression')
 
 // Setting up port and requiring models
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 const db = require('./models');
 
 // EXPRESS

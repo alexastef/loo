@@ -1,0 +1,41 @@
+.mapContainer > * {
+  position: static !important;
+}
+
+.nearbyLoos {
+  padding: 15px;
+  text-align: center;
+  font-family: pacifico, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.hi {
+  text-align: center;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 40px;
+  color: #026670;
+  font-family: pacifico, sans-serif;
+}
+#aboutCard {
+  background-color: #edeae5;
+  margin-bottom: 10px;
+}
+.notey {
+  font-family: pacifico, sans-serif;
+  color: #026670;
+  font-weight: 300;
+  font-size: 28px;
+  text-align: center;
+}
+#texty,
+#pad {
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+h4 {
+  color: white;
+}
