@@ -1,54 +1,83 @@
 import React, { useState, useEffect } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import axios from 'axios';
 import "./style.css";
+import { Toast, ToastBody, Spinner } from 'reactstrap';
+import LooCard from '../../components/LooCard';
 
 const mapStyles = {
   containerStyle: {
     position: "static"
+  },
+  toastStyle: {
+    position: "absolute",
+    bottom: "0px",
+    left: "calc(50% - 100px)"
+  },
+  toastBody: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   }
 };
 
 function Home(props) {
   const [loos, setLoos] = useState([]);
-  const [center, setCenter] = useState({ lat: 32.715, lng: -117.1625 });
+  const [markers, setMarkers] = useState([]);
+  const [center, setCenter] = useState({ lat: 32.76814938481005, lng: -117.05437714392656 });
   const [showRelocateModal, setShowRelocateModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   // load loos
   useEffect(() => {
-    console.log("process.env", process.env);
+    relocate();
   }, []);
   // function displayDBCards(places) {
   //   places.forEach((place, index) => {
   //     createMarker(place, 200 * index);
   //   });
   // }
-  // function relocate(pos) {
-  //   if (source === 'home') {
-  //     showToast('Loading loos...');
-  //   }
-  //   else {
-  //     showToast('Loading places...');
-  //   }
 
-  //   console.log("relocate was given:",pos);
+  function renderLoos() {
+    loos.map((loo) => {
+      console.log("rendering loo card", loo);
+      return <LooCard place={loo}/>;
+    });
+  }
+  function showToast() {
+    setLoading(true);
+  }
 
-  //   clearEverything();
+  function hideToast() {
+    setLoading(false);
+  }
+  function relocate() {
+    showToast();
 
-  //   currentLocationInfoWindow.setPosition(pos);
-  //   currentLocationInfoWindow.setContent('You are here.');
-  //   currentLocationInfoWindow.open(map);
-  //   map.setCenter(pos);
+    // clearEverything();
 
-  //   // send location to api route
-  //   $.ajax({
-  //     url: `/api/nearby/${source}?lat=${pos.lat}&lon=${pos.lng}`,
-  //     method: "get",
-  //   }).then(data => {
-  //     console.log(data);
-  //     hideToast();
-  //     displayPlaces(data, map);
-  //   });
-  // }
+    // currentLocationInfoWindow.setPosition(pos);
+    // currentLocationInfoWindow.setContent('You are here.');
+    // currentLocationInfoWindow.open(map);
+    // map.setCenter(pos);
+
+    // send location to api route
+    // $.ajax({
+    //   url: `/api/nearby/${source}?lat=${pos.lat}&lon=${pos.lng}`,
+    //   method: "get",
+    // }).then(data => {
+    //   console.log(data);
+    //   hideToast();
+    //   displayPlaces(data, map);
+    // });
+    console.log(`/api/nearby/home?lat=${center.lat}&lon=${center.lng}`)
+    axios.get(`/api/nearby/home?lat=${center.lat}&lon=${center.lng}`)
+      .then(response => {
+        hideToast();
+        setLoos(response.data);
+      });
+  }
 
   function mapClicked(mapProps, map, clickEvent) {
     console.log("lat", clickEvent.latLng.lat());
@@ -57,7 +86,7 @@ function Home(props) {
     if (confirmed) {
       setCenter({ lat: clickEvent.latLng.lat(), lng: clickEvent.latLng.lng() });
     }
-    //relocate();
+    relocate();
   }
 
   return (
@@ -95,8 +124,19 @@ function Home(props) {
                 google={props.google}
                 zoom={15}
                 center={center}
+                initialCenter={center}
                 onClick={mapClicked}
-              ></Map>
+              >
+                <Marker position={center} title={"my location"}></Marker>
+                {loos.map((loo) => {
+                  console.log(loo.geometry.location);
+                  return <Marker 
+                    key={`${loo.geometry.location.lat},${loo.geometry.location.lng}`}
+                    position={loo.geometry.location}
+                    title={loo.name}
+                  ></Marker>;
+                })}
+              </Map>
             </div>
 
             {/* <div id="map" className="d-inline-flex p-2"></div> */}
@@ -108,29 +148,24 @@ function Home(props) {
           </div>
           {/* <!-- Col 2 - Locations --> */}
           <div className="col-lg">
-            <div className="looCards"></div>
-          </div>
-        </div>
-      </div>
-      <div class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Relocate</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Search for loos at this location?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Yes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <div className="looCards">
+              {
+                loos.map((loo) => {
+                  console.log("rendering loo card", loo);
+                  return <LooCard place={loo}/>;
+                })
+              }
             </div>
           </div>
         </div>
       </div>
+      <Toast isOpen={loading} style={mapStyles.toastStyle}>
+        <ToastBody style={mapStyles.toastBody}>
+          <Spinner />
+          &nbsp;
+          Loading Loos...
+        </ToastBody>
+      </Toast>
     </div>
   )
 }

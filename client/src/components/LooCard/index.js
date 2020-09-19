@@ -8,7 +8,7 @@ function LooCard(props) {
           <h5 className="card-title text-wrap home-title">{props.place.name}</h5>
           <div className="card-text text-wrap home-text">{props.place.formatted_address}</div>
           <div className="features-icons"></div>
-          <a className="btn btn-primary stretched-link clearfix mt-2" href={`/details/${place.place_id}`} >View Loo Info</a>
+          <a className="btn btn-primary stretched-link clearfix mt-2" href={`/details/${props.place.place_id}`} >View Loo Info</a>
 
         </div>
       </div>
