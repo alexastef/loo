@@ -3,8 +3,17 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { Toast, ToastBody, Spinner } from 'reactstrap';
 import axios from 'axios';
 import PlaceCard from '../../components/PlaceCard';
+import './style.css'
 
 const styles = {
+  mapSuperContainer: {
+    position: "static",
+    height: "500px"
+  },
+  mapContainer: {
+    border: "1px solid cyan",
+    position: "relative"
+  },
   map: {
     height: "500px"
   },
@@ -94,14 +103,17 @@ function Search(props) {
         <div className="col-sm">
           <h6><small className="smallHeader">Click a spot on the map to find other places</small></h6>
           {/* <div className="searchMap" id="map">{{ map }}</div> */}
-          <Map
-            style={styles.map}
-            google={props.google}
-            zoom={15}
-            center={center}
-            initialCenter={center}
-            onClick={mapClicked}
-          ></Map>
+          <div style={styles.mapSuperContainer}>
+            <Map
+              containerStyle={styles.mapContainer}
+              style={styles.map}
+              google={props.google}
+              zoom={15}
+              center={center}
+              initialCenter={center}
+              onClick={mapClicked}
+            ></Map>
+          </div>
         </div>
       </div>
 

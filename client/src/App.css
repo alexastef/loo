@@ -8,3 +8,24 @@ body {
   --black: #1a1a1a;
   background-color: var(--accent);
 }
+
+.btn {
+  background-color: var(--accent);
+  color: var(--white)
+}
+
+.btn:hover {
+  background-color: var(--white);
+  color: var(--accent)
+}
+
+.btn-light {
+  background-color: var(--accent);
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.smallHeader {
+  color: white;
+  text-align: center;
+}

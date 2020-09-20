@@ -6,9 +6,12 @@ import { Toast, ToastBody, Spinner } from 'reactstrap';
 import LooCard from '../../components/LooCard';
 
 const styles = {
-  containerStyle: {
+  mapSuperContainer: {
     position: "static",
-    border: "1px solid red"
+    height: "500px"
+  },
+  mapContainer: {
+    position: "relative"
   },
   map: {
     height: "500px"
@@ -86,9 +89,9 @@ function Home(props) {
             </div>
             {/* <!-- Dynamically generated map --> */}
             <h6><small className="smallHeader">Click a spot on the map to find other loos</small></h6>
-            <div className="mapContainer">
+            <div style={styles.mapSuperContainer}>
               <Map
-                containerStyle={styles.containerStyle}
+                containerStyle={styles.mapContainer}
                 style={styles.map}
                 google={props.google}
                 zoom={15}
