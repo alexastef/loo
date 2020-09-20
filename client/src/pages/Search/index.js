@@ -25,12 +25,15 @@ function Search(props) {
   const [center, setCenter] = useState({ lat: 32.76814938481005, lng: -117.05437714392656 });
   const [loading, setLoading] = useState(false);
   const [places, setPlaces] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [toastText, setToastText] = useState("");
 
   useEffect(() => {
     relocate();
   }, []);
 
   function relocate() {
+    setToastText("Loading Places...");
     setLoading(true);
 
     console.log(`/api/nearby/search?lat=${center.lat}&lon=${center.lng}`)
@@ -51,15 +54,32 @@ function Search(props) {
     relocate();
   }
 
+  function handleSearchTextChange(event) {
+    setSearchText(event.target.value);
+  }
+
+  function onSearch(event) {
+    event.preventDefault();
+    setToastText(`Searching for ${searchText}`);
+    setLoading(true);
+    console.log("connecting to ", `/api/search/${searchText}?lat=${center.lat}&lon=${center.lng}`);
+    axios.get(`/api/search/${searchText}?lat=${center.lat}&lon=${center.lng}`).then((response) => {
+      setLoading(false);
+      setPlaces(response.data);
+      console.log("searched places", response.data)
+    });
+  }
+
   return (
     <div className="container">
       <div className="row">
         <div className="col-sm">
           {/* <!-- This file needs a search bar --> */}
-          <form id="searchForm" className="member-name">
+          <form id="searchForm" className="member-name" onSubmit={onSearch}>
             <div className="input-group mb-3">
               <input id="searchInput" type="text" className="form-control" placeholder="Lookin for new loo?"
-                aria-label="Lookin for a new loo?" aria-describedby="button-addon2" />
+                aria-label="Lookin for a new loo?" aria-describedby="button-addon2" onChange={handleSearchTextChange}
+                value={searchText}/>
               <div className="input-group-append">
                 <button type="submit" href="/details" className="btn btn-outline-secondary btn-light" type="button"
                   id="searchBtn"><i className="fas fa-search"></i></button>
@@ -91,7 +111,7 @@ function Search(props) {
         {/* <!--partials will go here as cards in separate columns --> */}
         {
           places.map((place) => {
-            return <PlaceCard place={place} />
+            return <PlaceCard place={place} key={place.place_id}/>
           })
         }
       </div>
@@ -99,7 +119,7 @@ function Search(props) {
         <ToastBody style={styles.toastBody}>
           <Spinner />
           &nbsp;
-          Loading Places...
+          {toastText}
         </ToastBody>
       </Toast>
     </div>
