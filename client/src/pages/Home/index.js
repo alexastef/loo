@@ -5,9 +5,13 @@ import "./style.css";
 import { Toast, ToastBody, Spinner } from 'reactstrap';
 import LooCard from '../../components/LooCard';
 
-const mapStyles = {
+const styles = {
   containerStyle: {
-    position: "static"
+    position: "static",
+    border: "1px solid red"
+  },
+  map: {
+    height: "500px"
   },
   toastStyle: {
     position: "absolute",
@@ -24,57 +28,21 @@ const mapStyles = {
 
 function Home(props) {
   const [loos, setLoos] = useState([]);
-  const [markers, setMarkers] = useState([]);
   const [center, setCenter] = useState({ lat: 32.76814938481005, lng: -117.05437714392656 });
-  const [showRelocateModal, setShowRelocateModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   // load loos
   useEffect(() => {
     relocate();
   }, []);
-  // function displayDBCards(places) {
-  //   places.forEach((place, index) => {
-  //     createMarker(place, 200 * index);
-  //   });
-  // }
 
-  function renderLoos() {
-    loos.map((loo) => {
-      console.log("rendering loo card", loo);
-      return <LooCard place={loo}/>;
-    });
-  }
-  function showToast() {
-    setLoading(true);
-  }
-
-  function hideToast() {
-    setLoading(false);
-  }
   function relocate() {
-    showToast();
+    setLoading(true);
 
-    // clearEverything();
-
-    // currentLocationInfoWindow.setPosition(pos);
-    // currentLocationInfoWindow.setContent('You are here.');
-    // currentLocationInfoWindow.open(map);
-    // map.setCenter(pos);
-
-    // send location to api route
-    // $.ajax({
-    //   url: `/api/nearby/${source}?lat=${pos.lat}&lon=${pos.lng}`,
-    //   method: "get",
-    // }).then(data => {
-    //   console.log(data);
-    //   hideToast();
-    //   displayPlaces(data, map);
-    // });
     console.log(`/api/nearby/home?lat=${center.lat}&lon=${center.lng}`)
     axios.get(`/api/nearby/home?lat=${center.lat}&lon=${center.lng}`)
       .then(response => {
-        hideToast();
+        setLoading(false);
         setLoos(response.data);
       });
   }
@@ -120,7 +88,8 @@ function Home(props) {
             <h6><small className="smallHeader">Click a spot on the map to find other loos</small></h6>
             <div className="mapContainer">
               <Map
-                containerStyle={mapStyles.containerStyle}
+                containerStyle={styles.containerStyle}
+                style={styles.map}
                 google={props.google}
                 zoom={15}
                 center={center}
@@ -159,8 +128,8 @@ function Home(props) {
           </div>
         </div>
       </div>
-      <Toast isOpen={loading} style={mapStyles.toastStyle}>
-        <ToastBody style={mapStyles.toastBody}>
+      <Toast isOpen={loading} style={styles.toastStyle}>
+        <ToastBody style={styles.toastBody}>
           <Spinner />
           &nbsp;
           Loading Loos...
