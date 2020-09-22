@@ -9,6 +9,11 @@ const styles = {
   }
 }
 
+const logout = () => {
+  window.localStorage.clear();
+  window.location.href = "/";
+};
+
 function Nav() {
   return (
     <nav className="navbar navbar-default">
@@ -17,7 +22,7 @@ function Nav() {
           <Link className="navbar-brand" to="/">
             <img src={logo} alt="Loo" style={styles.logo} />
           </Link>
-          <a className="navbar-brand" href="/logout">
+          <a className="navbar-brand" href="/logout" onClick={logout}>
             Logout
             </a>
         </div>
