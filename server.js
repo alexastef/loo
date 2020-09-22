@@ -5,7 +5,7 @@ const passport = require('./config/passport');
 const compression = require('compression')
 
 // Setting up port and requiring models
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3001;
 const db = require('./models');
 
 // EXPRESS
@@ -25,9 +25,13 @@ app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 // ROUTES
 require('./routes/api-routes.js')(app);
-require('./routes/html-routes.js')(app);
+//require('./routes/html-routes.js')(app);
 
 // Sync database with sequelize
 db.sequelize.sync().then(function() {

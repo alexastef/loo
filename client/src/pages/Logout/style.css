@@ -1,0 +1,82 @@
+.bano {
+    display: block;
+    margin-left: 25%;
+    width: 50%;
+}
+
+#tile{
+    background-image: url(../../assets/img/tile1.jpeg);
+    background-repeat: repeat;
+    background-size: contain;
+}
+
+#logOutCard{
+    background-color: #EDEAE5;
+}
+
+.navbar {
+    background-color: var(--white);
+    padding: 3px;
+    margin-bottom: 15px;
+}
+  
+body {
+    --accent: #026670;
+    --white: #EDEAE5;
+    --highlight: #FEF9C7;
+    --altaccent: #9FEDD7;
+    --althighlight: #FCE181;
+    /* --althighlight: #FDDB27FF; */
+    --black: #1a1a1a;
+    background-color: var(--accent);
+}
+
+.bye {
+    font-family: pacifico, sans-serif;
+    margin-right: 10px;
+    color: #026670;
+}
+
+.final{
+    text-align: right;
+    font-family: pacifico, sans-serif;
+    color: #026670;
+}
+
+.card {
+    background-color: var(--white);
+}
+
+#texty, #pad{
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.card-footer:last-child {
+    border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);
+}
+
+.card-footer {
+    padding: .75rem 1.25rem;
+    background-color: rgba(0,0,0,.03);
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
+.h1, h1 {
+    font-size: 2.5rem;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+}
