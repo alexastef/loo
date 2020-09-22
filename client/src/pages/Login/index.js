@@ -5,15 +5,16 @@ import { Link } from "react-router-dom";
 
   
     // Getting references to our form and inputs
-    const loginForm = document.querySelector("form.login");
     const email = document.querySelector("input#inputEmail");
     const password = document.querySelector("input#inputPassword");
 
     function Login () {
+        const handleFormSubmit = event => {
+            // When the form is submitted, prevent its default behavior, get recipes update the recipes state
+            event.preventDefault();
+           
     // When the form is submitted, we validate there's an email and password entered
-     loginForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-  
+ 
       document.querySelector("#errorMessage").textContent();
   
       let userData = {
@@ -30,7 +31,7 @@ import { Link } from "react-router-dom";
   
       email.val("");
       password.val("");
-    });
+    };
   
     // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
     function loginUser(userData) {
@@ -52,47 +53,43 @@ import { Link } from "react-router-dom";
         .catch(function (err) {
           if (err.status === 401) {
             console.log(err.responseJSON.message);
-  
-            document.querySelector("#errorMessage").textContent(err.responseJSON.message);
           }
           console.log(err);
         });
     }
   
-    document.querySelector("#signupLink").setAttribute("href", `/signup${window.location.search}`);
-  
   return (
-  <div class="container">
-    <div class="card" id="loginCard">
-      <div class="card-header">Log In
+  <div className="container">
+    <div className="card" id="loginCard">
+      <div className="card-header">Log In
       </div>
-        <div class="card-body">
-          <form class="login" action="/login" method="post">
-            <div class="form-group loginForm">
+        <div className="card-body">
+          <form className="login" action="/login" method="post">
+            <div className="form-group loginForm">
               <label for="inputEmail">Email Address
               </label>
-              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email">
+              <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email">
               </input>
             </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="inputPassword">Password
             </label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            <input type="password" className="form-control" id="inputPassword" placeholder="Password">
             </input>
           </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="rememberUser">
+          <div className="form-group form-check">
+            <input type="checkbox" className="form-check-input" id="rememberUser">
             </input>
-            <label class="form-check-label" for="remember">Stay signed in
+            <label className="form-check-label" for="remember">Stay signed in
             </label>
           </div>
-          <button type="submit" class="btn btn-primary alt-btn" value = "Log In" onClick={loginForm}>Login!
+          <button type="submit" className="btn btn-primary alt-btn" value = "Log In" onClick={handleFormSubmit}>Login!
           </button>
-          <label id="errorMessage" class="text-danger">
+          <label id="errorMessage" className="text-danger">
           </label>
         </form>
         <br />
-        <p>Or sign up <Link id="signupLink" to="/signup" role="button" className="btn btn-link">here</Link>
+        <p>Or sign up <Link to="/signup" role="button" className="btn btn-link">here</Link>
         </p>
       </div>
     </div>
