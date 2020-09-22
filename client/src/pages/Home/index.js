@@ -5,6 +5,7 @@ import axios from 'axios';
 import "./style.css";
 import { Toast, ToastBody, Spinner } from 'reactstrap';
 import LooCard from '../../components/LooCard';
+import { useStore } from "../../utils/globalState";
 
 const styles = {
   mapSuperContainer: {
@@ -37,6 +38,7 @@ function Home(props) {
   const [toastText, setToastText] = useState("");
   const [infoWindowText, setInfoWindowText] = useState("");
   const [infoWindowVisible, setInfoWindowVisible] = useState(false);
+  const [state, ] = useStore();
 
   // load loos
   useEffect(() => {
@@ -86,6 +88,7 @@ function Home(props) {
       .then(response => {
         setLoading(false);
         setLoos(response.data);
+        console.log ("LOOS", response.data);
       });
   }
 
@@ -97,6 +100,17 @@ function Home(props) {
       setCenter({ lat: clickEvent.latLng.lat(), lng: clickEvent.latLng.lng() });
     }
     relocate();
+  }
+
+  function newLooDestination() {
+    // user logged in already, send to new loos
+    if (state.user.email !== "") {
+      return "/search";
+    }
+    // send to login
+    else {
+      return "/login?destination=search";
+    }
   }
 
   return (
@@ -155,7 +169,7 @@ function Home(props) {
             <div className="row">
               {/* <a href="/search" className="btn btn-warning btn-lg active" role="button" aria-pressed="true" id="addNew"><i
                 className="fas fa-plus"></i> New Loo</a> */}
-              <Link to="/login?destination=search" className="btn btn-warning btn-lg active"><i
+              <Link to={newLooDestination()} className="btn btn-warning btn-lg active"><i
                 className="fas fa-plus"></i>New Loo</Link>
             </div>
             <div id="mapsource" data-source="home"></div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import logo from '../../assets/img/loo_logo_teal.png';
 import './style.css';
 
@@ -13,9 +14,9 @@ function Nav() {
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img src={logo} alt="Loo" style={styles.logo} />
-          </a>
+          </Link>
           <a className="navbar-brand" href="/logout">
             Logout
             </a>

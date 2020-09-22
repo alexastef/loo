@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useLocation, Redirect } from "react-router-dom";
+import { useStore } from "../../utils/globalState";
 
 function Login() {
   const location = useLocation();
@@ -8,6 +9,7 @@ function Login() {
   const [password,setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [redirectTo, setRedirectTo] = useState("");
+  const [, dispatch] = useStore();
 
   function handleInputChange(event) {
     if (event.target.name === "email") {
@@ -57,6 +59,8 @@ function Login() {
       .then(function (data, status) {
         console.log(status);
         console.log(data);
+
+        dispatch({ type: "SetUser", user: {email} });
 
         const destination = new URLSearchParams(location.search).get("destination");
 
