@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
-import Logout from './components/Logout';
+import Logout from './pages/Logout';
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import Search from './pages/Search';
