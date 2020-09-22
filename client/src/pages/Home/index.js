@@ -42,6 +42,7 @@ function Home(props) {
 
   // load loos
   useEffect(() => {
+    console.log("process.env", process.env);
     if (navigator.geolocation) {
       //geolocationInfoWindow = new google.maps.InfoWindow();
       setToastText("Geolocating...");
