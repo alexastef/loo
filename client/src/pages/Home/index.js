@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import "./style.css";
 import { Toast, ToastBody, Spinner } from 'reactstrap';
 import LooCard from '../../components/LooCard';
+import { useStore } from "../../utils/globalState";
 
 const styles = {
   mapSuperContainer: {
@@ -31,12 +33,51 @@ const styles = {
 
 function Home(props) {
   const [loos, setLoos] = useState([]);
-  const [center, setCenter] = useState({ lat: 32.76814938481005, lng: -117.05437714392656 });
+  const [center, setCenter] = useState({ lat: 32.7139386277346, lng: -117.15319795551424 });
   const [loading, setLoading] = useState(false);
+  const [toastText, setToastText] = useState("");
+  const [infoWindowText, setInfoWindowText] = useState("");
+  const [infoWindowVisible, setInfoWindowVisible] = useState(false);
+  const [state, ] = useStore();
 
   // load loos
   useEffect(() => {
-    relocate();
+    if (navigator.geolocation) {
+      //geolocationInfoWindow = new google.maps.InfoWindow();
+      setToastText("Geolocating...");
+      setLoading(true);
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+        //const latlon = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        setCenter({ lat: pos.lat, lng: pos.lng });
+        relocate();
+      }, function () {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+        
+        console.log("fetching geolocation failed");
+        //handleLocationError(true, geolocationInfoWindow, map.getCenter());
+        setInfoWindowText("Error: The Geolocation service failed.");
+        setInfoWindowVisible(true);
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+      console.log("browser doesn't support geolocation");
+      //handleLocationError(false, geolocationInfoWindow, map.getCenter());
+      setInfoWindowText("Error: Your browser doesn\'t support geolocation.")
+      setInfoWindowVisible(true);
+
+    }
   }, []);
 
   function relocate() {
@@ -47,6 +88,7 @@ function Home(props) {
       .then(response => {
         setLoading(false);
         setLoos(response.data);
+        console.log ("LOOS", response.data);
       });
   }
 
@@ -58,6 +100,17 @@ function Home(props) {
       setCenter({ lat: clickEvent.latLng.lat(), lng: clickEvent.latLng.lng() });
     }
     relocate();
+  }
+
+  function newLooDestination() {
+    // user logged in already, send to new loos
+    if (state.user.email !== "") {
+      return "/search";
+    }
+    // send to login
+    else {
+      return "/login?destination=search";
+    }
   }
 
   return (
@@ -100,6 +153,7 @@ function Home(props) {
                 onClick={mapClicked}
               >
                 <Marker position={center} title={"my location"}></Marker>
+                <InfoWindow visible={infoWindowVisible} position={center}>{infoWindowText}</InfoWindow>
                 {loos.map((loo) => {
                   console.log(loo.geometry.location);
                   return <Marker 
@@ -113,8 +167,10 @@ function Home(props) {
 
             {/* <div id="map" className="d-inline-flex p-2"></div> */}
             <div className="row">
-              <a href="/search" className="btn btn-warning btn-lg active" role="button" aria-pressed="true" id="addNew"><i
-                className="fas fa-plus"></i> New Loo</a>
+              {/* <a href="/search" className="btn btn-warning btn-lg active" role="button" aria-pressed="true" id="addNew"><i
+                className="fas fa-plus"></i> New Loo</a> */}
+              <Link to={newLooDestination()} className="btn btn-warning btn-lg active"><i
+                className="fas fa-plus"></i>New Loo</Link>
             </div>
             <div id="mapsource" data-source="home"></div>
           </div>
@@ -124,7 +180,7 @@ function Home(props) {
               {
                 loos.map((loo) => {
                   console.log("rendering loo card", loo);
-                  return <LooCard place={loo}/>;
+                  return <LooCard key={loo.place_id} place={loo}/>;
                 })
               }
             </div>
@@ -135,7 +191,7 @@ function Home(props) {
         <ToastBody style={styles.toastBody}>
           <Spinner />
           &nbsp;
-          Loading Loos...
+          {toastText}
         </ToastBody>
       </Toast>
     </div>

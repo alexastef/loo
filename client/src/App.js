@@ -5,17 +5,25 @@ import Logout from './pages/Logout';
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import Search from './pages/Search';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import { StoreProvider } from "./utils/globalState";
 
 function App() {
   return (
     <div>
       <Router>
-        <Nav></Nav>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/search" exact component={Search} />
-          <Route path="/logout" exact component={Logout} />
-        </Switch>
+        <StoreProvider>
+          <Nav></Nav>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/search" exact component={Search} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/logout" exact component={Logout} />
+            <Route path="/signup" exact component={Signup} />
+            {/* <Route path="/details" exact component={Details} /> */}
+          </Switch>
+        </StoreProvider>
       </Router>
     </div>
   );
