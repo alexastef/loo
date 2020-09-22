@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useLocation, Redirect } from "react-router-dom";
 import { useStore } from "../../utils/globalState";
 
-function Login() {
+function Signup() {
   const location = useLocation();
   const [email, setEmail] = useState("");
   const [password,setPassword] = useState("");
@@ -55,7 +55,7 @@ function Login() {
       email: email.trim(),
       password: password.trim()
     };
-    axios.post("/api/login", userData)
+    axios.post("/api/signup", userData)
       .then(function (data, status) {
         console.log(status);
         console.log(data);
@@ -83,18 +83,18 @@ function Login() {
   return (
     <div className="container">
       <div className="card" id="loginCard">
-        <div className="card-header">Log In
+        <div className="card-header">Sign Up
       </div>
         <div className="card-body">
           <form className="login" action="/login" method="post">
             <div className="form-group loginForm">
-              <label htmlFor="inputEmail">Email Address
+              <label for="inputEmail">Email Address
               </label>
               <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Email" onChange={handleInputChange} value={email} name="email">
               </input>
             </div>
             <div className="form-group">
-              <label htmlFor="inputPassword">Password
+              <label for="inputPassword">Password
             </label>
               <input type="password" className="form-control" placeholder="Password" onChange={handleInputChange} value={password} name="password">
               </input>
@@ -102,16 +102,16 @@ function Login() {
             <div className="form-group form-check">
               <input type="checkbox" className="form-check-input" id="rememberUser">
               </input>
-              <label className="form-check-label" htmlFor="remember">Stay signed in
+              <label className="form-check-label" for="remember">Remember Me
             </label>
             </div>
-            <button type="submit" className="btn btn-primary alt-btn" value="Log In" onClick={handleFormSubmit}>Login!
+            <button type="submit" className="btn btn-primary alt-btn" value="Log In" onClick={handleFormSubmit}>Sign Up!
           </button>
             <label id="errorMessage" className="text-danger">
             </label>
           </form>
           <br />
-          <p>Or sign up <Link to="/signup" role="button" className="btn-link">here</Link>
+          <p>Or log in <Link to="/login" role="button" className="btn-link">here</Link>
           </p>
         </div>
       </div>
@@ -120,4 +120,4 @@ function Login() {
   )
 };
 
-export default Login; 
+export default Signup; 
