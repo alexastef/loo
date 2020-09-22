@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import "./style.css";
 import { Toast, ToastBody, Spinner } from 'reactstrap';
@@ -152,8 +153,10 @@ function Home(props) {
 
             {/* <div id="map" className="d-inline-flex p-2"></div> */}
             <div className="row">
-              <a href="/search" className="btn btn-warning btn-lg active" role="button" aria-pressed="true" id="addNew"><i
-                className="fas fa-plus"></i> New Loo</a>
+              {/* <a href="/search" className="btn btn-warning btn-lg active" role="button" aria-pressed="true" id="addNew"><i
+                className="fas fa-plus"></i> New Loo</a> */}
+              <Link to="/login?destination=search" className="btn btn-warning btn-lg active"><i
+                className="fas fa-plus"></i>New Loo</Link>
             </div>
             <div id="mapsource" data-source="home"></div>
           </div>
