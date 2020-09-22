@@ -1,14 +1,21 @@
-$(document).ready(function () {
+var ready = (callback) => {
+  if (document.readyState != "loading") callback();
+  else document.addEventListener("DOMContentLoaded", callback);
+}
+
+ready(() => { 
+  /* Do things after DOM has fully loaded */ 
+
   // Getting references to our form and inputs
-  const loginForm = $("form.login");
-  const email = $("input#inputEmail");
-  const password = $("input#inputPassword");
+  const loginForm = document.querySelector("form.login");
+  const email = document.querySelector("input#inputEmail");
+  const password = document.querySelector("input#inputPassword");
 
   // When the form is submitted, we validate there's an email and password entered
-  loginForm.on("submit", function (event) {
+  loginForm.addEventListener("click", (event)=> {
     event.preventDefault();
 
-    $("#errorMessage").text();
+    document.querySelector("#errorMessage").text();
 
     let userData = {
       email: email.val().trim(),
@@ -28,7 +35,7 @@ $(document).ready(function () {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginUser(userData) {
-    $.post("/api/login", userData)
+    app.post("/api/login", userData)
       .then(function (data, status) {
         console.log(status);
         console.log(data);
@@ -47,12 +54,12 @@ $(document).ready(function () {
         if (err.status == 401) {
           console.log(err.responseJSON.message);
 
-          $("#errorMessage").text(err.responseJSON.message);
+          document.querySelector("#errorMessage").textContent(err.responseJSON.message);
         }
         console.log(err);
       });
   }
 
-  $("#signupLink").attr("href", `/signup${window.location.search}`);
-  
+  document.querySelector("#signupLink").setAttribute("href", `/signup${window.location.search}`);
 });
+
