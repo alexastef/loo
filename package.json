@@ -36,6 +36,7 @@
     "mysql2": "^1.7.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "react-bootstrap-range-slider": "^1.2.2",
     "sequelize": "^5.22.3",
     "sequelize-cli": "^6.2.0",
     "yarn": "^1.22.4"

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Search from './pages/Search';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import AddForm from "./pages/AddForm";
 import { StoreProvider } from "./utils/globalState";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/logout" exact component={Logout} />
             <Route path="/signup" exact component={Signup} />
             {/* <Route path="/details" exact component={Details} /> */}
+            <Route path="/add/:id" component={AddForm} />
           </Switch>
         </StoreProvider>
       </Router>
