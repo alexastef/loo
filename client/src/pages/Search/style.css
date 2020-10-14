@@ -1,0 +1,3 @@
+.nearbyCard:hover {
+  background-color: var(--highlight) !important;
+}
